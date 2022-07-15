@@ -1,0 +1,25 @@
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar {
+  @include flex-between;
+  height: 70px;
+  background-color: crimson;
+  color: black;
+  padding: 0 30px;
+}
+
+.navbar-left {
+  @include flex-between;
+  width: 10%;
+  background-color: wheat;
+}
+
+.navbar-right {
+  @include flex-between;
+  width: 20%;
+  background-color: antiquewhite;
+}

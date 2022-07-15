@@ -1,0 +1,25 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  background-color: crimson;
+  color: black;
+  padding: 0 30px;
+}
+
+.navbar-left {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 10%;
+  background-color: wheat;
+}
+
+.navbar-right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 20%;
+  background-color: antiquewhite;
+}/*# sourceMappingURL=Navbar.css.map */
