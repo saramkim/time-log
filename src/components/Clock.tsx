@@ -1,5 +1,5 @@
 function Clock() {
-  return <div>hello</div>;
+  return <div>Clock</div>;
 }
 
 export default Clock;

@@ -8,34 +8,42 @@ import 'css/Timer.css';
 function Timer() {
   const [min, setMin] = useState(10);
   const [sec, setSec] = useState(0);
-  const time = useRef(min * 60 + sec);
+  // const time = useRef(min * 60 + sec);
+  const [time, setTime] = useState(600);
 
-  useInterval(() => {
-    setMin(Math.floor(time.current / 60));
-    setSec(time.current % 60);
-    time.current -= 1;
+  useEffect(() => {
+    setTime(min * 60 + sec);
+  }, [min]);
+
+  const timer: any = useInterval(() => {
+    setMin(Math.floor(time / 60));
+    setSec(time % 60);
+    setTime(time - 1);
   }, 1000);
   // const percentage = 50;
   return (
     <div>
-      {time.current}
-      <div>
+      {time}
+      <div className='timer'>
         {min < 10 ? `0${min}` : min}:{sec < 10 ? `0${sec}` : sec}
       </div>
-      <WhatIDid // setMin={setMin} 해결할 것
-      />
+
+      {/* {time === 0 && clearInterval(timer)} */}
+      <WhatIDid setMin={setMin} />
     </div>
   );
 }
 
-function WhatIDid() {
+function WhatIDid({ setMin }: { setMin: any }) {
   const [did, setDid] = useState('');
+
   return (
     <div>
       <form
         onSubmit={(e) => {
           e.preventDefault();
           console.log(did);
+          setMin(10);
         }}
       >
         <input
