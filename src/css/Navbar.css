@@ -2,24 +2,25 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 70px;
+  height: 3em;
   background-color: crimson;
   color: black;
-  padding: 0 30px;
+  padding: 0 2em;
 }
-
-.navbar-left {
+.navbar__left {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 10%;
-  background-color: wheat;
+  width: 6em;
+  font-size: 1.3rem;
+  color: white;
+  cursor: pointer;
 }
-
-.navbar-right {
+.navbar__right {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 20%;
-  background-color: antiquewhite;
+  width: 8em;
+  font-size: 1.3rem;
+  color: white;
 }/*# sourceMappingURL=Navbar.css.map */

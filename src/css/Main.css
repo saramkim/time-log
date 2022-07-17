@@ -6,7 +6,7 @@
   height: calc(100vh - 70px);
 }
 .main-pg__title {
-  margin-bottom: 10em;
+  margin-bottom: 5em;
 }
 .main-pg__title p {
   font-size: 2rem;
@@ -15,8 +15,9 @@
   font-size: 5rem;
 }
 .main-pg__btns button {
-  font-size: 2rem;
-  height: 4em;
-  width: 4em;
-  margin: 0 1em;
+  font-size: 1.75rem;
+  height: 3.5em;
+  width: 3.5em;
+  margin: 0 0.75em;
+  border-radius: 10%;
 }/*# sourceMappingURL=Main.css.map */

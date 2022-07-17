@@ -1,10 +1,10 @@
-import { Link, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
-import Clock from './components/Clock';
-import Main from './components/Main';
 import Navbar from './components/Navbar';
 import Table from './components/Table';
-import Timer from './components/Timer';
+import Clock from './pages/Clock';
+import Main from './pages/Main';
+import Timer from './pages/Timer';
 
 import './App.css';
 

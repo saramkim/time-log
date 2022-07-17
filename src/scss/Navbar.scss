@@ -6,20 +6,25 @@
 
 .navbar {
   @include flex-between;
-  height: 70px;
+  height: 3em;
   background-color: crimson;
   color: black;
-  padding: 0 30px;
-}
+  padding: 0 2em;
 
-.navbar-left {
-  @include flex-between;
-  width: 10%;
-  background-color: wheat;
-}
+  &__left {
+    @include flex-between;
+    width: 6em;
+    // background-color: wheat;
+    font-size: 1.3rem;
+    color: white;
+    cursor: pointer;
+  }
 
-.navbar-right {
-  @include flex-between;
-  width: 20%;
-  background-color: antiquewhite;
+  &__right {
+    @include flex-between;
+    width: 8em;
+    // background-color: wheat;
+    font-size: 1.3rem;
+    color: white;
+  }
 }

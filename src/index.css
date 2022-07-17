@@ -13,3 +13,34 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+@media screen and (min-width: 1201px) {
+  html {
+    font-size: 160%;
+  }
+}
+@media screen and (max-width: 1200px) {
+  html {
+    font-size: 140%;
+  }
+}
+@media screen and (max-width: 984px) {
+  html {
+    font-size: 120%;
+  }
+}
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 100%;
+  }
+}
+@media screen and (max-width: 552px) {
+  html {
+    font-size: 75%;
+  }
+}
+@media screen and (max-width: 336px) {
+  html {
+    font-size: 50%;
+  }
+}
