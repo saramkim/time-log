@@ -9,10 +9,18 @@ function Main() {
     <div className='main-pg'>
       <div className='main-pg__title'>
         <p>Change Your Time</p>
-        <h1>Timelog</h1>
+        <h1>TimeLog</h1>
       </div>
 
       <section className='main-pg__btns'>
+        <button
+          type='submit'
+          onClick={() => {
+            navigate('/alarm');
+          }}
+        >
+          Alarm
+        </button>
         <button
           type='submit'
           onClick={() => {

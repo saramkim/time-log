@@ -6,7 +6,7 @@
 
 .navbar {
   @include flex-between;
-  height: 3em;
+  height: 4rem;
   background-color: crimson;
   color: black;
   padding: 0 2em;
@@ -15,7 +15,7 @@
     @include flex-between;
     width: 6em;
     // background-color: wheat;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     color: white;
     cursor: pointer;
   }
@@ -24,7 +24,7 @@
     @include flex-between;
     width: 8em;
     // background-color: wheat;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     color: white;
   }
 }

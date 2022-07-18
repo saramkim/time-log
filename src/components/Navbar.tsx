@@ -18,8 +18,8 @@ function Navbar() {
           navigate('/');
         }}
       >
-        <span>@</span>
         <span>TimeLog</span>
+        <span>@</span>
       </div>
       <div className='navbar__right'>
         <span>@</span>
