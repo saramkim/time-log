@@ -1,21 +1,15 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
 
-const time = createSlice({
-  name: 'time',
-  initialState: 0,
+const alarm = createSlice({
+  name: 'alarm',
+  initialState: 15,
   reducers: {
-    setTime(state, action) {
+    setAlarm(state, action) {
       return action.payload;
-    },
-    countDown(state) {
-      return state - 1;
-    },
-    countUp(state) {
-      return state + 1;
     },
   },
 });
-export const { setTime, countDown, countUp } = time.actions;
+export const { setAlarm } = alarm.actions;
 
 const process = createSlice({
   name: 'process',
@@ -36,7 +30,7 @@ export const { pStop, pStart, pLog } = process.actions;
 
 export default configureStore({
   reducer: {
-    time: time.reducer,
+    alarm: alarm.reducer,
     process: process.reducer,
   },
 });

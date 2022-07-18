@@ -13,7 +13,7 @@
   font-size: 10rem;
 }
 
-.WID-input {
+.log-input {
   height: 2.5em;
   width: 100%;
   background-color: crimson;
@@ -23,16 +23,16 @@
   padding: 0 0.6em;
   margin-bottom: 0.6em;
 }
-.WID-input::-moz-placeholder {
+.log-input::-moz-placeholder {
   color: white;
 }
-.WID-input:-ms-input-placeholder {
+.log-input:-ms-input-placeholder {
   color: white;
 }
-.WID-input::placeholder {
+.log-input::placeholder {
   color: white;
 }
-.WID-input:focus {
+.log-input:focus {
   background-color: white;
 }
 

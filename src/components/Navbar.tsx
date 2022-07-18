@@ -44,7 +44,7 @@ function Navbar() {
           </div>
         </div>
       </div>
-      <div>{settings && <Settings />}</div>
+      <div>{settings && <Settings setSettings={setSettings} />}</div>
     </>
   );
 }

@@ -1,30 +1,29 @@
 import { useState } from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { pStart, setTime } from 'store';
+import { useDispatch } from 'react-redux';
+import { pStart } from 'store';
 
-function WhatIDid() {
+function LogInput({ setTime }: { setTime: any }) {
   const [did, setDid] = useState('');
   const dispatch = useDispatch();
-  const time = useSelector((state: any) => state.time);
 
   return (
     <div>
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          dispatch(setTime(0));
           dispatch(pStart());
+          setTime(0);
           console.log(did);
         }}
       >
         <input
-          className='WID-input'
+          className='log-input'
           required
           onChange={(e) => {
             setDid(e.target.value);
           }}
-          placeholder='What I Did?'
+          placeholder='What did I do?'
         />
         <button className='check-btn' type='submit'>
           Check
@@ -34,4 +33,4 @@ function WhatIDid() {
   );
 }
 
-export default WhatIDid;
+export default LogInput;

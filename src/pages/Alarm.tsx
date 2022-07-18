@@ -1,19 +1,29 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-import CountDown from 'components/CountDown';
-import WhatIDid from 'components/WhatIDid';
+import Count from 'components/Count';
+import LogInput from 'components/LogInput';
 import { useDispatch, useSelector } from 'react-redux';
-import { pLog, pStart, setTime } from 'store';
+import { pLog, pStart } from 'store';
 
 import 'css/Timer.css';
 
 function Alarm() {
-  const time = useSelector((state: any) => state.time);
+  const alarm = useSelector((state: any) => state.alarm);
   const process = useSelector((state: any) => state.process);
+  const [time, setTime] = useState(alarm);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    setTime(alarm);
+  }, [process]);
+
+  if (time === -1) {
+    dispatch(pLog());
+  }
+
   const AlarmUI = {
-    log: <WhatIDid />,
-    start: <CountDown />,
+    log: <LogInput setTime={setTime} />,
+    start: <Count time={time} setTime={setTime} upDown='down' />,
     stop: (
       <button
         className='check-btn'
@@ -26,15 +36,6 @@ function Alarm() {
       </button>
     ),
   };
-
-  if (time === -1) {
-    dispatch(pLog());
-  }
-
-  useEffect(() => {
-    dispatch(setTime(10));
-  }, [process]);
-
   return <div className='timer-pg'>{AlarmUI[process]}</div>;
 }
 

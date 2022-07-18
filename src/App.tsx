@@ -3,7 +3,6 @@ import { Route, Routes } from 'react-router-dom';
 import BackButton from 'components/BackButton';
 
 import Navbar from './components/Navbar';
-// import Settings from './components/Settings';
 import Table from './components/Table';
 import Alarm from './pages/Alarm';
 import Clock from './pages/Clock';
@@ -17,7 +16,6 @@ function App() {
     <div className='App'>
       <Navbar />
       <BackButton />
-      {/* <Settings /> */}
       <Routes>
         <Route path='/' element={<Main />} />
         <Route path='/alarm' element={<Alarm />} />
