@@ -11,6 +11,21 @@ function Alarm() {
   const time = useSelector((state: any) => state.time);
   const process = useSelector((state: any) => state.process);
   const dispatch = useDispatch();
+  const AlarmUI = {
+    log: <WhatIDid />,
+    start: <CountDown />,
+    stop: (
+      <button
+        className='check-btn'
+        type='button'
+        onClick={() => {
+          dispatch(pStart());
+        }}
+      >
+        Start
+      </button>
+    ),
+  };
 
   if (time === -1) {
     dispatch(pLog());
@@ -20,19 +35,7 @@ function Alarm() {
     dispatch(setTime(10));
   }, [process]);
 
-  return (
-    <>
-      <div className='timer-pg'>{process === 'log' ? <WhatIDid /> : <CountDown />}</div>
-      <button
-        type='button'
-        onClick={() => {
-          dispatch(pStart());
-        }}
-      >
-        Start
-      </button>
-    </>
-  );
+  return <div className='timer-pg'>{AlarmUI[process]}</div>;
 }
 
 export default Alarm;

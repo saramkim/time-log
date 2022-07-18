@@ -23,4 +23,7 @@
   width: 8em;
   font-size: 1.5rem;
   color: white;
+}
+.navbar__right__settings {
+  cursor: pointer;
 }/*# sourceMappingURL=Navbar.css.map */

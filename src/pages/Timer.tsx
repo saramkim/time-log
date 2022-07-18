@@ -13,30 +13,35 @@ function Timer() {
   return (
     <>
       <div className='timer-pg'>{process === 'log' ? <WhatIDid /> : <CountUp />}</div>
-      <button
-        type='button'
-        onClick={() => {
-          dispatch(pStart());
-        }}
-      >
-        Start
-      </button>
-      <button
-        type='button'
-        onClick={() => {
-          dispatch(pStop());
-        }}
-      >
-        Stop
-      </button>
-      <button
-        type='button'
-        onClick={() => {
-          dispatch(pLog());
-        }}
-      >
-        Log
-      </button>
+      <section>
+        <button
+          className='timer-btn'
+          type='button'
+          onClick={() => {
+            dispatch(pStart());
+          }}
+        >
+          Start
+        </button>
+        <button
+          className='timer-btn'
+          type='button'
+          onClick={() => {
+            dispatch(pStop());
+          }}
+        >
+          Stop
+        </button>
+        <button
+          className='timer-btn'
+          type='button'
+          onClick={() => {
+            dispatch(pLog());
+          }}
+        >
+          Log
+        </button>
+      </section>
     </>
   );
 }

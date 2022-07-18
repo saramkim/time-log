@@ -26,5 +26,9 @@
     // background-color: wheat;
     font-size: 1.5rem;
     color: white;
+
+    &__settings {
+      cursor: pointer;
+    }
   }
 }

@@ -1,0 +1,21 @@
+.settings {
+  padding: 1em;
+  position: absolute;
+  right: 0;
+  z-index: 20;
+  background-color: #f0f0f0;
+  width: 12em;
+  height: 10em;
+}
+
+.timeset {
+  display: flex;
+  flex-direction: column;
+}
+.timeset__input {
+  width: 100%;
+}
+
+.settings__btns {
+  margin-top: 3em;
+}/*# sourceMappingURL=Settings.css.map */

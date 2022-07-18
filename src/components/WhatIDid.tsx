@@ -19,14 +19,16 @@ function WhatIDid() {
         }}
       >
         <input
+          className='WID-input'
           required
           onChange={(e) => {
             setDid(e.target.value);
           }}
-          name='name'
           placeholder='What I Did?'
         />
-        <button type='submit'>Check</button>
+        <button className='check-btn' type='submit'>
+          Check
+        </button>
       </form>
     </div>
   );
