@@ -19,7 +19,6 @@
   background-color: crimson;
   font-size: 3rem;
   color: black;
-  border: none;
   padding: 0 0.6em;
   margin-bottom: 0.6em;
 }
@@ -42,10 +41,9 @@
   height: 3em;
   width: 4em;
   font-size: 1.2rem;
-  border: none;
   border-radius: 10%;
 }
 
 .timer-btn {
   margin-top: 1.5em;
-}/*# sourceMappingURL=Timer.css.map */
+} /*# sourceMappingURL=Timer.css.map */

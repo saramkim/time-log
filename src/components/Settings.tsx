@@ -28,10 +28,16 @@ function Settings({ setSettings }: { setSettings: any }) {
             setTimeset(Number(e.target.value));
           }}
         />
-        <div className='timeset__text'>Alarm timeset - {timeset} m</div>
+        <div className='timeset__text'>Alarm time - {timeset}m</div>
         <section className='settings__btns'>
-          <button className='settings__btn' type='submit'>
-            Check
+          <button
+            className='settings__btn'
+            type='submit'
+            onClick={() => {
+              setSettings(false);
+            }}
+          >
+            OK
           </button>
           <button
             className='settings__btn'

@@ -2,10 +2,12 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import Settings from 'components/Settings';
+import { BsMoon, BsSun } from 'react-icons/bs';
+import { IoSettingsOutline } from 'react-icons/io5';
 
 import 'css/Navbar.css';
 
-function Navbar() {
+function Navbar({ darkMode, setDarkMode }: { darkMode: boolean; setDarkMode: any }) {
   const navigate = useNavigate();
   const [settings, setSettings] = useState(false);
 
@@ -28,7 +30,20 @@ function Navbar() {
         </div>
         <div className='navbar__right'>
           <span>@</span>
-          <span>@</span>
+
+          <div
+            role='button'
+            tabIndex={-2}
+            onKeyPress={() => {
+              setDarkMode(!darkMode);
+            }}
+            onClick={() => {
+              setDarkMode(!darkMode);
+            }}
+          >
+            {darkMode ? <BsMoon /> : <BsSun />}
+          </div>
+
           <div
             className='navbar__right__settings'
             role='button'
@@ -40,7 +55,7 @@ function Navbar() {
               setSettings(!settings);
             }}
           >
-            @
+            <IoSettingsOutline />
           </div>
         </div>
       </div>

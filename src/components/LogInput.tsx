@@ -12,8 +12,8 @@ function LogInput({ setTime }: { setTime: any }) {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          dispatch(pStart());
           setTime(0);
+          dispatch(pStart());
           console.log(did);
         }}
       >
