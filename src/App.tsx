@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import BackButton from 'components/BackButton';
+import GlobalStyles from 'global/GlobalStyles';
+import { darkTheme, lightTheme } from 'global/theme';
 import { ThemeProvider } from 'styled-components';
-import GlobalStyles from 'ts/GlobalStyles';
-import { darkTheme, lightTheme } from 'ts/theme';
 
 import Navbar from './components/Navbar';
 import Table from './components/Table';

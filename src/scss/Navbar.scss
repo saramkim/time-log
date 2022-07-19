@@ -12,12 +12,16 @@
   padding: 0 2em;
 
   &__left {
-    @include flex-between;
-    width: 6em;
+    display: flex;
+    align-items: center;
     // background-color: wheat;
     font-size: 1.5rem;
     color: white;
     cursor: pointer;
+
+    span {
+      margin-left: 0.5em;
+    }
   }
 
   &__right {

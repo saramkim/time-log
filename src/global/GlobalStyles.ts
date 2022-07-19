@@ -12,4 +12,9 @@ button {
     box-shadow: ${(props) => props.theme.boxShadow};
     border: ${(props) => props.theme.border};
 }
+
+button:hover {
+    box-shadow: ${(props) => props.theme.boxShadowInset};
+}
+
 `;

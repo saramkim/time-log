@@ -9,12 +9,13 @@
 }
 .navbar__left {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  width: 6em;
   font-size: 1.5rem;
   color: white;
   cursor: pointer;
+}
+.navbar__left span {
+  margin-left: 0.5em;
 }
 .navbar__right {
   display: flex;

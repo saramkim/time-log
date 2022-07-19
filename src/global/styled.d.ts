@@ -5,6 +5,7 @@ declare module 'styled-components' {
     color: string;
     bgColor: string;
     boxShadow: string;
+    boxShadowInset: string;
     border: string;
   }
 }

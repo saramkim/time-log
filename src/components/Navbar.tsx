@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Settings from 'components/Settings';
 import { BsMoon, BsSun } from 'react-icons/bs';
 import { IoSettingsOutline } from 'react-icons/io5';
+import { MdTimer } from 'react-icons/md';
 
 import 'css/Navbar.css';
 
@@ -25,8 +26,8 @@ function Navbar({ darkMode, setDarkMode }: { darkMode: boolean; setDarkMode: any
             navigate('/');
           }}
         >
+          <MdTimer />
           <span>TimeLog</span>
-          <span>@</span>
         </div>
         <div className='navbar__right'>
           <span>@</span>

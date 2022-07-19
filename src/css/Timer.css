@@ -19,20 +19,27 @@
   background-color: crimson;
   font-size: 3rem;
   color: black;
+  border: none;
   padding: 0 0.6em;
   margin-bottom: 0.6em;
+  box-shadow: 0 8px 16px 1px black;
 }
 .log-input::-moz-placeholder {
-  color: white;
+  color: #f0f0f0;
 }
 .log-input:-ms-input-placeholder {
-  color: white;
+  color: #f0f0f0;
 }
 .log-input::placeholder {
-  color: white;
+  color: #f0f0f0;
 }
 .log-input:focus {
-  background-color: white;
+  background-color: #f0f0f0;
+  outline: none;
+  box-shadow: inset 0 3px 8px 0 black;
+}
+.log-input:hover {
+  box-shadow: inset 0 3px 8px 0 black;
 }
 
 .timer-btn,
@@ -41,9 +48,10 @@
   height: 3em;
   width: 4em;
   font-size: 1.2rem;
+  border: none;
   border-radius: 10%;
 }
 
 .timer-btn {
   margin-top: 1.5em;
-} /*# sourceMappingURL=Timer.css.map */
+}/*# sourceMappingURL=Timer.css.map */
