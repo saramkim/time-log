@@ -26,7 +26,6 @@ function Navbar({ darkMode, setDarkMode }: { darkMode: boolean; setDarkMode: any
             navigate('/');
           }}
         >
-          <MdTimer />
           <span>TimeLog</span>
         </div>
         <div className='navbar__right'>

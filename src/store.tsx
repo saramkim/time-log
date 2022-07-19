@@ -2,7 +2,7 @@ import { configureStore, createSlice } from '@reduxjs/toolkit';
 
 const alarm = createSlice({
   name: 'alarm',
-  initialState: 15,
+  initialState: 600,
   reducers: {
     setAlarm(state, action) {
       return action.payload;

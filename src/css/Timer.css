@@ -1,8 +1,8 @@
 .timer-pg {
   position: fixed;
   top: 50%;
-  transform: translateY(-50%);
-  left: calc(50% - 14em);
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 28em;
   display: flex;
   flex-direction: column;
@@ -21,7 +21,7 @@
   color: black;
   border: none;
   padding: 0 0.6em;
-  margin-bottom: 0.6em;
+  margin: 0.6em 0;
   box-shadow: 0 8px 16px 1px black;
 }
 .log-input::-moz-placeholder {
@@ -54,4 +54,12 @@
 
 .timer-btn {
   margin-top: 1.5em;
+}
+
+.circularbar {
+  position: fixed;
+  top: calc(50% + 1em);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
 }/*# sourceMappingURL=Timer.css.map */

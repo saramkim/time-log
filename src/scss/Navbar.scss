@@ -1,35 +1,38 @@
-@mixin flex-between {
+@mixin flex-center {
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
 .navbar {
-  @include flex-between;
-  height: 4rem;
+  @include flex-center;
+  justify-content: space-between;
+  height: 70px;
   background-color: crimson;
   color: black;
   padding: 0 2em;
 
+  * {
+    @include flex-center;
+  }
+
   &__left {
-    display: flex;
-    align-items: center;
-    // background-color: wheat;
-    font-size: 1.5rem;
+    font-size: 35px;
     color: white;
     cursor: pointer;
-
-    span {
-      margin-left: 0.5em;
+    @media screen and (max-width: 552px) {
+      font-size: 25px;
     }
   }
 
   &__right {
-    @include flex-between;
+    justify-content: space-between;
     width: 6em;
-    // background-color: wheat;
-    font-size: 1.5rem;
+    max-width: 40vw;
+    font-size: 35px;
     color: white;
+    @media screen and (max-width: 552px) {
+      font-size: 25px;
+    }
 
     &__settings {
       cursor: pointer;

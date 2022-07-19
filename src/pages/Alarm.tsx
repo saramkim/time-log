@@ -8,7 +8,7 @@ import { pLog, pStart } from 'store';
 
 import 'css/Timer.css';
 
-function Alarm() {
+function Alarm({ darkMode }: { darkMode: boolean }) {
   const alarm = useSelector((state: any) => state.alarm);
   const process = useSelector((state: any) => state.process);
   const [time, setTime] = useState(alarm);
@@ -16,7 +16,7 @@ function Alarm() {
 
   useEffect(() => {
     setTime(alarm);
-  }, [process]);
+  }, [process, alarm]);
 
   if (time === -1) {
     dispatch(pLog());
@@ -24,7 +24,12 @@ function Alarm() {
 
   const AlarmUI = {
     log: <LogInput setTime={setTime} />,
-    start: <Count time={time} setTime={setTime} upDown='down' />,
+    start: (
+      <div>
+        <Circularbar time={time} darkMode={darkMode} />
+        <Count time={time} setTime={setTime} upDown='down' />
+      </div>
+    ),
     stop: (
       <button
         className='check-btn'

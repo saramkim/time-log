@@ -1,23 +1,38 @@
+import { useEffect, useState } from 'react';
+
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
+import { useSelector } from 'react-redux';
 
 import 'react-circular-progressbar/dist/styles.css';
 
-function Circularbar() {
-  const percentage = 50;
+function Circularbar({ time, darkMode }: { time: number; darkMode: boolean }) {
+  const setTime = useSelector((state: any) => state.alarm);
+  const [trail, setTrail] = useState('');
+
+  useEffect(() => {
+    if (darkMode) {
+      setTrail('rgb(45, 45, 45)');
+    } else {
+      setTrail('#f0f0f0');
+    }
+  }, [darkMode]);
 
   return (
     <CircularProgressbar
-      value={percentage}
-      text={`${percentage}%`}
+      value={setTime - time}
+      maxValue={setTime}
+      // text={`${time}`}
+      className='circularbar'
+      strokeWidth={50}
       styles={buildStyles({
         // Rotation of path and trail, in number of turns (0-1)
-        rotation: 0.25,
+        rotation: 1,
 
         // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
         strokeLinecap: 'butt',
 
         // Text size
-        textSize: '16px',
+        // textSize: '3em',
 
         // How long animation takes to go from one percentage to another, in seconds
         pathTransitionDuration: 0.5,
@@ -26,10 +41,12 @@ function Circularbar() {
         // pathTransition: 'none',
 
         // Colors
-        pathColor: `rgba(62, 152, 199, ${percentage / 100})`,
-        textColor: '#f88',
-        trailColor: '#d6d6d6',
-        backgroundColor: '#3e98c7',
+        pathColor: `rgba(220, 20, 60, 1)`,
+        // pathColor: `rgba(220, 20, 60, ${(setTime - time) / setTime})`,
+        // textColor: 'black',
+        trailColor: trail,
+
+        // backgroundColor: 'white',
       })}
     />
   );

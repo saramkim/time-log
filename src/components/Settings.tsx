@@ -34,10 +34,10 @@ function Settings({ setSettings }: { setSettings: any }) {
             className='settings__btn'
             type='submit'
             onClick={() => {
-              setSettings(false);
+              // setSettings(false);
             }}
           >
-            OK
+            Apply
           </button>
           <button
             className='settings__btn'
@@ -46,7 +46,7 @@ function Settings({ setSettings }: { setSettings: any }) {
               setSettings(false);
             }}
           >
-            Cancel
+            Close
           </button>
         </section>
       </form>

@@ -26,7 +26,7 @@ function App() {
         <BackButton />
         <Routes>
           <Route path='/' element={<Main />} />
-          <Route path='/alarm' element={<Alarm />} />
+          <Route path='/alarm' element={<Alarm darkMode={darkMode} />} />
           <Route path='/timer' element={<Timer />} />
           <Route path='/table' element={<Table />} />
           <Route path='/clock' element={<Clock />} />

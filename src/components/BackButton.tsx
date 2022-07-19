@@ -21,8 +21,8 @@ export default BackButton;
 
 const BackBtn = styled.button`
   font-size: 2rem;
-  width: 2em;
-  height: 2em;
+  width: 1.8em;
+  height: 1.8em;
   position: fixed;
   top: 2.75em;
   left: 0;

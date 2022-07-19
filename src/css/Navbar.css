@@ -1,29 +1,37 @@
 .navbar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  height: 4rem;
+  justify-content: space-between;
+  height: 70px;
   background-color: crimson;
   color: black;
   padding: 0 2em;
 }
-.navbar__left {
+.navbar * {
   display: flex;
   align-items: center;
-  font-size: 1.5rem;
+}
+.navbar__left {
+  font-size: 35px;
   color: white;
   cursor: pointer;
 }
-.navbar__left span {
-  margin-left: 0.5em;
+@media screen and (max-width: 552px) {
+  .navbar__left {
+    font-size: 25px;
+  }
 }
 .navbar__right {
-  display: flex;
   justify-content: space-between;
-  align-items: center;
   width: 6em;
-  font-size: 1.5rem;
+  max-width: 40vw;
+  font-size: 35px;
   color: white;
+}
+@media screen and (max-width: 552px) {
+  .navbar__right {
+    font-size: 25px;
+  }
 }
 .navbar__right__settings {
   cursor: pointer;
