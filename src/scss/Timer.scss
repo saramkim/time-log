@@ -49,6 +49,10 @@
 
 .timer-btn {
     margin-top: 1.5em;
+
+    &--clicked {
+        box-shadow: inset 0 3px 8px 0 black;
+    }
 }
 
 .circularbar {

@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import Settings from 'components/Settings';
 import { BsMoon, BsSun } from 'react-icons/bs';
 import { IoSettingsOutline } from 'react-icons/io5';
-import { MdTimer } from 'react-icons/md';
 
 import 'css/Navbar.css';
 
@@ -32,8 +31,9 @@ function Navbar({ darkMode, setDarkMode }: { darkMode: boolean; setDarkMode: any
           <span>@</span>
 
           <div
+            className='navbar__right__btn'
             role='button'
-            tabIndex={-2}
+            tabIndex={-1}
             onKeyPress={() => {
               setDarkMode(!darkMode);
             }}
@@ -45,9 +45,9 @@ function Navbar({ darkMode, setDarkMode }: { darkMode: boolean; setDarkMode: any
           </div>
 
           <div
-            className='navbar__right__settings'
+            className='navbar__right__btn'
             role='button'
-            tabIndex={-1}
+            tabIndex={-2}
             onKeyPress={() => {
               setSettings(!settings);
             }}

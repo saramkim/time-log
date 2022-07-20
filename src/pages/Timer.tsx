@@ -12,6 +12,22 @@ function Timer() {
   const process = useSelector((state: any) => state.process);
   const dispatch = useDispatch();
 
+  let startClicked = '';
+  let stopClicked = '';
+  let logClicked = '';
+  switch (process) {
+    case 'start':
+      startClicked = 'timer-btn--clicked';
+      break;
+    case 'stop':
+      stopClicked = 'timer-btn--clicked';
+      break;
+    case 'log':
+      logClicked = 'timer-btn--clicked';
+      break;
+    default:
+  }
+
   return (
     <>
       <div className='timer-pg'>
@@ -23,7 +39,7 @@ function Timer() {
       </div>
       <section>
         <button
-          className='timer-btn'
+          className={`timer-btn ${startClicked}`}
           type='button'
           onClick={() => {
             dispatch(pStart());
@@ -32,7 +48,7 @@ function Timer() {
           Start
         </button>
         <button
-          className='timer-btn'
+          className={`timer-btn ${stopClicked}`}
           type='button'
           onClick={() => {
             dispatch(pStop());
@@ -41,7 +57,7 @@ function Timer() {
           Stop
         </button>
         <button
-          className='timer-btn'
+          className={`timer-btn ${logClicked}`}
           type='button'
           onClick={() => {
             dispatch(pLog());

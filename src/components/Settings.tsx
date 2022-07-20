@@ -28,7 +28,23 @@ function Settings({ setSettings }: { setSettings: any }) {
             setTimeset(Number(e.target.value));
           }}
         />
-        <div className='timeset__text'>Alarm time - {timeset}m</div>
+        <div
+          className='timeset__text'
+          role='button'
+          tabIndex={0}
+          onKeyPress={() => {
+            if (timeset < 30) {
+              setTimeset(timeset + 1);
+            }
+          }}
+          onClick={() => {
+            if (timeset < 30) {
+              setTimeset(timeset + 1);
+            }
+          }}
+        >
+          Alarm time : {timeset}m
+        </div>
         <section className='settings__btns'>
           <button
             className='settings__btn'

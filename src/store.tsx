@@ -2,7 +2,7 @@ import { configureStore, createSlice } from '@reduxjs/toolkit';
 
 const alarm = createSlice({
   name: 'alarm',
-  initialState: 600,
+  initialState: 15,
   reducers: {
     setAlarm(state, action) {
       return action.payload;
@@ -15,13 +15,13 @@ const process = createSlice({
   name: 'process',
   initialState: 'stop',
   reducers: {
-    pStop(state) {
+    pStop() {
       return 'stop';
     },
-    pStart(state) {
+    pStart() {
       return 'start';
     },
-    pLog(state) {
+    pLog() {
       return 'log';
     },
   },

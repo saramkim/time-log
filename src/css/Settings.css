@@ -19,6 +19,9 @@
   width: 100%;
   cursor: pointer;
 }
+.timeset__text {
+  cursor: pointer;
+}
 
 .settings__btns {
   margin-top: 4em;
