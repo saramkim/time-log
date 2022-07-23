@@ -8,7 +8,7 @@ function Main() {
   return (
     <div className='main-pg'>
       <div className='main-pg__title'>
-        <p>Change Your Time</p>
+        <p>Control Your Time</p>
         <h1>TimeLog</h1>
       </div>
 

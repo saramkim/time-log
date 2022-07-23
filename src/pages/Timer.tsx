@@ -32,7 +32,7 @@ function Timer() {
     <>
       <div className='timer-pg'>
         {process === 'log' ? (
-          <LogInput setTime={setTime} />
+          <LogInput time={time - 1} setTime={setTime} />
         ) : (
           <Count time={time} setTime={setTime} upDown='up' />
         )}

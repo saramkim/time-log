@@ -6,15 +6,7 @@ export default createGlobalStyle`
 body {
 	background-color: ${(props) => props.theme.bgColor};
     color: ${(props) => props.theme.color};
-}
-
-button {
-    box-shadow: ${(props) => props.theme.boxShadow};
-    border: ${(props) => props.theme.border};
-}
-
-button:hover {
-    box-shadow: ${(props) => props.theme.boxShadowInset};
+    transition: ${(props) => props.theme.transition};
 }
 
 `;

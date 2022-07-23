@@ -18,12 +18,14 @@ function Alarm({ darkMode }: { darkMode: boolean }) {
     setTime(alarm);
   }, [process, alarm]);
 
-  if (time === -1) {
-    dispatch(pLog());
-  }
+  useEffect(() => {
+    if (time === -1) {
+      dispatch(pLog());
+    }
+  }, [time]);
 
   const AlarmUI = {
-    log: <LogInput setTime={setTime} />,
+    log: <LogInput time={alarm} setTime={setTime} />,
     start: (
       <div>
         <Circularbar time={time} darkMode={darkMode} />

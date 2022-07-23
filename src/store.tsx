@@ -13,7 +13,7 @@ export const { setAlarm } = alarm.actions;
 
 const process = createSlice({
   name: 'process',
-  initialState: 'stop',
+  initialState: 'start',
   reducers: {
     pStop() {
       return 'stop';

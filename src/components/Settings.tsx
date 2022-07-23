@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useDispatch } from 'react-redux';
 import { setAlarm } from 'store';
@@ -8,9 +8,14 @@ import 'css/Settings.css';
 function Settings({ setSettings }: { setSettings: any }) {
   const [timeset, setTimeset] = useState(15);
   const dispatch = useDispatch();
+  const [addAnimation, setAddAnimation] = useState('');
+
+  useEffect(() => {
+    setAddAnimation('settings--animation');
+  });
 
   return (
-    <div className='settings'>
+    <div className={`settings ${addAnimation}`}>
       <form
         className='timeset'
         onSubmit={(e) => {
@@ -22,7 +27,7 @@ function Settings({ setSettings }: { setSettings: any }) {
           className='timeset__input'
           type='range'
           min='1'
-          max='30'
+          max='60'
           value={timeset}
           onChange={(e) => {
             setTimeset(Number(e.target.value));
@@ -33,12 +38,12 @@ function Settings({ setSettings }: { setSettings: any }) {
           role='button'
           tabIndex={0}
           onKeyPress={() => {
-            if (timeset < 30) {
+            if (timeset < 60) {
               setTimeset(timeset + 1);
             }
           }}
           onClick={() => {
-            if (timeset < 30) {
+            if (timeset < 60) {
               setTimeset(timeset + 1);
             }
           }}

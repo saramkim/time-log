@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import BackButton from 'components/BackButton';
@@ -17,6 +17,10 @@ import './App.css';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem('공부', JSON.stringify([]));
+  });
 
   return (
     <div className='App'>

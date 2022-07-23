@@ -24,7 +24,7 @@ const BackBtn = styled.button`
   width: 1.8em;
   height: 1.8em;
   position: fixed;
-  top: 2.75em;
+  top: 120px;
   left: 0;
   z-index: 10;
   border-radius: 0 10% 10% 0;

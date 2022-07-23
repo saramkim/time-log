@@ -5,6 +5,10 @@
 
 .navbar {
   @include flex-center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 100;
   justify-content: space-between;
   height: 70px;
   background-color: crimson;

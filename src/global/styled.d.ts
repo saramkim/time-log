@@ -4,8 +4,6 @@ declare module 'styled-components' {
   export interface DefaultTheme {
     color: string;
     bgColor: string;
-    boxShadow: string;
-    boxShadowInset: string;
-    border: string;
+    transition: string;
   }
 }
