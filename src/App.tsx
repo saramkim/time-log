@@ -9,8 +9,8 @@ import { ThemeProvider } from 'styled-components';
 import Navbar from './components/Navbar';
 import Table from './components/Table';
 import Alarm from './pages/Alarm';
-import Clock from './pages/Clock';
 import Main from './pages/Main';
+import Report from './pages/Report';
 import Timer from './pages/Timer';
 
 import './App.css';
@@ -29,7 +29,7 @@ function App() {
           <Route path='/alarm' element={<Alarm darkMode={darkMode} />} />
           <Route path='/timer' element={<Timer />} />
           <Route path='/table' element={<Table />} />
-          <Route path='/clock' element={<Clock />} />
+          <Route path='/report' element={<Report />} />
         </Routes>
       </ThemeProvider>
     </div>

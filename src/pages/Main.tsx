@@ -40,10 +40,10 @@ function Main() {
         <button
           type='submit'
           onClick={() => {
-            navigate('/clock');
+            navigate('/report');
           }}
         >
-          Clock
+          Report
         </button>
       </section>
     </div>
