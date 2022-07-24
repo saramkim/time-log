@@ -6,23 +6,19 @@ import { pStart } from 'store';
 function LogInput({ time, setTime }: { time: number; setTime: any }) {
   const [did, setDid] = useState('');
   const dispatch = useDispatch();
-  // const inputData = JSON.stringify({ [did]: time });
-  // const inputData = JSON.stringify({ name: time });
-  // const bbb = JSON.parse(inputData);
-  // const abc = localStorage.getItem('공부');
-  // const abcd = JSON.parse(abc!);
 
   return (
     <div>
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          // const aaa = localStorage.getItem('공부');
-          // const LSItem = JSON.parse(aaa);
-          // LSItem.push(inputData);
-          // localStorage.setItem('공부', JSON.stringify(LSItem));
-          // localStorage.setItem('공부', inputData);
-
+          const LSItem = JSON.parse(localStorage.getItem('공부') || '{}');
+          if (LSItem[did] === undefined) {
+            LSItem[did] = time;
+          } else {
+            LSItem[did] += time;
+          }
+          localStorage.setItem('공부', JSON.stringify(LSItem));
           setTime(0);
           dispatch(pStart());
         }}
@@ -39,12 +35,8 @@ function LogInput({ time, setTime }: { time: number; setTime: any }) {
           Check
         </button>
       </form>
-      {/* <div>{abcd} </div> */}
     </div>
   );
 }
 
 export default LogInput;
-function newDate() {
-  throw new Error('Function not implemented.');
-}
