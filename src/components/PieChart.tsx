@@ -1,12 +1,10 @@
-// import data from 'components/TimeData';
-
 import { ResponsivePie } from '@nivo/pie';
 
 function MyResponsivePie({ data }: { data: any }) {
   const theme = {
     labels: {
       text: {
-        fontSize: '1.2em',
+        fontSize: '1.5em',
       },
     },
     legends: {

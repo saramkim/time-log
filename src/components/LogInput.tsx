@@ -1,24 +1,26 @@
 import { useState } from 'react';
 
+import Today from 'components/Today';
 import { useDispatch } from 'react-redux';
 import { pStart } from 'store';
 
 function LogInput({ time, setTime }: { time: number; setTime: any }) {
   const [did, setDid] = useState('');
   const dispatch = useDispatch();
+  const date = Today();
 
   return (
     <div>
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          const LSItem = JSON.parse(localStorage.getItem('공부') || '{}');
+          const LSItem = JSON.parse(localStorage.getItem(date) || '{}');
           if (LSItem[did] === undefined) {
             LSItem[did] = time;
           } else {
             LSItem[did] += time;
           }
-          localStorage.setItem('공부', JSON.stringify(LSItem));
+          localStorage.setItem(date, JSON.stringify(LSItem));
           setTime(0);
           dispatch(pStart());
         }}
