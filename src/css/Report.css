@@ -2,10 +2,50 @@
   width: 100%;
   height: calc(100vh - 70px);
   margin-top: 70px;
-  padding: 1em;
+  padding: 2em;
+}
+
+.pie-chart {
+  height: calc(100% - 2.5em);
 }
 
 .did-list {
   margin: 1em;
   font-size: 2rem;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+.date-selector {
+  -o-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 0.3em 0.5em;
+  border-radius: 0.3em;
+  background-color: #f0f0f0;
+  border: none;
+  color: black;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.date-selector:focus {
+  outline: none;
+  font-weight: 600;
+}
+.date-selector:hover {
+  font-weight: 600;
+}
+
+.date-selector option {
+  padding: 10px 0;
+  background-color: #f0f0f0;
+  color: black;
+  cursor: pointer;
+  box-shadow: 0 4px 8px 1px black;
+}
+.date-selector option:checked {
+  font-weight: 600;
 }/*# sourceMappingURL=Report.css.map */

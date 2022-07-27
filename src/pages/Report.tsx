@@ -11,13 +11,15 @@ function Report() {
   const [data, setData] = useState('');
 
   useEffect(() => {
-    const data: any = Object.keys(LSItem).map((e: string) => ({
+    const LSData: any = Object.keys(LSItem).map((e: string) => ({
       id: e,
       label: e,
       value: LSItem[e],
     }));
-    setData(data);
+    setData(LSData);
   }, [date]);
+  // [date]로 하면 왜 제대로 작동하지 않을까?
+  // [data]로 하면 왜 무한 루프에 빠질까?
 
   return (
     <div className='report-wrapper'>
@@ -28,6 +30,8 @@ function Report() {
       > */}
       <select
         name='date'
+        className='date-selector'
+        value={date}
         onChange={(e) => {
           setDate(e.target.value);
         }}
@@ -39,7 +43,9 @@ function Report() {
 
       {/* <input type='date' /> */}
       {/* <input type='week' /> */}
-      <PieChart data={data} />
+      <div className='pie-chart'>
+        <PieChart data={data} />
+      </div>
     </div>
   );
 }
@@ -47,9 +53,11 @@ function Report() {
 function DateList() {
   const LSKeys: any = Object.keys(window.localStorage);
 
-  return LSKeys.reverse().map((e: string) => {
-    return <option>{e}</option>;
-  });
+  return LSKeys.sort()
+    .reverse()
+    .map((e: string) => {
+      return <option key={e}>{e}</option>;
+    });
 }
 
 export default Report;

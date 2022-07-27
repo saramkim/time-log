@@ -17,7 +17,7 @@ function MyResponsivePie({ data }: { data: any }) {
   return (
     <ResponsivePie
       data={data}
-      margin={{ top: 120, right: 120, bottom: 160, left: 120 }}
+      margin={{ top: 60, right: 140, bottom: 60, left: 140 }}
       theme={theme}
       sortByValue
       colors={{ scheme: 'set2' }}
@@ -38,31 +38,31 @@ function MyResponsivePie({ data }: { data: any }) {
         from: 'color',
         modifiers: [['darker', 3]],
       }}
-      legends={[
-        {
-          anchor: 'left',
-          direction: 'column',
-          justify: false,
-          translateX: -50,
-          translateY: 0,
-          itemsSpacing: 100,
-          itemWidth: 200,
-          itemHeight: 0,
-          itemTextColor: '#999',
-          itemDirection: 'left-to-right',
-          itemOpacity: 1,
-          symbolSize: 20,
-          symbolShape: 'circle',
-          effects: [
-            {
-              on: 'hover',
-              style: {
-                itemTextColor: '#000',
-              },
-            },
-          ],
-        },
-      ]}
+      // legends={[
+      //   {
+      //     anchor: 'left',
+      //     direction: 'column',
+      //     justify: false,
+      //     translateX: -50,
+      //     translateY: 0,
+      //     itemsSpacing: 100,
+      //     itemWidth: 200,
+      //     itemHeight: 0,
+      //     itemTextColor: '#999',
+      //     itemDirection: 'left-to-right',
+      //     itemOpacity: 1,
+      //     symbolSize: 20,
+      //     symbolShape: 'circle',
+      //     effects: [
+      //       {
+      //         on: 'hover',
+      //         style: {
+      //           itemTextColor: '#000',
+      //         },
+      //       },
+      //     ],
+      //   },
+      // ]}
     />
   );
 }

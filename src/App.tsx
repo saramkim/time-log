@@ -1,22 +1,29 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import BackButton from 'components/BackButton';
+import Navbar from 'components/Navbar';
+import Table from 'components/Table';
+import Today from 'components/Today';
 import GlobalStyles from 'global/GlobalStyles';
 import { darkTheme, lightTheme } from 'global/theme';
+import Alarm from 'pages/Alarm';
+import Main from 'pages/Main';
+import Report from 'pages/Report';
+import Timer from 'pages/Timer';
 import { ThemeProvider } from 'styled-components';
 
-import Navbar from './components/Navbar';
-import Table from './components/Table';
-import Alarm from './pages/Alarm';
-import Main from './pages/Main';
-import Report from './pages/Report';
-import Timer from './pages/Timer';
-
-import './App.css';
+import 'App.css';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
+  const date = Today();
+
+  useEffect(() => {
+    if (localStorage.getItem(date) === null) {
+      localStorage.setItem(date, '');
+    }
+  }, []);
 
   return (
     <div className='App'>
