@@ -2,11 +2,10 @@
   width: 100%;
   height: calc(100vh - 70px);
   margin-top: 70px;
-  padding: 2em;
 }
 
 .pie-chart {
-  height: calc(100% - 2.5em);
+  height: calc(100% - 113px);
 }
 
 .did-list {
@@ -23,6 +22,7 @@ select::-ms-expand {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  margin-top: 50px;
   padding: 0.3em 0.5em;
   border-radius: 0.3em;
   background-color: #f0f0f0;

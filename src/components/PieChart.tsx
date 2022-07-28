@@ -17,7 +17,7 @@ function MyResponsivePie({ data }: { data: any }) {
   return (
     <ResponsivePie
       data={data}
-      margin={{ top: 60, right: 140, bottom: 60, left: 140 }}
+      margin={{ top: 60, right: 200, bottom: 60, left: 200 }}
       theme={theme}
       sortByValue
       colors={{ scheme: 'set2' }}

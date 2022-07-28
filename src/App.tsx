@@ -3,11 +3,11 @@ import { Route, Routes } from 'react-router-dom';
 
 import BackButton from 'components/BackButton';
 import Navbar from 'components/Navbar';
-import Table from 'components/Table';
 import Today from 'components/Today';
 import GlobalStyles from 'global/GlobalStyles';
 import { darkTheme, lightTheme } from 'global/theme';
 import Alarm from 'pages/Alarm';
+import Chart from 'pages/Chart';
 import Main from 'pages/Main';
 import Report from 'pages/Report';
 import Timer from 'pages/Timer';
@@ -35,7 +35,7 @@ function App() {
           <Route path='/' element={<Main />} />
           <Route path='/alarm' element={<Alarm darkMode={darkMode} />} />
           <Route path='/timer' element={<Timer />} />
-          <Route path='/table' element={<Table />} />
+          <Route path='/chart' element={<Chart />} />
           <Route path='/report' element={<Report />} />
         </Routes>
       </ThemeProvider>

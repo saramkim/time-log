@@ -18,8 +18,6 @@ function Report() {
     }));
     setData(LSData);
   }, [date]);
-  // [date]로 하면 왜 제대로 작동하지 않을까?
-  // [data]로 하면 왜 무한 루프에 빠질까?
 
   return (
     <div className='report-wrapper'>

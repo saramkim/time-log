@@ -12,7 +12,7 @@ function Main() {
         <h1>TimeLog</h1>
       </div>
 
-      <section className='main-pg__btns'>
+      <div className='main-pg__btns'>
         <button
           type='submit'
           onClick={() => {
@@ -21,6 +21,7 @@ function Main() {
         >
           Alarm
         </button>
+
         <button
           type='submit'
           onClick={() => {
@@ -29,14 +30,7 @@ function Main() {
         >
           Timer
         </button>
-        <button
-          type='submit'
-          onClick={() => {
-            navigate('/table');
-          }}
-        >
-          Table
-        </button>
+
         <button
           type='submit'
           onClick={() => {
@@ -45,7 +39,16 @@ function Main() {
         >
           Report
         </button>
-      </section>
+
+        <button
+          type='submit'
+          onClick={() => {
+            navigate('/chart');
+          }}
+        >
+          Chart
+        </button>
+      </div>
     </div>
   );
 }
