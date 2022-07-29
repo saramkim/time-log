@@ -1,4 +1,5 @@
 // import data from 'components/Data';
+import DidList from 'components/DidList';
 
 import { ResponsiveBar } from '@nivo/bar';
 
@@ -11,10 +12,10 @@ const theme = {
   legends: {
     text: {
       fontSize: '1em',
+      fill: '#555555',
     },
   },
   axis: {
-    tickColor: '#eee',
     ticks: {
       text: {
         fontSize: '1em',
@@ -29,25 +30,27 @@ const theme = {
   },
 };
 
-function MyResponsiveBar({ data }: { data: any }) {
+function MyResponsiveBar({ data, standard }: { data: any; standard: number }) {
+  const keyList: string[] = DidList(standard);
+
   return (
     <ResponsiveBar
       data={data}
       theme={theme}
-      keys={['코딩', '영어 공부', '수면', '휴식']}
+      keys={keyList}
       indexBy='date'
-      margin={{ top: 80, right: 200, bottom: 60, left: 120 }}
+      margin={{ top: 100, right: 240, bottom: 40, left: 130 }}
       padding={0.25}
       layout='horizontal'
       valueScale={{ type: 'linear' }}
       indexScale={{ type: 'band', round: true }}
-      colors={{ scheme: 'set2' }}
+      colors={{ scheme: 'paired' }}
       borderColor={{
         from: 'color',
         modifiers: [['darker', 1.6]],
       }}
       axisTop={{
-        tickSize: 0,
+        tickSize: 20,
         tickPadding: 10,
         tickRotation: 0,
         legend: '',
@@ -83,13 +86,13 @@ function MyResponsiveBar({ data }: { data: any }) {
           itemWidth: 100,
           itemHeight: 20,
           itemDirection: 'left-to-right',
-          itemOpacity: 0.9,
+          itemOpacity: 1,
           symbolSize: 20,
           effects: [
             {
               on: 'hover',
               style: {
-                itemOpacity: 1,
+                symbolSize: 25,
               },
             },
           ],

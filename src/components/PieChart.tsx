@@ -20,7 +20,7 @@ function MyResponsivePie({ data }: { data: any }) {
       margin={{ top: 60, right: 200, bottom: 60, left: 200 }}
       theme={theme}
       sortByValue
-      colors={{ scheme: 'set2' }}
+      colors={{ scheme: 'paired' }}
       borderWidth={1}
       borderColor={{
         from: 'color',
