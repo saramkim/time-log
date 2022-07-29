@@ -98,10 +98,12 @@ function MyResponsiveBar({ data, standard }: { data: any; standard: number }) {
           ],
         },
       ]}
+      animate={false}
+      motionConfig='slow'
       role='application'
-      ariaLabel='Nivo bar chart demo'
+      ariaLabel='time bar chart'
       barAriaLabel={(e) => {
-        return `${e.id}: ${e.formattedValue} in country: ${e.indexValue}`;
+        return `${e.id}: ${e.formattedValue} in date: ${e.indexValue}`;
       }}
     />
   );

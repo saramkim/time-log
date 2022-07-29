@@ -7,11 +7,11 @@ function MyResponsivePie({ data }: { data: any }) {
         fontSize: '1.5em',
       },
     },
-    legends: {
-      text: {
-        fontSize: '1em',
-      },
-    },
+    // legends: {
+    //   text: {
+    //     fontSize: '1em',
+    //   },
+    // },
   };
 
   return (
@@ -19,6 +19,9 @@ function MyResponsivePie({ data }: { data: any }) {
       data={data}
       margin={{ top: 60, right: 200, bottom: 60, left: 200 }}
       theme={theme}
+      padAngle={2}
+      cornerRadius={10}
+      innerRadius={0.4}
       sortByValue
       colors={{ scheme: 'paired' }}
       borderWidth={1}
@@ -38,6 +41,8 @@ function MyResponsivePie({ data }: { data: any }) {
         from: 'color',
         modifiers: [['darker', 3]],
       }}
+      animate={false}
+
       // legends={[
       //   {
       //     anchor: 'left',

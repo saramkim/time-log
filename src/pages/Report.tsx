@@ -7,8 +7,11 @@ import 'css/Report.css';
 
 function Report() {
   const [date, setDate] = useState(Today());
+  const [data, setData] = useState({ id: 'string', label: 'string', value: 1 });
   const LSItem = JSON.parse(localStorage.getItem(date) || '{}');
-  const [data, setData] = useState('');
+
+  const timeArr: number[] = Object.values(LSItem);
+  const totalTime: number = timeArr.reduce((p, c) => p + c, 0);
 
   useEffect(() => {
     const LSData: any = Object.keys(LSItem).map((e: string) => ({
@@ -21,11 +24,6 @@ function Report() {
 
   return (
     <div className='report-wrapper'>
-      {/* <form
-        onSubmit={(e) => {
-          e.preventDefault();
-        }}
-      > */}
       <select
         name='date'
         className='date-selector'
@@ -36,13 +34,10 @@ function Report() {
       >
         <DateList />
       </select>
-      {/* <button type='submit'>선택</button> */}
-      {/* </form> */}
 
-      {/* <input type='date' /> */}
-      {/* <input type='week' /> */}
       <div className='pie-chart'>
         <PieChart data={data} />
+        <div className='pie-chart__center'>{totalTime}</div>
       </div>
     </div>
   );

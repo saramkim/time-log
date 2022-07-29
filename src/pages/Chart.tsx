@@ -34,10 +34,11 @@ function Chart() {
           <br />~ {dayEnd}
         </div>
         <div className='week-selector__btns'>
-          <FaAngleDoubleLeft onClick={() => setStandard(standard - 7)} />
-          <FaAngleLeft onClick={() => setStandard(standard - 1)} />
-          <FaAngleRight onClick={() => setStandard(standard + 1)} />
-          <FaAngleDoubleRight onClick={() => setStandard(standard + 7)} />
+          {/* (오늘 이후) or (기록이 없는 날짜) 페이지 넘기기 안되게 */}
+          <FaAngleDoubleLeft onClick={() => setStandard(standard + 7)} />
+          <FaAngleLeft onClick={() => setStandard(standard + 1)} />
+          <FaAngleRight onClick={() => setStandard(standard - 1)} />
+          <FaAngleDoubleRight onClick={() => setStandard(standard - 7)} />
         </div>
       </div>
       <div className='chart-wrapper'>
