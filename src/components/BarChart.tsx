@@ -2,8 +2,19 @@
 import DidList from 'components/DidList';
 
 import { ResponsiveBar } from '@nivo/bar';
+import { BasicTooltip } from '@nivo/tooltip';
 
 const theme = {
+  // tooltipLabel: { fill: 'red' },
+  // tooltip: {
+  //   container: {
+  //     background: '#333',
+  //     color: '#fff',
+  //     padding: '10px 20px',
+  //     fontSize: '13px',
+  //     textTransform: 'uppercase',
+  //   },
+  // },
   labels: {
     text: {
       fontSize: '1em',
@@ -30,12 +41,20 @@ const theme = {
   },
 };
 
+// eslint-disable-next-line react/function-component-definition
+// eslint-disable-next-line react/function-component-definition
+// const BarTooltip: React.FunctionComponent<any> = () => {
+//   return <BasicTooltip id={1} value={5} color='white' enableChip />;
+// };
+
 function MyResponsiveBar({ data, standard }: { data: any; standard: number }) {
   const keyList: string[] = DidList(standard);
 
   return (
     <ResponsiveBar
       data={data}
+      // tooltip={BarTooltip}
+      // tooltipLabel={[{ fill: 'red' }]}
       theme={theme}
       keys={keyList}
       indexBy='date'
@@ -44,7 +63,7 @@ function MyResponsiveBar({ data, standard }: { data: any; standard: number }) {
       layout='horizontal'
       valueScale={{ type: 'linear' }}
       indexScale={{ type: 'band', round: true }}
-      colors={{ scheme: 'paired' }}
+      colors={{ scheme: 'set3' }}
       borderColor={{
         from: 'color',
         modifiers: [['darker', 1.6]],
@@ -72,7 +91,7 @@ function MyResponsiveBar({ data, standard }: { data: any; standard: number }) {
       labelSkipHeight={0}
       labelTextColor={{
         from: 'color',
-        modifiers: [['darker', 1.6]],
+        modifiers: [['darker', 5]],
       }}
       legends={[
         {
@@ -82,7 +101,7 @@ function MyResponsiveBar({ data, standard }: { data: any; standard: number }) {
           justify: false,
           translateX: 160,
           translateY: 0,
-          itemsSpacing: 20,
+          itemsSpacing: 25,
           itemWidth: 100,
           itemHeight: 20,
           itemDirection: 'left-to-right',

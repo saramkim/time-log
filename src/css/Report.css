@@ -1,15 +1,15 @@
 .report-wrapper {
   width: 100%;
-  height: calc(100vh - 70px);
+  height: calc(100vh - 76px);
   margin-top: 70px;
 }
 
 .pie-chart {
-  height: calc(100% - 113px);
+  height: 100%;
 }
 .pie-chart__center {
   position: absolute;
-  top: calc(50% + 70px);
+  top: calc(50% + 76px);
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 2rem;
@@ -29,7 +29,11 @@ select::-ms-expand {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  margin-top: 50px;
+  position: absolute;
+  top: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
   padding: 0.3em 0.5em;
   border-radius: 0.3em;
   background-color: #f0f0f0;

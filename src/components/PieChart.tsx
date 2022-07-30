@@ -17,29 +17,32 @@ function MyResponsivePie({ data }: { data: any }) {
   return (
     <ResponsivePie
       data={data}
-      margin={{ top: 60, right: 200, bottom: 60, left: 200 }}
+      margin={{ top: 200, right: 200, bottom: 100, left: 200 }}
       theme={theme}
       padAngle={2}
       cornerRadius={10}
       innerRadius={0.4}
       sortByValue
-      colors={{ scheme: 'paired' }}
+      colors={{ scheme: 'set3' }}
       borderWidth={1}
       borderColor={{
         from: 'color',
         modifiers: [['darker', 0.2]],
       }}
       arcLinkLabelsSkipAngle={0}
-      arcLinkLabelsTextColor={{ from: 'color', modifiers: [] }}
+      arcLinkLabelsTextColor={{
+        from: 'color',
+        modifiers: [['darker', 1]],
+      }}
       arcLinkLabelsOffset={15}
       arcLinkLabelsDiagonalLength={15}
       arcLinkLabelsStraightLength={15}
       arcLinkLabelsThickness={2}
-      arcLinkLabelsColor={{ from: 'color', modifiers: [] }}
-      arcLabelsSkipAngle={0}
+      arcLinkLabelsColor={{ from: 'color', modifiers: [['darker', 1]] }}
+      arcLabelsSkipAngle={20}
       arcLabelsTextColor={{
         from: 'color',
-        modifiers: [['darker', 3]],
+        modifiers: [['darker', 5]],
       }}
       animate={false}
 
