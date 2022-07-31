@@ -7,6 +7,15 @@ function MyResponsivePie({ data }: { data: any }) {
         fontSize: '1.5em',
       },
     },
+    tooltip: {
+      container: {
+        background: '#333',
+        color: '#fff',
+        padding: '15px',
+        fontSize: '18px',
+        lineHeight: '0px',
+      },
+    },
     // legends: {
     //   text: {
     //     fontSize: '1em',

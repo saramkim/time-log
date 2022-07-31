@@ -2,19 +2,10 @@
 import DidList from 'components/DidList';
 
 import { ResponsiveBar } from '@nivo/bar';
+import { Theme } from '@nivo/core';
 import { BasicTooltip } from '@nivo/tooltip';
 
-const theme = {
-  // tooltipLabel: { fill: 'red' },
-  // tooltip: {
-  //   container: {
-  //     background: '#333',
-  //     color: '#fff',
-  //     padding: '10px 20px',
-  //     fontSize: '13px',
-  //     textTransform: 'uppercase',
-  //   },
-  // },
+const theme: Theme = {
   labels: {
     text: {
       fontSize: '1em',
@@ -39,13 +30,27 @@ const theme = {
       stroke: '#555555',
     },
   },
+  tooltip: {
+    container: {
+      background: '#333',
+      color: '#fff',
+      padding: '15px',
+      fontSize: '18px',
+      lineHeight: '0px',
+    },
+  },
 };
-
-// eslint-disable-next-line react/function-component-definition
-// eslint-disable-next-line react/function-component-definition
-// const BarTooltip: React.FunctionComponent<any> = () => {
-//   return <BasicTooltip id={1} value={5} color='white' enableChip />;
-// };
+const BarTooltip: React.FunctionComponent<any> = function ({
+  id,
+  value,
+  color,
+}: {
+  id: string;
+  value: number;
+  color: string;
+}) {
+  return <BasicTooltip id={id} value={value} color={color} enableChip />;
+};
 
 function MyResponsiveBar({ data, standard }: { data: any; standard: number }) {
   const keyList: string[] = DidList(standard);
@@ -53,11 +58,10 @@ function MyResponsiveBar({ data, standard }: { data: any; standard: number }) {
   return (
     <ResponsiveBar
       data={data}
-      // tooltip={BarTooltip}
-      // tooltipLabel={[{ fill: 'red' }]}
       theme={theme}
       keys={keyList}
       indexBy='date'
+      tooltip={BarTooltip}
       margin={{ top: 100, right: 240, bottom: 40, left: 130 }}
       padding={0.25}
       layout='horizontal'
