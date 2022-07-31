@@ -25,12 +25,20 @@ function Report() {
   return (
     <div className='report-wrapper'>
       <select
+        onFocus={(e) => {
+          e.target.size = 7;
+        }}
+        onBlur={(e) => {
+          e.target.size = 1;
+        }}
+        onChange={(e) => {
+          e.target.size = 1;
+          e.target.blur();
+          setDate(e.target.value);
+        }}
         name='date'
         className='date-selector'
         value={date}
-        onChange={(e) => {
-          setDate(e.target.value);
-        }}
       >
         <DateList />
       </select>

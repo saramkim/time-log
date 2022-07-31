@@ -51,16 +51,19 @@ select::-ms-expand {
     &:hover {
         font-weight: 600;
     }
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 .date-selector option {
-    padding: 10px 0;
-    background-color: #f0f0f0;
-    color: black;
-    cursor: pointer;
-    box-shadow: 0 4px 8px 1px black;
+    margin-bottom: 0.15em;
+    line-height: 0;
 
     &:checked {
+        font-weight: 600;
+    }
+    &:hover {
         font-weight: 600;
     }
 }

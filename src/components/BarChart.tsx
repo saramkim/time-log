@@ -14,20 +14,20 @@ const theme: Theme = {
   legends: {
     text: {
       fontSize: '1em',
-      fill: '#555555',
+      fill: '#666666',
     },
   },
   axis: {
     ticks: {
       text: {
         fontSize: '1em',
-        fill: '#555555',
+        fill: '#666666',
       },
     },
   },
   grid: {
     line: {
-      stroke: '#555555',
+      stroke: '#666666',
     },
   },
   tooltip: {
@@ -40,6 +40,7 @@ const theme: Theme = {
     },
   },
 };
+
 const BarTooltip: React.FunctionComponent<any> = function ({
   id,
   value,
@@ -105,7 +106,7 @@ function MyResponsiveBar({ data, standard }: { data: any; standard: number }) {
           justify: false,
           translateX: 160,
           translateY: 0,
-          itemsSpacing: 25,
+          itemsSpacing: 20,
           itemWidth: 100,
           itemHeight: 20,
           itemDirection: 'left-to-right',
