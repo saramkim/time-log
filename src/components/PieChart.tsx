@@ -16,11 +16,6 @@ function MyResponsivePie({ data }: { data: any }) {
         lineHeight: '0px',
       },
     },
-    // legends: {
-    //   text: {
-    //     fontSize: '1em',
-    //   },
-    // },
   };
 
   return (
@@ -54,32 +49,6 @@ function MyResponsivePie({ data }: { data: any }) {
         modifiers: [['darker', 5]],
       }}
       animate={false}
-
-      // legends={[
-      //   {
-      //     anchor: 'left',
-      //     direction: 'column',
-      //     justify: false,
-      //     translateX: -50,
-      //     translateY: 0,
-      //     itemsSpacing: 100,
-      //     itemWidth: 200,
-      //     itemHeight: 0,
-      //     itemTextColor: '#999',
-      //     itemDirection: 'left-to-right',
-      //     itemOpacity: 1,
-      //     symbolSize: 20,
-      //     symbolShape: 'circle',
-      //     effects: [
-      //       {
-      //         on: 'hover',
-      //         style: {
-      //           itemTextColor: '#000',
-      //         },
-      //       },
-      //     ],
-      //   },
-      // ]}
     />
   );
 }

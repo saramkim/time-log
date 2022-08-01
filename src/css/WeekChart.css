@@ -1,8 +1,8 @@
-.bar-pg {
+.week-pg {
   height: calc(100% - 56px - 3.6rem);
 }
 
-.bar-chart {
+.week-chart {
   height: 100%;
 }
 
@@ -33,4 +33,4 @@
 }
 .week-selector__btns > *:hover {
   color: #444444;
-}/*# sourceMappingURL=BarChart.css.map */
+}/*# sourceMappingURL=WeekChart.css.map */

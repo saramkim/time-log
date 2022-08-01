@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 
-import BarChartComponent from 'components/BarChartComponent';
+import BarChart from 'components/BarChart';
 import { FaAngleDoubleLeft, FaAngleDoubleRight, FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 
-import 'css/BarChart.css';
+import 'css/WeekChart.css';
 
-function BarChart() {
+function WeekChart() {
   const [data, setData] = useState('');
   const [dayStart, setDayStart] = useState('');
   const [dayEnd, setDayEnd] = useState('');
@@ -25,7 +25,7 @@ function BarChart() {
   }, [standard]);
 
   return (
-    <div className='bar-pg'>
+    <div className='week-pg'>
       <div className='week-selector'>
         <div className='week-selector__date'>
           {dayStart}
@@ -48,8 +48,8 @@ function BarChart() {
           />
         </div>
       </div>
-      <div className='bar-chart'>
-        <BarChartComponent data={data} standard={standard} />
+      <div className='week-chart'>
+        <BarChart data={data} standard={standard} />
       </div>
     </div>
   );
@@ -67,4 +67,4 @@ function GetData(LSDateKeys: string) {
   });
 }
 
-export default BarChart;
+export default WeekChart;

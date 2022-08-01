@@ -7,12 +7,13 @@ import Today from 'components/Today';
 import GlobalStyles from 'global/GlobalStyles';
 import { darkTheme, lightTheme } from 'global/theme';
 import Alarm from 'pages/Alarm';
-import BarChart from 'pages/BarChart';
 import Chart from 'pages/Chart';
+import DayChart from 'pages/DayChart';
 import Main from 'pages/Main';
-import PieChart from 'pages/PieChart';
-import RangeChart from 'pages/RangeChart';
+import MonthChart from 'pages/MonthChart';
 import Timer from 'pages/Timer';
+import WeekChart from 'pages/WeekChart';
+import YearChart from 'pages/YearChart';
 import { ThemeProvider } from 'styled-components';
 
 import 'App.css';
@@ -40,9 +41,10 @@ function App() {
             <Route path='/alarm' element={<Alarm darkMode={darkMode} />} />
             <Route path='/timer' element={<Timer />} />
             <Route path='/chart' element={<Chart />}>
-              <Route path='pie' element={<PieChart />} />
-              <Route path='bar' element={<BarChart />} />
-              <Route path='range' element={<RangeChart />} />
+              <Route path='day' element={<DayChart />} />
+              <Route path='week' element={<WeekChart />} />
+              <Route path='month' element={<MonthChart />} />
+              <Route path='year' element={<YearChart />} />
             </Route>
             <Route path='*' element={<div>존재하지 않는 페이지입니다.</div>} />
           </Routes>

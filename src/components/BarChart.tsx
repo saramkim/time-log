@@ -1,4 +1,3 @@
-// import data from 'components/Data';
 import DidList from 'components/DidList';
 
 import { ResponsiveBar } from '@nivo/bar';

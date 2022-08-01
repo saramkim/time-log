@@ -5,20 +5,24 @@ import 'css/Chart.css';
 
 function Chart() {
   const navigate = useNavigate();
-  const [curChart, setCurChart] = useState('pie');
+  const [curChart, setCurChart] = useState('day');
 
-  let pieClicked = '';
-  let barClicked = '';
-  let rangeClicked = '';
+  let dayClicked = '';
+  let weekClicked = '';
+  let monthClicked = '';
+  let yearClicked = '';
   switch (curChart) {
-    case 'pie':
-      pieClicked = 'chart-btn--clicked';
+    case 'day':
+      dayClicked = 'chart-btn--clicked';
       break;
-    case 'bar':
-      barClicked = 'chart-btn--clicked';
+    case 'week':
+      weekClicked = 'chart-btn--clicked';
       break;
-    case 'range':
-      rangeClicked = 'chart-btn--clicked';
+    case 'month':
+      monthClicked = 'chart-btn--clicked';
+      break;
+    case 'year':
+      yearClicked = 'chart-btn--clicked';
       break;
     default:
   }
@@ -27,34 +31,44 @@ function Chart() {
     <div className='chart-pg'>
       <div className='chart-btns'>
         <button
-          className={`chart-btn ${pieClicked}`}
+          className={`chart-btn ${dayClicked}`}
           type='button'
           onClick={() => {
-            navigate('pie');
-            setCurChart('pie');
+            navigate('day');
+            setCurChart('day');
           }}
         >
-          Pie
+          Day
         </button>
         <button
-          className={`chart-btn ${barClicked}`}
+          className={`chart-btn ${weekClicked}`}
           type='button'
           onClick={() => {
-            navigate('bar');
-            setCurChart('bar');
+            navigate('week');
+            setCurChart('week');
           }}
         >
-          Bar
+          Week
         </button>
         <button
-          className={`chart-btn ${rangeClicked} `}
+          className={`chart-btn ${monthClicked}`}
           type='button'
           onClick={() => {
-            navigate('range');
-            setCurChart('range');
+            navigate('month');
+            setCurChart('month');
           }}
         >
-          Range
+          Month
+        </button>
+        <button
+          className={`chart-btn ${yearClicked} `}
+          type='button'
+          onClick={() => {
+            navigate('year');
+            setCurChart('year');
+          }}
+        >
+          Year
         </button>
       </div>
       <Outlet />

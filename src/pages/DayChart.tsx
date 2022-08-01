@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 
-import PieChartComponent from 'components/PieChartComponent';
+import PieChart from 'components/PieChart';
 import Today from 'components/Today';
 
-import 'css/PieChart.css';
+import 'css/DayChart.css';
 
-function PieChart() {
+function DayChart() {
   const [date, setDate] = useState(Today());
   const [data, setData] = useState({ id: 'string', label: 'string', value: 1 });
   const LSItem = JSON.parse(localStorage.getItem(date) || '{}');
@@ -23,7 +23,7 @@ function PieChart() {
   }, [date]);
 
   return (
-    <div className='report-wrapper'>
+    <div className='day-pg'>
       <select
         onFocus={(e) => {
           e.target.size = 7;
@@ -32,7 +32,6 @@ function PieChart() {
           e.target.size = 1;
         }}
         onChange={(e) => {
-          e.target.size = 1;
           e.target.blur();
           setDate(e.target.value);
         }}
@@ -43,9 +42,9 @@ function PieChart() {
         <DateList />
       </select>
 
-      <div className='pie-chart'>
-        <PieChartComponent data={data} />
-        <div className='pie-chart__center'>{totalTime}</div>
+      <div className='day-chart'>
+        <PieChart data={data} />
+        <div className='day-chart__center'>{totalTime}</div>
       </div>
     </div>
   );
@@ -61,4 +60,4 @@ function DateList() {
     });
 }
 
-export default PieChart;
+export default DayChart;

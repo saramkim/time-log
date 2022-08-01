@@ -34,7 +34,7 @@ function Main() {
         <button
           type='submit'
           onClick={() => {
-            navigate('/chart/pie');
+            navigate('/chart/day');
           }}
         >
           Chart

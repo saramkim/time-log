@@ -1,12 +1,12 @@
-.report-wrapper {
+.day-pg {
   height: calc(100% - 56px - 3.6rem);
 }
 
-.pie-chart {
+.day-chart {
   height: 100%;
   position: relative;
 }
-.pie-chart__center {
+.day-chart__center {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -52,4 +52,4 @@ select::-ms-expand {
 }
 .date-selector option:checked, .date-selector option:hover {
   font-weight: 600;
-}/*# sourceMappingURL=PieChart.css.map */
+}/*# sourceMappingURL=DayChart.css.map */
