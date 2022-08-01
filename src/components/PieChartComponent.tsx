@@ -26,7 +26,7 @@ function MyResponsivePie({ data }: { data: any }) {
   return (
     <ResponsivePie
       data={data}
-      margin={{ top: 200, right: 200, bottom: 100, left: 200 }}
+      margin={{ top: 100, right: 200, bottom: 100, left: 200 }}
       theme={theme}
       padAngle={2}
       cornerRadius={10}

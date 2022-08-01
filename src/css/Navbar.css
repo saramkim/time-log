@@ -10,6 +10,7 @@
   background-color: crimson;
   color: black;
   padding: 0 2em;
+  font-family: "Lora", serif;
 }
 .navbar * {
   display: flex;

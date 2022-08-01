@@ -6,16 +6,20 @@
     height: calc(100vh - 70px);
 
     &__title {
-        margin-bottom: 6em;
+        margin-bottom: 8em;
+
+        font-family: "Lora", serif;
 
         p {
             font-size: 2rem;
-            margin: 0;
+            font-style: italic;
+            // margin: 1em 0;
         }
 
         h1 {
             font-size: 5rem;
-            margin: 0.2em 0;
+            font-weight: 600;
+            margin-top: 0.4em;
         }
     }
 
@@ -24,7 +28,7 @@
             font-size: 1.4rem;
             height: 3.5em;
             width: 3.5em;
-            margin: 0 0.5em;
+            margin: 0 1em;
             border-radius: 10%;
         }
     }

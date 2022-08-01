@@ -34,16 +34,7 @@ function Main() {
         <button
           type='submit'
           onClick={() => {
-            navigate('/report');
-          }}
-        >
-          Report
-        </button>
-
-        <button
-          type='submit'
-          onClick={() => {
-            navigate('/chart');
+            navigate('/chart/pie');
           }}
         >
           Chart

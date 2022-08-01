@@ -1,0 +1,36 @@
+.bar-pg {
+  height: calc(100% - 56px - 3.6rem);
+}
+
+.bar-chart {
+  height: 100%;
+}
+
+.week-selector {
+  position: absolute;
+  top: 120px;
+  right: 30px;
+  z-index: 1;
+}
+.week-selector__date {
+  background-color: #f0f0f0;
+  padding: 0.4em 0.5em;
+  border-radius: 0.3em;
+  font-size: 1.5rem;
+  color: black;
+}
+.week-selector__btns {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 8px;
+  font-size: 2rem;
+  background-color: #f0f0f0;
+  border-radius: 0.3em;
+}
+.week-selector__btns > * {
+  cursor: pointer;
+  color: #666666;
+}
+.week-selector__btns > *:hover {
+  color: #444444;
+}/*# sourceMappingURL=BarChart.css.map */

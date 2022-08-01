@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setAlarm } from 'store';
 
 import 'css/Settings.css';
 
 function Settings({ setSettings }: { setSettings: any }) {
-  const [timeset, setTimeset] = useState(15);
+  const alarm: number = useSelector((state: any) => state.alarm);
+  const [timeset, setTimeset] = useState(alarm);
   const dispatch = useDispatch();
   const [addAnimation, setAddAnimation] = useState('');
 
@@ -50,14 +51,8 @@ function Settings({ setSettings }: { setSettings: any }) {
         >
           Alarm time : {timeset}m
         </div>
-        <section className='settings__btns'>
-          <button
-            className='settings__btn'
-            type='submit'
-            onClick={() => {
-              // setSettings(false);
-            }}
-          >
+        <div className='settings__btns'>
+          <button className='settings__btn' type='submit'>
             Apply
           </button>
           <button
@@ -69,7 +64,7 @@ function Settings({ setSettings }: { setSettings: any }) {
           >
             Close
           </button>
-        </section>
+        </div>
       </form>
     </div>
   );

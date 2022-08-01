@@ -63,7 +63,7 @@ function MyResponsiveBar({ data, standard }: { data: any; standard: number }) {
       keys={keyList}
       indexBy='date'
       tooltip={BarTooltip}
-      margin={{ top: 100, right: 240, bottom: 40, left: 130 }}
+      margin={{ top: 60, right: 240, bottom: 20, left: 130 }}
       padding={0.25}
       layout='horizontal'
       valueScale={{ type: 'linear' }}
@@ -74,11 +74,11 @@ function MyResponsiveBar({ data, standard }: { data: any; standard: number }) {
         modifiers: [['darker', 1.6]],
       }}
       axisTop={{
-        tickSize: 20,
+        tickSize: 0,
         tickPadding: 10,
         tickRotation: 0,
         legend: '',
-        legendOffset: 36,
+        legendOffset: 0,
       }}
       axisRight={null}
       axisBottom={null}
@@ -104,7 +104,7 @@ function MyResponsiveBar({ data, standard }: { data: any; standard: number }) {
           anchor: 'right',
           direction: 'column',
           justify: false,
-          translateX: 160,
+          translateX: 140,
           translateY: 0,
           itemsSpacing: 20,
           itemWidth: 100,

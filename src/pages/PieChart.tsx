@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 
-import PieChart from 'components/PieChart';
+import PieChartComponent from 'components/PieChartComponent';
 import Today from 'components/Today';
 
-import 'css/Report.css';
+import 'css/PieChart.css';
 
-function Report() {
+function PieChart() {
   const [date, setDate] = useState(Today());
   const [data, setData] = useState({ id: 'string', label: 'string', value: 1 });
   const LSItem = JSON.parse(localStorage.getItem(date) || '{}');
@@ -44,7 +44,7 @@ function Report() {
       </select>
 
       <div className='pie-chart'>
-        <PieChart data={data} />
+        <PieChartComponent data={data} />
         <div className='pie-chart__center'>{totalTime}</div>
       </div>
     </div>
@@ -61,4 +61,4 @@ function DateList() {
     });
 }
 
-export default Report;
+export default PieChart;

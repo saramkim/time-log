@@ -1,11 +1,13 @@
 .App {
   text-align: center;
+  margin-top: 70px;
 }
 
 button {
   cursor: pointer;
   box-shadow: 0 3px 8px 0 black;
   border: none;
+  font-weight: 500;
 }
 
 button:hover {

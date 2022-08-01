@@ -1,22 +1,16 @@
 .report-wrapper {
-  width: 100%;
-  height: calc(100vh - 76px);
-  margin-top: 70px;
+  height: calc(100% - 56px - 3.6rem);
 }
 
 .pie-chart {
   height: 100%;
+  position: relative;
 }
 .pie-chart__center {
   position: absolute;
-  top: calc(50% + 76px);
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 2rem;
-}
-
-.did-list {
-  margin: 1em;
   font-size: 2rem;
 }
 
@@ -31,8 +25,7 @@ select::-ms-expand {
   appearance: none;
   position: absolute;
   top: 120px;
-  left: 50%;
-  transform: translateX(-50%);
+  right: 30px;
   z-index: 1;
   padding: 0.3em 0.5em;
   border-radius: 0.3em;
@@ -57,9 +50,6 @@ select::-ms-expand {
   margin-bottom: 0.15em;
   line-height: 0;
 }
-.date-selector option:checked {
+.date-selector option:checked, .date-selector option:hover {
   font-weight: 600;
-}
-.date-selector option:hover {
-  font-weight: 600;
-}/*# sourceMappingURL=Report.css.map */
+}/*# sourceMappingURL=PieChart.css.map */
