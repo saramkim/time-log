@@ -76,8 +76,6 @@ function MyResponsiveBar({ data, standard }: { data: any; standard: number }) {
         tickSize: 0,
         tickPadding: 10,
         tickRotation: 0,
-        legend: '',
-        legendOffset: 0,
       }}
       axisRight={null}
       axisBottom={null}

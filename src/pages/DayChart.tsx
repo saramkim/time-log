@@ -14,11 +14,16 @@ function DayChart() {
   const totalTime: number = timeArr.reduce((p, c) => p + c, 0);
 
   useEffect(() => {
-    const LSData: any = Object.keys(LSItem).map((e: string) => ({
+    const filterdData = Object.keys(LSItem).filter((e) => {
+      return LSItem[e] !== 0;
+    });
+
+    const LSData: any = filterdData.map((e: string) => ({
       id: e,
       label: e,
       value: LSItem[e],
     }));
+
     setData(LSData);
   }, [date]);
 

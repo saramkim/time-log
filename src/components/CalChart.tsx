@@ -73,7 +73,7 @@ function MyResponsiveCalendar({ data }: { data: any }) {
       theme={theme}
       tooltip={CalTooltip}
       emptyColor='#eeeeee'
-      colors={['#61cdbb', '#97e3d5', '#e8c1a0', '#f47560', 'crimson']}
+      colors={['#eeeeee', '#B8E6D1', '#7ACCBA', '#47B3A2', '#1F998B', '#008074']}
       margin={{ top: 100, right: 60, bottom: 100, left: 60 }}
       yearSpacing={100}
       yearLegendOffset={10}

@@ -14,14 +14,12 @@ function WeekChart() {
   const LSKeys: any = Object.keys(window.localStorage).sort().reverse();
 
   useEffect(() => {
-    const LSData: any = LSKeys.slice(standard, standard + 7)
-      .reverse()
-      .map(GetData);
-    setData(LSData);
-
     const dayWeek = LSKeys.slice(standard, standard + 7);
     setDayStart(dayWeek[0]);
     setDayEnd(dayWeek[6]);
+
+    const LSData: any = dayWeek.reverse().map(GetData);
+    setData(LSData);
   }, [standard]);
 
   return (
@@ -55,14 +53,14 @@ function WeekChart() {
   );
 }
 
-function GetData(LSDateKeys: string) {
-  const logData = JSON.parse(localStorage.getItem(LSDateKeys) || '{}');
-  const day = new Date(LSDateKeys);
+function GetData(LSDate: string) {
+  const logData = JSON.parse(localStorage.getItem(LSDate) || '{}');
+  const day = new Date(LSDate);
   const options: { weekday: 'long' } = { weekday: 'long' };
   const weekDay = new Intl.DateTimeFormat('ko-KR', options).format(day);
 
   return Object.defineProperty(logData, 'date', {
-    value: `${LSDateKeys.slice(5, 10)}(${weekDay.slice(0, 1)})`,
+    value: `${LSDate.slice(5, 10)}(${weekDay.slice(0, 1)})`,
     enumerable: true,
   });
 }
