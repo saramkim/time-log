@@ -47,14 +47,14 @@ select::-ms-expand {
     &::-webkit-scrollbar {
         display: none;
     }
-}
 
-.date-selector option {
-    margin-bottom: 0.15em;
-    line-height: 0;
+    option {
+        margin-bottom: 0.15em;
+        line-height: 0;
 
-    &:checked,
-    &:hover {
-        font-weight: 600;
+        &:checked,
+        &:hover {
+            font-weight: 600;
+        }
     }
 }

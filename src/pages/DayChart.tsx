@@ -31,7 +31,11 @@ function DayChart() {
     <div className='day-pg'>
       <select
         onFocus={(e) => {
-          e.target.size = 7;
+          if (e.target.childElementCount >= 7) {
+            e.target.size = 7;
+          } else {
+            e.target.size = e.target.childElementCount;
+          }
         }}
         onBlur={(e) => {
           e.target.size = 1;
@@ -56,13 +60,11 @@ function DayChart() {
 }
 
 function DateList() {
-  const LSKeys: any = Object.keys(window.localStorage);
+  const LSKeys: any = Object.keys(window.localStorage).sort().reverse();
 
-  return LSKeys.sort()
-    .reverse()
-    .map((e: string) => {
-      return <option key={e}>{e}</option>;
-    });
+  return LSKeys.map((e: string) => {
+    return <option key={e}>{e}</option>;
+  });
 }
 
 export default DayChart;

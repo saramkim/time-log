@@ -45,7 +45,6 @@ select::-ms-expand {
 .date-selector::-webkit-scrollbar {
   display: none;
 }
-
 .date-selector option {
   margin-bottom: 0.15em;
   line-height: 0;
