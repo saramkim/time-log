@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import Today from 'components/Today';
 import { useDispatch } from 'react-redux';
-import { pStart } from 'store';
+import { pStop } from 'store';
 
 function LogInput({ time, setTime }: { time: number; setTime: any }) {
   const [did, setDid] = useState('');
@@ -22,7 +22,7 @@ function LogInput({ time, setTime }: { time: number; setTime: any }) {
           }
           localStorage.setItem(date, JSON.stringify(LSItem));
           setTime(0);
-          dispatch(pStart());
+          dispatch(pStop());
         }}
       >
         <input

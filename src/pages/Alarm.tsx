@@ -24,8 +24,46 @@ function Alarm({ darkMode }: { darkMode: boolean }) {
     }
   }, [time]);
 
+  const preventClose = (e: BeforeUnloadEvent) => {
+    e.preventDefault();
+    e.returnValue = '';
+  };
+  useEffect(() => {
+    (() => {
+      window.addEventListener('beforeunload', preventClose);
+    })();
+    return () => {
+      window.removeEventListener('beforeunload', preventClose);
+    };
+  }, []);
+
+  const preventGoBack = () => {
+    window.history.pushState(null, '', window.location.href);
+  };
+  useEffect(() => {
+    window.history.pushState(null, '', window.location.href);
+    window.addEventListener('popstate', preventGoBack);
+    return () => {
+      window.removeEventListener('popstate', preventGoBack);
+    };
+  }, []);
+
+  const enterEvent = (e: any) => {
+    if (e.key === 'Enter') {
+      dispatch(pStart());
+    }
+  };
+  useEffect(() => {
+    if (process === 'stop') {
+      window.addEventListener('keydown', enterEvent);
+    }
+    return () => {
+      window.removeEventListener('keydown', enterEvent);
+    };
+  }, [process]);
+
   const AlarmUI = {
-    log: <LogInput time={alarm} setTime={setTime} />,
+    log: <LogInput time={alarm - time - 1} setTime={setTime} />,
     start: (
       <div>
         <Circularbar time={time} darkMode={darkMode} />
@@ -33,15 +71,21 @@ function Alarm({ darkMode }: { darkMode: boolean }) {
       </div>
     ),
     stop: (
-      <button
-        className='check-btn'
-        type='button'
-        onClick={() => {
-          dispatch(pStart());
-        }}
-      >
-        Start
-      </button>
+      <>
+        {/* <div>
+          <Circularbar time={time} darkMode={darkMode} />
+          <Count time={time} setTime={setTime} upDown='down' />
+        </div> */}
+        <button
+          className='check-btn'
+          type='button'
+          onClick={() => {
+            dispatch(pStart());
+          }}
+        >
+          Start
+        </button>
+      </>
     ),
   };
   return <div className='timer-pg'>{AlarmUI[process]}</div>;

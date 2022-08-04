@@ -28,7 +28,7 @@ function Settings({ setSettings }: { setSettings: any }) {
           className='timeset__input'
           type='range'
           min='1'
-          max='60'
+          max='99'
           value={timeset}
           onChange={(e) => {
             setTimeset(Number(e.target.value));
@@ -38,13 +38,13 @@ function Settings({ setSettings }: { setSettings: any }) {
           className='timeset__text'
           role='button'
           tabIndex={0}
-          onKeyPress={() => {
-            if (timeset < 60) {
+          onKeyDown={() => {
+            if (timeset < 99) {
               setTimeset(timeset + 1);
             }
           }}
           onClick={() => {
-            if (timeset < 60) {
+            if (timeset < 99) {
               setTimeset(timeset + 1);
             }
           }}

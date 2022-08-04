@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Count from 'components/Count';
 import LogInput from 'components/LogInput';
@@ -27,6 +27,30 @@ function Timer() {
       break;
     default:
   }
+
+  const preventClose = (e: BeforeUnloadEvent) => {
+    e.preventDefault();
+    e.returnValue = '';
+  };
+  useEffect(() => {
+    (() => {
+      window.addEventListener('beforeunload', preventClose);
+    })();
+    return () => {
+      window.removeEventListener('beforeunload', preventClose);
+    };
+  }, []);
+
+  const preventGoBack = () => {
+    window.history.pushState(null, '', window.location.href);
+  };
+  useEffect(() => {
+    window.history.pushState(null, '', window.location.href);
+    window.addEventListener('popstate', preventGoBack);
+    return () => {
+      window.removeEventListener('popstate', preventGoBack);
+    };
+  }, []);
 
   return (
     <>

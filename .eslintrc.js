@@ -25,7 +25,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['*.tsx', '**/*.ts', '**/*.tsx'],
+      files: ['*.tsx', '*.ts'],
       rules: {
         'simple-import-sort/imports': [
           'error',

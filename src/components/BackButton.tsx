@@ -1,15 +1,21 @@
 import { useNavigate } from 'react-router-dom';
 
 import { ImArrowLeft2 } from 'react-icons/im';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 function BackButton() {
   const navigate = useNavigate();
+  const process = useSelector((state: any) => state.process);
 
   return (
     <BackBtn
       onClick={() => {
-        navigate('/');
+        if (process === 'stop') {
+          navigate('/');
+        } else {
+          window.alert('Please Log or Stop first');
+        }
       }}
     >
       <ImArrowLeft2 />

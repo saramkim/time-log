@@ -4,11 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import Settings from 'components/Settings';
 import { BsMoon, BsSun } from 'react-icons/bs';
 import { IoSettingsOutline } from 'react-icons/io5';
+import { useSelector } from 'react-redux';
 
 import 'css/Navbar.css';
 
 function Navbar({ darkMode, setDarkMode }: { darkMode: boolean; setDarkMode: any }) {
   const navigate = useNavigate();
+  const process = useSelector((state: any) => state.process);
   const [settings, setSettings] = useState(false);
 
   return (
@@ -18,11 +20,15 @@ function Navbar({ darkMode, setDarkMode }: { darkMode: boolean; setDarkMode: any
           className='navbar__left'
           role='button'
           tabIndex={0}
-          onKeyPress={() => {
+          onKeyDown={() => {
             navigate('/');
           }}
           onClick={() => {
-            navigate('/');
+            if (process === 'stop') {
+              navigate('/');
+            } else {
+              window.confirm('커스텀으로 만들기');
+            }
           }}
         >
           <span>TimeLog</span>
@@ -34,7 +40,7 @@ function Navbar({ darkMode, setDarkMode }: { darkMode: boolean; setDarkMode: any
             className='navbar__right__btn'
             role='button'
             tabIndex={-1}
-            onKeyPress={() => {
+            onKeyDown={() => {
               setDarkMode(!darkMode);
             }}
             onClick={() => {
@@ -48,7 +54,7 @@ function Navbar({ darkMode, setDarkMode }: { darkMode: boolean; setDarkMode: any
             className='navbar__right__btn'
             role='button'
             tabIndex={-2}
-            onKeyPress={() => {
+            onKeyDown={() => {
               setSettings(!settings);
             }}
             onClick={() => {
