@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react';
 
 import Count from 'components/Count';
 import LogInput from 'components/LogInput';
+import { preventEvent } from 'hooks/preventEvent';
 import { useDispatch, useSelector } from 'react-redux';
-import { pLog, pStart, pStop } from 'store';
+import { pLog, pStart } from 'store';
 
 import 'css/Timer.css';
 
@@ -12,84 +13,64 @@ function Timer() {
   const process = useSelector((state: any) => state.process);
   const dispatch = useDispatch();
 
-  let startClicked = '';
-  let stopClicked = '';
-  let logClicked = '';
-  switch (process) {
-    case 'start':
-      startClicked = 'timer-btn--clicked';
-      break;
-    case 'stop':
-      stopClicked = 'timer-btn--clicked';
-      break;
-    case 'log':
-      logClicked = 'timer-btn--clicked';
-      break;
-    default:
+  let timerStop = '';
+  if (process === 'stop') {
+    timerStop = 'timer-pg--stop';
   }
 
-  const preventClose = (e: BeforeUnloadEvent) => {
-    e.preventDefault();
-    e.returnValue = '';
-  };
-  useEffect(() => {
-    (() => {
-      window.addEventListener('beforeunload', preventClose);
-    })();
-    return () => {
-      window.removeEventListener('beforeunload', preventClose);
-    };
-  }, []);
+  preventEvent();
 
-  const preventGoBack = () => {
-    window.history.pushState(null, '', window.location.href);
+  const enterEvent = (e: any) => {
+    if (e.key === 'Enter') {
+      dispatch(pStart());
+    }
   };
   useEffect(() => {
-    window.history.pushState(null, '', window.location.href);
-    window.addEventListener('popstate', preventGoBack);
+    if (process === 'stop') {
+      window.addEventListener('keydown', enterEvent);
+      setTime(0);
+    }
     return () => {
-      window.removeEventListener('popstate', preventGoBack);
+      window.removeEventListener('keydown', enterEvent);
     };
-  }, []);
+  }, [process]);
+
+  const processBtn = {
+    stop: (
+      <button
+        className='timer-btn timer-btn--start'
+        type='button'
+        onClick={() => {
+          dispatch(pStart());
+        }}
+      >
+        Start
+      </button>
+    ),
+
+    start: (
+      <button
+        className='timer-btn timer-btn--log'
+        type='button'
+        onClick={() => {
+          dispatch(pLog());
+        }}
+      >
+        Log
+      </button>
+    ),
+  };
 
   return (
     <>
-      <div className='timer-pg'>
+      <div className={`timer-pg ${timerStop}`}>
         {process === 'log' ? (
-          <LogInput time={time - 1} setTime={setTime} />
+          <LogInput time={time} />
         ) : (
           <Count time={time} setTime={setTime} upDown='up' />
         )}
       </div>
-      <section>
-        <button
-          className={`timer-btn ${startClicked}`}
-          type='button'
-          onClick={() => {
-            dispatch(pStart());
-          }}
-        >
-          Start
-        </button>
-        <button
-          className={`timer-btn ${stopClicked}`}
-          type='button'
-          onClick={() => {
-            dispatch(pStop());
-          }}
-        >
-          Stop
-        </button>
-        <button
-          className={`timer-btn ${logClicked}`}
-          type='button'
-          onClick={() => {
-            dispatch(pLog());
-          }}
-        >
-          Log
-        </button>
-      </section>
+      {processBtn[process]}
     </>
   );
 }

@@ -1,32 +1,26 @@
-import { useState } from 'react';
-
-import { useInterval } from 'hooks/UseInterval';
+import { useInterval } from 'hooks/useInterval';
 import { useSelector } from 'react-redux';
 
 function Count({ time, setTime, upDown }: { time: number; setTime: any; upDown: string }) {
-  const [min, setMin] = useState(Math.floor(time / 60));
-  const [sec, setSec] = useState(time % 60);
   const process = useSelector((state: any) => state.process);
+  let min = Math.floor(time / 60);
+  let sec = time % 60;
 
+  let countTime = (time: number): number => time;
   if (upDown === 'up') {
-    useInterval(
-      () => {
-        setMin(Math.floor(time / 60));
-        setSec(time % 60);
-        setTime(time + 1);
-      },
-      process === 'start' ? 1000 : null
-    );
+    countTime = (time: number): number => time + 1;
   } else if (upDown === 'down') {
-    useInterval(
-      () => {
-        setMin(Math.floor(time / 60));
-        setSec(time % 60);
-        setTime(time - 1);
-      },
-      process === 'start' ? 1000 : null
-    );
+    countTime = (time: number): number => time - 1;
   }
+
+  useInterval(
+    () => {
+      setTime(countTime);
+      sec = time % 60;
+      min = Math.floor(time / 60);
+    },
+    process === 'start' ? 1000 : null
+  );
 
   return (
     <div className='timer'>

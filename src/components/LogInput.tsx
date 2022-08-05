@@ -4,7 +4,7 @@ import Today from 'components/Today';
 import { useDispatch } from 'react-redux';
 import { pStop } from 'store';
 
-function LogInput({ time, setTime }: { time: number; setTime: any }) {
+function LogInput({ time }: { time: number }) {
   const [did, setDid] = useState('');
   const dispatch = useDispatch();
   const date = Today();
@@ -21,7 +21,6 @@ function LogInput({ time, setTime }: { time: number; setTime: any }) {
             LSItem[did] += time;
           }
           localStorage.setItem(date, JSON.stringify(LSItem));
-          setTime(0);
           dispatch(pStop());
         }}
       >
@@ -31,10 +30,10 @@ function LogInput({ time, setTime }: { time: number; setTime: any }) {
           onChange={(e) => {
             setDid(e.target.value);
           }}
-          placeholder='What did I do?'
+          placeholder='Log what I did'
         />
-        <button className='check-btn' type='submit'>
-          Check
+        <button className='timer-btn' type='submit'>
+          Submit
         </button>
       </form>
     </div>

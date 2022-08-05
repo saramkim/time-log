@@ -38,7 +38,7 @@ function Settings({ setSettings }: { setSettings: any }) {
           className='timeset__text'
           role='button'
           tabIndex={0}
-          onKeyDown={() => {
+          onKeyPress={() => {
             if (timeset < 99) {
               setTimeset(timeset + 1);
             }

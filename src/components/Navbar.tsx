@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import Settings from 'components/Settings';
 import { BsMoon, BsSun } from 'react-icons/bs';
 import { IoSettingsOutline } from 'react-icons/io5';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { pStop } from 'store';
 
 import 'css/Navbar.css';
 
@@ -12,6 +13,7 @@ function Navbar({ darkMode, setDarkMode }: { darkMode: boolean; setDarkMode: any
   const navigate = useNavigate();
   const process = useSelector((state: any) => state.process);
   const [settings, setSettings] = useState(false);
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -20,14 +22,20 @@ function Navbar({ darkMode, setDarkMode }: { darkMode: boolean; setDarkMode: any
           className='navbar__left'
           role='button'
           tabIndex={0}
-          onKeyDown={() => {
-            navigate('/');
+          onKeyPress={() => {
+            if (process === 'stop') {
+              navigate('/');
+            } else if (window.confirm(`You haven't logged yet. Are you sure?`)) {
+              navigate('/');
+              dispatch(pStop());
+            }
           }}
           onClick={() => {
             if (process === 'stop') {
               navigate('/');
-            } else {
-              window.confirm('커스텀으로 만들기');
+            } else if (window.confirm(`You haven't logged yet. Are you sure?`)) {
+              navigate('/');
+              dispatch(pStop());
             }
           }}
         >
@@ -40,7 +48,7 @@ function Navbar({ darkMode, setDarkMode }: { darkMode: boolean; setDarkMode: any
             className='navbar__right__btn'
             role='button'
             tabIndex={-1}
-            onKeyDown={() => {
+            onKeyPress={() => {
               setDarkMode(!darkMode);
             }}
             onClick={() => {
@@ -54,7 +62,7 @@ function Navbar({ darkMode, setDarkMode }: { darkMode: boolean; setDarkMode: any
             className='navbar__right__btn'
             role='button'
             tabIndex={-2}
-            onKeyDown={() => {
+            onKeyPress={() => {
               setSettings(!settings);
             }}
             onClick={() => {

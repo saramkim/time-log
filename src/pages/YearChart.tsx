@@ -12,7 +12,7 @@ function YearChart() {
   const filterdDate = LSKeys.filter((LSDate: string) => {
     const logData = JSON.parse(localStorage.getItem(LSDate) || '{}');
     const logValue = logData[standard];
-    return logValue !== undefined;
+    return logValue !== undefined && logValue !== 0;
   });
 
   const data = filterdDate.map((date: string) => {

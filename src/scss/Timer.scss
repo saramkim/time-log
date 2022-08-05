@@ -1,16 +1,19 @@
 .timer-pg {
     position: fixed;
-    top: 50%;
+    top: calc(50% + 35px);
     left: 50%;
     transform: translate(-50%, -50%);
     width: 28em;
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    &--stop {
+        color: #666666;
+    }
 }
 
 .timer {
-    margin-top: 0.15em;
     font-size: 10rem;
 }
 
@@ -22,7 +25,7 @@
     color: black;
     border: none;
     padding: 0 0.6em;
-    margin: 0.6em 0;
+    margin-bottom: 0.6em;
     box-shadow: 0 8px 16px 1px black;
 
     &::placeholder {
@@ -34,31 +37,34 @@
         box-shadow: inset 0 3px 8px 0 black;
     }
     &:hover {
+        background-color: #f0f0f0;
         box-shadow: inset 0 3px 8px 0 black;
     }
 }
 
-.timer-btn,
-.check-btn {
-    margin: 0 1em;
+.timer-btn {
     height: 3em;
     width: 4em;
     font-size: 1.2rem;
     border: none;
     border-radius: 10%;
-}
 
-.timer-btn {
-    margin-top: 50px;
+    &--start {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: calc(50% + 35px);
+    }
 
-    &--clicked {
-        box-shadow: inset 0 3px 8px 0 black;
+    &--log {
+        position: absolute;
+        transform: translateX(-50%);
+        top: 120px;
     }
 }
 
 .circularbar {
     position: fixed;
-    top: calc(50% + 1em);
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: -1;

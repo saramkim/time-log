@@ -1,20 +1,23 @@
 import { useNavigate } from 'react-router-dom';
 
 import { ImArrowLeft2 } from 'react-icons/im';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { pStop } from 'store';
 import styled from 'styled-components';
 
 function BackButton() {
   const navigate = useNavigate();
   const process = useSelector((state: any) => state.process);
+  const dispatch = useDispatch();
 
   return (
     <BackBtn
       onClick={() => {
         if (process === 'stop') {
           navigate('/');
-        } else {
-          window.alert('Please Log or Stop first');
+        } else if (window.confirm(`You haven't logged yet. Are you sure?`)) {
+          navigate('/');
+          dispatch(pStop());
         }
       }}
     >

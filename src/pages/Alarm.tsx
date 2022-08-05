@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import Circularbar from 'components/Circularbar';
 import Count from 'components/Count';
 import LogInput from 'components/LogInput';
+import { preventEvent } from 'hooks/preventEvent';
 import { useDispatch, useSelector } from 'react-redux';
 import { pLog, pStart } from 'store';
 
@@ -14,39 +15,22 @@ function Alarm({ darkMode }: { darkMode: boolean }) {
   const [time, setTime] = useState(alarm);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    setTime(alarm);
-  }, [process, alarm]);
+  let timerStop = '';
+  if (process === 'stop') {
+    timerStop = 'timer-pg--stop';
+  }
 
   useEffect(() => {
-    if (time === -1) {
+    setTime(alarm);
+  }, [alarm]);
+
+  useEffect(() => {
+    if (time === 0) {
       dispatch(pLog());
     }
   }, [time]);
 
-  const preventClose = (e: BeforeUnloadEvent) => {
-    e.preventDefault();
-    e.returnValue = '';
-  };
-  useEffect(() => {
-    (() => {
-      window.addEventListener('beforeunload', preventClose);
-    })();
-    return () => {
-      window.removeEventListener('beforeunload', preventClose);
-    };
-  }, []);
-
-  const preventGoBack = () => {
-    window.history.pushState(null, '', window.location.href);
-  };
-  useEffect(() => {
-    window.history.pushState(null, '', window.location.href);
-    window.addEventListener('popstate', preventGoBack);
-    return () => {
-      window.removeEventListener('popstate', preventGoBack);
-    };
-  }, []);
+  preventEvent();
 
   const enterEvent = (e: any) => {
     if (e.key === 'Enter') {
@@ -56,39 +40,52 @@ function Alarm({ darkMode }: { darkMode: boolean }) {
   useEffect(() => {
     if (process === 'stop') {
       window.addEventListener('keydown', enterEvent);
+      setTime(alarm);
     }
     return () => {
       window.removeEventListener('keydown', enterEvent);
     };
   }, [process]);
 
-  const AlarmUI = {
-    log: <LogInput time={alarm - time - 1} setTime={setTime} />,
-    start: (
-      <div>
-        <Circularbar time={time} darkMode={darkMode} />
-        <Count time={time} setTime={setTime} upDown='down' />
-      </div>
-    ),
+  const processBtn = {
     stop: (
-      <>
-        {/* <div>
-          <Circularbar time={time} darkMode={darkMode} />
-          <Count time={time} setTime={setTime} upDown='down' />
-        </div> */}
-        <button
-          className='check-btn'
-          type='button'
-          onClick={() => {
-            dispatch(pStart());
-          }}
-        >
-          Start
-        </button>
-      </>
+      <button
+        className='timer-btn timer-btn--start'
+        type='button'
+        onClick={() => {
+          dispatch(pStart());
+        }}
+      >
+        Start
+      </button>
+    ),
+
+    start: (
+      <button
+        className='timer-btn timer-btn--log'
+        type='button'
+        onClick={() => {
+          dispatch(pLog());
+        }}
+      >
+        Log
+      </button>
     ),
   };
-  return <div className='timer-pg'>{AlarmUI[process]}</div>;
+
+  return (
+    <>
+      <div className={`timer-pg ${timerStop}`}>
+        {process === 'log' ? (
+          <LogInput time={alarm - time} />
+        ) : (
+          <Count time={time} setTime={setTime} upDown='down' />
+        )}
+        {process === 'start' && <Circularbar time={time} darkMode={darkMode} />}
+      </div>
+      {processBtn[process]}
+    </>
+  );
 }
 
 export default Alarm;
