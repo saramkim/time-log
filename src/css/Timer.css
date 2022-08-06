@@ -45,6 +45,10 @@
   background-color: #f0f0f0;
   box-shadow: inset 0 3px 8px 0 black;
 }
+.log-input--animation {
+  transform: translateX(100vw);
+  transition: all 0.3s;
+}
 
 .timer-btn {
   height: 3em;

@@ -8,6 +8,7 @@ function LogInput({ time }: { time: number }) {
   const [did, setDid] = useState('');
   const dispatch = useDispatch();
   const date = Today();
+  const [inputAnimation, setInputAnimation] = useState('');
 
   return (
     <div>
@@ -21,11 +22,14 @@ function LogInput({ time }: { time: number }) {
             LSItem[did] += time;
           }
           localStorage.setItem(date, JSON.stringify(LSItem));
-          dispatch(pStop());
+          setInputAnimation('log-input--animation');
+          setTimeout(() => dispatch(pStop()), 400);
         }}
       >
         <input
-          className='log-input'
+          className={`log-input ${inputAnimation}`}
+          // eslint-disable-next-line jsx-a11y/no-autofocus
+          autoFocus
           required
           onChange={(e) => {
             setDid(e.target.value);

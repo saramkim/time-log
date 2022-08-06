@@ -20,6 +20,12 @@ function Alarm({ darkMode }: { darkMode: boolean }) {
     timerStop = 'timer-pg--stop';
   }
 
+  Notification.requestPermission().then(() => {
+    const notificationCheck = Notification.permission;
+    if (notificationCheck === 'denied') {
+      window.alert('알림 허용하셔야 이용 가능합니다.');
+    }
+  });
   useEffect(() => {
     setTime(alarm);
   }, [alarm]);
