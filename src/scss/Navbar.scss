@@ -13,7 +13,7 @@
   height: 70px;
   background-color: crimson;
   color: black;
-  padding: 0 2em;
+  padding: 0 20px;
   font-family: "Lora", serif;
 
   * {
@@ -24,20 +24,25 @@
     font-size: 35px;
     color: white;
     cursor: pointer;
-    @media screen and (max-width: 552px) {
-      font-size: 25px;
+
+    img {
+      height: 40px;
+      margin-right: 6px;
+    }
+
+    h1 {
+      @media screen and (max-width: 552px) {
+        display: none;
+      }
     }
   }
 
   &__right {
     justify-content: space-between;
-    width: 6em;
+    width: 100px;
     max-width: 40vw;
     font-size: 35px;
     color: white;
-    @media screen and (max-width: 552px) {
-      font-size: 25px;
-    }
 
     &__btn {
       cursor: pointer;

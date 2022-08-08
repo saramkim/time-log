@@ -6,14 +6,13 @@
     height: calc(100vh - 70px);
 
     &__title {
-        margin-bottom: 8em;
+        margin-bottom: 6em;
 
         font-family: "Lora", serif;
 
         p {
             font-size: 2rem;
             font-style: italic;
-            // margin: 1em 0;
         }
 
         h1 {
@@ -30,6 +29,12 @@
             width: 3.5em;
             margin: 0 1em;
             border-radius: 10%;
+
+            &:last-child {
+                @media screen and (max-width: 700px) {
+                    display: none;
+                }
+            }
         }
     }
 }

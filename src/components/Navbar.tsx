@@ -39,11 +39,11 @@ function Navbar({ darkMode, setDarkMode }: { darkMode: boolean; setDarkMode: any
             }
           }}
         >
-          <span>TimeLog</span>
+          <img src='TimeLog-logo.png' alt='@' />
+          <h1>TimeLog</h1>
         </div>
-        <div className='navbar__right'>
-          <span>@</span>
 
+        <div className='navbar__right'>
           <div
             className='navbar__right__btn'
             role='button'

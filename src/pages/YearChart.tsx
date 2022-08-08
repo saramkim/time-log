@@ -1,23 +1,25 @@
 import { useState } from 'react';
 
 import CalChart from 'components/CalChart';
+import { useSelector } from 'react-redux';
 
 import 'css/YearChart.css';
 
 function YearChart() {
-  const [standard, setStandard] = useState('코딩');
+  const focus = useSelector((state: any) => state.focus);
+  const [thing, setThing] = useState(focus);
 
   const LSKeys: string[] = Object.keys(window.localStorage);
 
   const filterdDate = LSKeys.filter((LSDate: string) => {
     const logData = JSON.parse(localStorage.getItem(LSDate) || '{}');
-    const logValue = logData[standard];
+    const logValue = logData[thing];
     return logValue !== undefined && logValue !== 0;
   });
 
   const data = filterdDate.map((date: string) => {
     const logData = JSON.parse(localStorage.getItem(date) || '{}');
-    const logValue = logData[standard];
+    const logValue = logData[thing];
 
     return { day: date, value: logValue };
   });
@@ -25,10 +27,10 @@ function YearChart() {
   return (
     <div className='year-pg'>
       <input
-        className='year-standard'
-        placeholder={standard}
+        className='year-thing'
+        placeholder={thing}
         onChange={(e) => {
-          setStandard(e.target.value);
+          setThing(e.target.value);
         }}
       />
 

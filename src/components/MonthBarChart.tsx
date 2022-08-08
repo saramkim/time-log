@@ -64,15 +64,15 @@ const BarTooltip: any = function ({
   );
 };
 
-function MyResponsiveBar({ data }: { data: any }) {
+function MyResponsiveBar({ data, keys }: { data: any; keys: string }) {
   return (
     <ResponsiveBar
       data={data}
       theme={theme}
-      keys={['코딩']}
+      keys={[keys]}
       indexBy='date'
       tooltip={BarTooltip}
-      margin={{ top: 60, right: 60, bottom: 60, left: 80 }}
+      margin={{ top: 80, right: 60, bottom: 60, left: 80 }}
       padding={0.2}
       valueScale={{ type: 'linear' }}
       indexScale={{ type: 'band', round: true }}

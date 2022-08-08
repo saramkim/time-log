@@ -34,7 +34,7 @@ function LogInput({ time }: { time: number }) {
           onChange={(e) => {
             setDid(e.target.value);
           }}
-          placeholder='Log what I did'
+          placeholder='Log what you did'
         />
         <button className='timer-btn' type='submit'>
           Submit

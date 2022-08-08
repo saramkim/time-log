@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 import BarChart from 'components/MonthBarChart';
 import Today from 'components/Today';
+import { useSelector } from 'react-redux';
 
 import 'css/MonthChart.css';
 
@@ -9,18 +10,34 @@ function MonthChart() {
   const thisMonth = Today().slice(0, 7);
   const [data, setData] = useState('');
   const [standard, setStandard] = useState(thisMonth);
+  const focus = useSelector((state: any) => state.focus);
+  const [thing, setThing] = useState(focus);
 
   const LSKeys: string[] = Object.keys(window.localStorage).sort().reverse();
 
   useEffect(() => {
     const dayMonth = LSKeys.filter((LSDate: string) => LSDate.includes(standard));
 
-    const LSData: any = dayMonth.reverse().map(GetData);
+    const LSData: any = dayMonth.reverse().map((LSDate: string) => {
+      const logData = JSON.parse(localStorage.getItem(LSDate) || '{}');
+      if (logData[thing]) {
+        return { [thing]: logData[thing], date: LSDate.slice(8, 10) };
+      }
+      return { [thing]: 0, date: LSDate.slice(8, 10) };
+    });
     setData(LSData);
-  }, [standard]);
+  }, [standard, thing]);
 
   return (
     <div className='month-pg'>
+      <input
+        className='year-thing'
+        placeholder={thing}
+        onChange={(e) => {
+          setThing(e.target.value);
+        }}
+      />
+
       <select
         onFocus={(e) => {
           if (e.target.childElementCount >= 7) {
@@ -43,18 +60,10 @@ function MonthChart() {
         <DateList LSKeys={LSKeys} />
       </select>
       <div className='month-chart'>
-        <BarChart data={data} />
+        <BarChart data={data} keys={thing} />
       </div>
     </div>
   );
-}
-
-function GetData(LSDate: string) {
-  const logData = JSON.parse(localStorage.getItem(LSDate) || '{}');
-  if (logData['코딩']) {
-    return { 코딩: logData['코딩'], date: LSDate.slice(8, 10) };
-  }
-  return { 코딩: 0, date: LSDate.slice(8, 10) };
 }
 
 function DateList({ LSKeys }: { LSKeys: any }) {

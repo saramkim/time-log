@@ -2,7 +2,7 @@
   height: calc(100% - 56px - 3.6rem);
 }
 
-.year-standard {
+.year-thing {
   position: absolute;
   top: 120px;
   right: 30px;
@@ -15,33 +15,33 @@
   font-size: 1.5rem;
   width: 6.2em;
 }
-.year-standard::-moz-placeholder {
+.year-thing::-moz-placeholder {
   color: black;
 }
-.year-standard:-ms-input-placeholder {
+.year-thing:-ms-input-placeholder {
   color: black;
 }
-.year-standard::placeholder {
+.year-thing::placeholder {
   color: black;
 }
-.year-standard:focus::-moz-placeholder {
+.year-thing:focus::-moz-placeholder {
   color: #f0f0f0;
 }
-.year-standard:focus:-ms-input-placeholder {
+.year-thing:focus:-ms-input-placeholder {
   color: #f0f0f0;
 }
-.year-standard:focus::placeholder {
+.year-thing:focus::placeholder {
   color: #f0f0f0;
 }
-.year-standard:hover {
+.year-thing:hover {
   outline: auto;
 }
-.year-standard:hover::-moz-placeholder {
+.year-thing:hover::-moz-placeholder {
   color: #f0f0f0;
 }
-.year-standard:hover:-ms-input-placeholder {
+.year-thing:hover:-ms-input-placeholder {
   color: #f0f0f0;
 }
-.year-standard:hover::placeholder {
+.year-thing:hover::placeholder {
   color: #f0f0f0;
 }/*# sourceMappingURL=YearChart.css.map */

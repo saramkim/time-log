@@ -9,7 +9,7 @@
   height: 70px;
   background-color: crimson;
   color: black;
-  padding: 0 2em;
+  padding: 0 20px;
   font-family: "Lora", serif;
 }
 .navbar * {
@@ -21,22 +21,21 @@
   color: white;
   cursor: pointer;
 }
+.navbar__left img {
+  height: 40px;
+  margin-right: 6px;
+}
 @media screen and (max-width: 552px) {
-  .navbar__left {
-    font-size: 25px;
+  .navbar__left h1 {
+    display: none;
   }
 }
 .navbar__right {
   justify-content: space-between;
-  width: 6em;
+  width: 100px;
   max-width: 40vw;
   font-size: 35px;
   color: white;
-}
-@media screen and (max-width: 552px) {
-  .navbar__right {
-    font-size: 25px;
-  }
 }
 .navbar__right__btn {
   cursor: pointer;

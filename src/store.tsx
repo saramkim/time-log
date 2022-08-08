@@ -28,9 +28,21 @@ const process = createSlice({
 });
 export const { pStop, pStart, pLog } = process.actions;
 
+const focus = createSlice({
+  name: 'focus',
+  initialState: '코딩',
+  reducers: {
+    setFocus(state, action) {
+      return action.payload;
+    },
+  },
+});
+export const { setFocus } = focus.actions;
+
 export default configureStore({
   reducer: {
     alarm: alarm.reducer,
     process: process.reducer,
+    focus: focus.reducer,
   },
 });

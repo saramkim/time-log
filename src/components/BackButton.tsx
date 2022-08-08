@@ -15,7 +15,7 @@ function BackButton() {
       onClick={() => {
         if (process === 'stop') {
           navigate('/');
-        } else if (window.confirm(`You haven't logged yet. Are you sure?`)) {
+        } else if (window.confirm(`Not logged. Are you sure?`)) {
           navigate('/');
           dispatch(pStop());
         }

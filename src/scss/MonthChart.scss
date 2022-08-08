@@ -13,7 +13,7 @@
     appearance: none;
 
     position: absolute;
-    top: 120px;
+    top: calc(120px + 2.2em);
     right: 30px;
     z-index: 1;
     padding: 0.3em 0.5em;

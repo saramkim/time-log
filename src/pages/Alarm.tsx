@@ -20,18 +20,19 @@ function Alarm({ darkMode }: { darkMode: boolean }) {
     timerStop = 'timer-pg--stop';
   }
 
-  Notification.requestPermission().then(() => {
-    const notificationCheck = Notification.permission;
-    if (notificationCheck === 'denied') {
-      window.alert('알림 허용하셔야 이용 가능합니다.');
+  Notification.requestPermission((permission) => {
+    if (permission === 'denied') {
+      window.alert('Please allow notifications access to continue');
     }
   });
+
   useEffect(() => {
     setTime(alarm);
   }, [alarm]);
 
   useEffect(() => {
     if (time === 0) {
+      spawnNotification('Log what you did.', 'TimeLog-logo.png', 'Time out!');
       dispatch(pLog());
     }
   }, [time]);
@@ -48,6 +49,11 @@ function Alarm({ darkMode }: { darkMode: boolean }) {
       window.addEventListener('keydown', enterEvent);
       setTime(alarm);
     }
+
+    // } else if (process === 'log') {
+
+    // }
+
     return () => {
       window.removeEventListener('keydown', enterEvent);
     };
@@ -92,6 +98,14 @@ function Alarm({ darkMode }: { darkMode: boolean }) {
       {processBtn[process]}
     </>
   );
+}
+
+function spawnNotification(theBody: string, theIcon: string, theTitle: string) {
+  const options = {
+    body: theBody,
+    icon: theIcon,
+  };
+  const n = new Notification(theTitle, options);
 }
 
 export default Alarm;

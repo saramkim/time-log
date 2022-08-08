@@ -62,8 +62,8 @@ function MyResponsiveBar({ data, standard }: { data: any; standard: number }) {
       keys={keyList}
       indexBy='date'
       tooltip={BarTooltip}
-      margin={{ top: 60, right: 240, bottom: 20, left: 130 }}
-      padding={0.25}
+      margin={{ top: 60, right: 260, bottom: 20, left: 130 }}
+      padding={0.2}
       layout='horizontal'
       valueScale={{ type: 'linear' }}
       indexScale={{ type: 'band', round: true }}
