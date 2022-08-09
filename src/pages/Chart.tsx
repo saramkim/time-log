@@ -29,6 +29,7 @@ function Chart() {
 
   return (
     <div className='chart-pg'>
+      <span className='unit'>unit: minute</span>
       <div className='chart-btns'>
         <button
           className={`chart-btn ${dayClicked}`}

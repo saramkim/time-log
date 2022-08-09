@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import PieChart from 'components/PieChart';
-import Today from 'components/Today';
+import Today from 'hooks/getToday';
 
 import 'css/DayChart.css';
 

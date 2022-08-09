@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import BarChart from 'components/MonthBarChart';
-import Today from 'components/Today';
+import Today from 'hooks/getToday';
 import { useSelector } from 'react-redux';
 
 import 'css/MonthChart.css';

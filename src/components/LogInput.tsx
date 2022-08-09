@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import Today from 'components/Today';
+import Today from 'hooks/getToday';
 import { useDispatch } from 'react-redux';
 import { pStop } from 'store';
 
@@ -10,22 +10,22 @@ function LogInput({ time }: { time: number }) {
   const date = Today();
   const [inputAnimation, setInputAnimation] = useState('');
 
+  const pushLogToLS = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    const LSItem = JSON.parse(localStorage.getItem(date) || '{}');
+    if (LSItem[did] === undefined) {
+      LSItem[did] = time;
+    } else {
+      LSItem[did] += time;
+    }
+    localStorage.setItem(date, JSON.stringify(LSItem));
+    setInputAnimation('log-input--animation');
+    setTimeout(() => dispatch(pStop()), 400);
+  };
+
   return (
     <div>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          const LSItem = JSON.parse(localStorage.getItem(date) || '{}');
-          if (LSItem[did] === undefined) {
-            LSItem[did] = time;
-          } else {
-            LSItem[did] += time;
-          }
-          localStorage.setItem(date, JSON.stringify(LSItem));
-          setInputAnimation('log-input--animation');
-          setTimeout(() => dispatch(pStop()), 400);
-        }}
-      >
+      <form onSubmit={pushLogToLS}>
         <input
           className={`log-input ${inputAnimation}`}
           // eslint-disable-next-line jsx-a11y/no-autofocus

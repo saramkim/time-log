@@ -3,9 +3,9 @@ import { Route, Routes } from 'react-router-dom';
 
 import BackButton from 'components/BackButton';
 import Navbar from 'components/Navbar';
-import Today from 'components/Today';
 import GlobalStyles from 'global/GlobalStyles';
 import { darkTheme, lightTheme } from 'global/theme';
+import Today from 'hooks/getToday';
 import Alarm from 'pages/Alarm';
 import Chart from 'pages/Chart';
 import DayChart from 'pages/DayChart';

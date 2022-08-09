@@ -13,4 +13,11 @@
 }
 .chart-btn--clicked {
   box-shadow: inset 0 3px 8px 0 black;
+}
+
+.unit {
+  position: absolute;
+  top: 96px;
+  right: 30px;
+  opacity: 0.8;
 }/*# sourceMappingURL=Chart.css.map */

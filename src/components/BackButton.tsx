@@ -10,17 +10,17 @@ function BackButton() {
   const process = useSelector((state: any) => state.process);
   const dispatch = useDispatch();
 
+  const goBackPage = () => {
+    if (process === 'stop') {
+      navigate('/');
+    } else if (window.confirm(`Not logged. Are you sure?`)) {
+      navigate('/');
+      dispatch(pStop());
+    }
+  };
+
   return (
-    <BackBtn
-      onClick={() => {
-        if (process === 'stop') {
-          navigate('/');
-        } else if (window.confirm(`Not logged. Are you sure?`)) {
-          navigate('/');
-          dispatch(pStop());
-        }
-      }}
-    >
+    <BackBtn onClick={goBackPage}>
       <ImArrowLeft2 />
     </BackBtn>
   );

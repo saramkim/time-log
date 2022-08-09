@@ -15,6 +15,15 @@ function Navbar({ darkMode, setDarkMode }: { darkMode: boolean; setDarkMode: any
   const [settings, setSettings] = useState(false);
   const dispatch = useDispatch();
 
+  const goMainPage = () => {
+    if (process === 'stop') {
+      navigate('/');
+    } else if (window.confirm(`You haven't logged yet. Are you sure?`)) {
+      navigate('/');
+      dispatch(pStop());
+    }
+  };
+
   return (
     <>
       <div className='navbar'>
@@ -22,22 +31,8 @@ function Navbar({ darkMode, setDarkMode }: { darkMode: boolean; setDarkMode: any
           className='navbar__left'
           role='button'
           tabIndex={0}
-          onKeyPress={() => {
-            if (process === 'stop') {
-              navigate('/');
-            } else if (window.confirm(`You haven't logged yet. Are you sure?`)) {
-              navigate('/');
-              dispatch(pStop());
-            }
-          }}
-          onClick={() => {
-            if (process === 'stop') {
-              navigate('/');
-            } else if (window.confirm(`You haven't logged yet. Are you sure?`)) {
-              navigate('/');
-              dispatch(pStop());
-            }
-          }}
+          onKeyPress={goMainPage}
+          onClick={goMainPage}
         >
           <img src='TimeLog-logo.png' alt='@' />
           <h1>TimeLog</h1>

@@ -7,25 +7,39 @@ import 'css/Settings.css';
 
 function Settings({ setSettings }: { setSettings: any }) {
   const alarm: number = useSelector((state: any) => state.alarm);
-  const [timeset, setTimeset] = useState(alarm);
+  const [timeset, setTimeset] = useState(alarm / 60);
   const dispatch = useDispatch();
   const [addAnimation, setAddAnimation] = useState('');
   const focus = useSelector((state: any) => state.focus);
   const [myFocus, setMyFocus] = useState(focus);
+  const [popupState, setPopupState] = useState(false);
 
   useEffect(() => {
     setAddAnimation('settings--animation');
   });
 
+  const applySettings = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    dispatch(setAlarm(timeset * 60));
+    dispatch(setFocus(myFocus));
+  };
+
+  const timesetPlusOne = () => {
+    if (timeset < 99) {
+      setTimeset((timeset) => timeset + 1);
+    }
+  };
+
+  const toastPopup = () => {
+    setPopupState(true);
+    setTimeout(() => {
+      setPopupState(false);
+    }, 1500);
+  };
+
   return (
     <div className={`settings ${addAnimation}`}>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          dispatch(setAlarm(timeset));
-          dispatch(setFocus(myFocus));
-        }}
-      >
+      <form onSubmit={applySettings}>
         <div className='timeset'>
           <input
             type='range'
@@ -36,20 +50,7 @@ function Settings({ setSettings }: { setSettings: any }) {
               setTimeset(Number(e.target.value));
             }}
           />
-          <div
-            role='button'
-            tabIndex={0}
-            onKeyPress={() => {
-              if (timeset < 99) {
-                setTimeset(timeset + 1);
-              }
-            }}
-            onClick={() => {
-              if (timeset < 99) {
-                setTimeset(timeset + 1);
-              }
-            }}
-          >
+          <div role='button' tabIndex={0} onKeyPress={timesetPlusOne} onClick={timesetPlusOne}>
             Alarm time: {timeset}m
           </div>
         </div>
@@ -64,13 +65,7 @@ function Settings({ setSettings }: { setSettings: any }) {
         </label>
 
         <div className='settings__btns'>
-          <button
-            className='settings__btn'
-            type='submit'
-            onClick={() => {
-              setSettings(false);
-            }}
-          >
+          <button className='settings__btn' type='submit' onClick={toastPopup}>
             Apply
           </button>
           <button
@@ -84,6 +79,8 @@ function Settings({ setSettings }: { setSettings: any }) {
           </button>
         </div>
       </form>
+
+      {popupState === true && <div className='toast-popup'>It has been applied.</div>}
     </div>
   );
 }

@@ -25,6 +25,7 @@ function Alarm({ darkMode }: { darkMode: boolean }) {
       window.alert('Please allow notifications access to continue');
     }
   });
+  preventEvent();
 
   useEffect(() => {
     setTime(alarm);
@@ -37,8 +38,6 @@ function Alarm({ darkMode }: { darkMode: boolean }) {
     }
   }, [time]);
 
-  preventEvent();
-
   const enterEvent = (e: any) => {
     if (e.key === 'Enter') {
       dispatch(pStart());
@@ -49,11 +48,6 @@ function Alarm({ darkMode }: { darkMode: boolean }) {
       window.addEventListener('keydown', enterEvent);
       setTime(alarm);
     }
-
-    // } else if (process === 'log') {
-
-    // }
-
     return () => {
       window.removeEventListener('keydown', enterEvent);
     };
