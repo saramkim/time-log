@@ -2,17 +2,6 @@ import styled from 'styled-components';
 
 import { ResponsiveBar } from '@nivo/bar';
 
-// const data = [
-//   {
-//     date: 'AD',
-//     'hot dog': 42,
-//   },
-//   {
-//     date: 'AE',
-//     'hot dog': 121,
-//   },
-// ];
-
 const theme = {
   labels: {
     text: {
@@ -50,16 +39,10 @@ const Tooltip = styled.div`
   border-radius: 3px;
 `;
 
-const BarTooltip: any = function ({
-  indexValue,
-  formattedValue,
-}: {
-  indexValue: number;
-  formattedValue: number;
-}) {
+const BarTooltip: any = function ({ indexValue, value }: { indexValue: number; value: number }) {
   return (
     <Tooltip>
-      {indexValue}일: {formattedValue}분
+      {indexValue}일: {(value / 60).toFixed(1)}
     </Tooltip>
   );
 };

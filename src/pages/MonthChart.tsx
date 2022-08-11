@@ -29,9 +29,9 @@ function MonthChart() {
   }, [standard, thing]);
 
   return (
-    <div className='month-pg'>
+    <div className='chart-wrapper'>
       <input
-        className='year-thing'
+        className='standard-thing'
         placeholder={thing}
         onChange={(e) => {
           setThing(e.target.value);

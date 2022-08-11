@@ -1,3 +1,5 @@
+@import "abstract.scss";
+
 .timer-pg {
     position: fixed;
     top: calc(50% + 35px);
@@ -29,15 +31,15 @@
     box-shadow: 0 8px 16px 1px black;
 
     &::placeholder {
-        color: #f0f0f0;
+        color: $button-color;
     }
     &:focus {
-        background-color: #f0f0f0;
+        background-color: $button-color;
         outline: none;
         box-shadow: inset 0 3px 8px 0 black;
     }
     &:hover {
-        background-color: #f0f0f0;
+        background-color: $button-color;
         box-shadow: inset 0 3px 8px 0 black;
     }
 

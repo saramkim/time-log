@@ -1,6 +1,4 @@
-.month-pg {
-    height: calc(100% - 56px - 3.6rem);
-}
+@import "abstract.scss";
 
 .month-chart {
     height: 100%;
@@ -18,7 +16,7 @@
     z-index: 1;
     padding: 0.3em 0.5em;
     border-radius: 0.3em;
-    background-color: #f0f0f0;
+    background-color: $button-color;
     border: none;
     color: black;
 

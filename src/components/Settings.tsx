@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setAlarm, setFocus } from 'store';
 
 import 'css/Settings.css';
+import 'css/abstract.css';
 
 function Settings({ setSettings }: { setSettings: any }) {
   const alarm: number = useSelector((state: any) => state.alarm);
@@ -15,8 +16,13 @@ function Settings({ setSettings }: { setSettings: any }) {
   const [popupState, setPopupState] = useState(false);
 
   useEffect(() => {
-    setAddAnimation('settings--animation');
-  });
+    setTimeout(() => {
+      setAddAnimation('settings--animation');
+    }, 10);
+    return () => {
+      setAddAnimation('');
+    };
+  }, []);
 
   const applySettings = (e: { preventDefault: () => void }) => {
     e.preventDefault();

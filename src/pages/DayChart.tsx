@@ -28,7 +28,7 @@ function DayChart() {
   }, [date]);
 
   return (
-    <div className='day-pg'>
+    <div className='chart-wrapper'>
       <select
         onFocus={(e) => {
           if (e.target.childElementCount >= 7) {
@@ -53,7 +53,7 @@ function DayChart() {
 
       <div className='day-chart'>
         <PieChart data={data} />
-        <div className='day-chart__center'>{totalTime}</div>
+        <div className='day-chart__center'>{(totalTime / 60).toFixed(1)}</div>
       </div>
     </div>
   );

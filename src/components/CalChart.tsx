@@ -61,7 +61,14 @@ const CalTooltip: React.FunctionComponent<any> = function ({
   value: number;
   color: string;
 }) {
-  return <BasicTooltip id={day} value={value} color={color} enableChip />;
+  return (
+    <BasicTooltip
+      id={`${day.slice(5, 10)}일`}
+      value={(value / 60).toFixed(1)}
+      color={color}
+      enableChip
+    />
+  );
 };
 
 function MyResponsiveCalendar({ data }: { data: any }) {
@@ -85,12 +92,13 @@ function MyResponsiveCalendar({ data }: { data: any }) {
       daySpacing={2}
       dayBorderWidth={0}
       dayBorderColor='#ffffff'
+      legendFormat={(v) => `${(v / 60).toFixed(1)}`}
       legends={[
         {
           anchor: 'bottom-right',
           direction: 'row',
           justify: false,
-          itemCount: 4,
+          itemCount: 5,
           itemWidth: 42,
           itemHeight: 36,
           itemsSpacing: 40,

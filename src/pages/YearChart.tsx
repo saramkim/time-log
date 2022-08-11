@@ -3,8 +3,6 @@ import { useState } from 'react';
 import CalChart from 'components/CalChart';
 import { useSelector } from 'react-redux';
 
-import 'css/YearChart.css';
-
 function YearChart() {
   const focus = useSelector((state: any) => state.focus);
   const [thing, setThing] = useState(focus);
@@ -25,9 +23,9 @@ function YearChart() {
   });
 
   return (
-    <div className='year-pg'>
+    <div className='chart-wrapper'>
       <input
-        className='year-thing'
+        className='standard-thing'
         placeholder={thing}
         onChange={(e) => {
           setThing(e.target.value);

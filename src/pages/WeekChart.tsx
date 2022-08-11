@@ -23,7 +23,7 @@ function WeekChart() {
   }, [standard]);
 
   return (
-    <div className='week-pg'>
+    <div className='chart-wrapper'>
       <div className='week-selector'>
         <div className='week-selector__date'>
           {dayStart}

@@ -49,7 +49,7 @@ const BarTooltip: React.FunctionComponent<any> = function ({
   value: number;
   color: string;
 }) {
-  return <BasicTooltip id={id} value={value} color={color} enableChip />;
+  return <BasicTooltip id={id} value={(value / 60).toFixed(1)} color={color} enableChip />;
 };
 
 function MyResponsiveBar({ data, standard }: { data: any; standard: number }) {
@@ -62,6 +62,7 @@ function MyResponsiveBar({ data, standard }: { data: any; standard: number }) {
       keys={keyList}
       indexBy='date'
       tooltip={BarTooltip}
+      label={(v) => `${((v.value as number) / 60).toFixed(1)}`}
       margin={{ top: 60, right: 260, bottom: 20, left: 130 }}
       padding={0.2}
       layout='horizontal'

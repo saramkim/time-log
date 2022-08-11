@@ -1,28 +1,42 @@
 import { ResponsivePie } from '@nivo/pie';
+import { BasicTooltip } from '@nivo/tooltip';
+
+const theme = {
+  labels: {
+    text: {
+      fontSize: '1.5em',
+    },
+  },
+  tooltip: {
+    container: {
+      background: '#333',
+      color: '#fff',
+      padding: '15px',
+      fontSize: '18px',
+      lineHeight: '0px',
+    },
+  },
+};
+
+const PieTooltip: any = function ({ datum }: { datum: any }) {
+  return (
+    <BasicTooltip
+      id={datum.id}
+      value={(datum.value / 60).toFixed(1)}
+      color={datum.color}
+      enableChip
+    />
+  );
+};
 
 function MyResponsivePie({ data }: { data: any }) {
-  const theme = {
-    labels: {
-      text: {
-        fontSize: '1.5em',
-      },
-    },
-    tooltip: {
-      container: {
-        background: '#333',
-        color: '#fff',
-        padding: '15px',
-        fontSize: '18px',
-        lineHeight: '0px',
-      },
-    },
-  };
-
   return (
     <ResponsivePie
       data={data}
       margin={{ top: 100, right: 200, bottom: 100, left: 200 }}
       theme={theme}
+      arcLabel={(v) => `${(v.value / 60).toFixed(1)}`}
+      tooltip={PieTooltip}
       padAngle={2}
       cornerRadius={10}
       innerRadius={0.4}
