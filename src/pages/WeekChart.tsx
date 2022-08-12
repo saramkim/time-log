@@ -3,22 +3,24 @@ import { useEffect, useState } from 'react';
 import BarChart from 'components/BarChart';
 import { FaAngleDoubleLeft, FaAngleDoubleRight, FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 
+import { BarDatum } from '@nivo/bar';
+
 import 'css/WeekChart.css';
 
 function WeekChart() {
-  const [data, setData] = useState('');
+  const [data, setData] = useState<BarDatum[]>([]);
   const [dayStart, setDayStart] = useState('');
   const [dayEnd, setDayEnd] = useState('');
   const [standard, setStandard] = useState(0);
 
-  const LSKeys: any = Object.keys(window.localStorage).sort().reverse();
+  const LSKeys: string[] = Object.keys(window.localStorage).sort().reverse();
 
   useEffect(() => {
     const dayWeek = LSKeys.slice(standard, standard + 7);
     setDayStart(dayWeek[0]);
     setDayEnd(dayWeek[6]);
 
-    const LSData: any = dayWeek.reverse().map(GetData);
+    const LSData: BarDatum[] = dayWeek.reverse().map(GetData);
     setData(LSData);
   }, [standard]);
 

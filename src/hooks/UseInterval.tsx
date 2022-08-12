@@ -13,12 +13,11 @@ export const useInterval: UseInterval = (callback, delay) => {
 
   useEffect(() => {
     if (!delay && delay !== 0) {
-      return;
+      return () => false;
     }
 
     const id = setInterval(() => savedCallback.current(), delay);
 
-    // eslint-disable-next-line consistent-return
     return () => clearInterval(id);
   }, [delay]);
 };

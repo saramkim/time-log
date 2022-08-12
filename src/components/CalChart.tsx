@@ -1,4 +1,4 @@
-import { ResponsiveCalendar } from '@nivo/calendar';
+import { CalendarDatum, ResponsiveCalendar } from '@nivo/calendar';
 import { BasicTooltip } from '@nivo/tooltip';
 
 const theme = {
@@ -52,26 +52,18 @@ const theme = {
   },
 };
 
-const CalTooltip: React.FunctionComponent<any> = function ({
-  day,
-  value,
-  color,
-}: {
-  day: string;
-  value: number;
-  color: string;
-}) {
+function CalTooltip({ day, value, color }: { day: string; value: string; color: string }) {
   return (
     <BasicTooltip
       id={`${day.slice(5, 10)}일`}
-      value={(value / 60).toFixed(1)}
+      value={(Number(value) / 60).toFixed(1)}
       color={color}
       enableChip
     />
   );
-};
+}
 
-function MyResponsiveCalendar({ data }: { data: any }) {
+function MyResponsiveCalendar({ data }: { data: CalendarDatum[] }) {
   return (
     <ResponsiveCalendar
       data={data}

@@ -1,17 +1,23 @@
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import Settings from 'components/Settings';
 import { BsMoon, BsSun } from 'react-icons/bs';
 import { IoSettingsOutline } from 'react-icons/io5';
 import { useDispatch, useSelector } from 'react-redux';
-import { pStop } from 'store';
+import { pStop, RootState } from 'store';
 
 import 'css/Navbar.css';
 
-function Navbar({ darkMode, setDarkMode }: { darkMode: boolean; setDarkMode: any }) {
+function Navbar({
+  darkMode,
+  setDarkMode,
+}: {
+  darkMode: boolean;
+  setDarkMode: Dispatch<SetStateAction<boolean>>;
+}) {
   const navigate = useNavigate();
-  const process = useSelector((state: any) => state.process);
+  const process = useSelector((state: RootState) => state.process);
   const [settings, setSettings] = useState(false);
   const dispatch = useDispatch();
 

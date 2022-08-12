@@ -3,14 +3,17 @@ import { useEffect, useState } from 'react';
 import BarChart from 'components/MonthBarChart';
 import Today from 'hooks/getToday';
 import { useSelector } from 'react-redux';
+import { RootState } from 'store';
+
+import { BarDatum } from '@nivo/bar';
 
 import 'css/MonthChart.css';
 
 function MonthChart() {
   const thisMonth = Today().slice(0, 7);
-  const [data, setData] = useState('');
+  const [data, setData] = useState<BarDatum[]>([]);
   const [standard, setStandard] = useState(thisMonth);
-  const focus = useSelector((state: any) => state.focus);
+  const focus = useSelector((state: RootState) => state.focus);
   const [thing, setThing] = useState(focus);
 
   const LSKeys: string[] = Object.keys(window.localStorage).sort().reverse();
@@ -18,7 +21,7 @@ function MonthChart() {
   useEffect(() => {
     const dayMonth = LSKeys.filter((LSDate: string) => LSDate.includes(standard));
 
-    const LSData: any = dayMonth.reverse().map((LSDate: string) => {
+    const LSData: BarDatum[] = dayMonth.reverse().map((LSDate: string) => {
       const logData = JSON.parse(localStorage.getItem(LSDate) || '{}');
       if (logData[thing]) {
         return { [thing]: logData[thing], date: LSDate.slice(8, 10) };
@@ -66,18 +69,14 @@ function MonthChart() {
   );
 }
 
-function DateList({ LSKeys }: { LSKeys: any }) {
-  const aa = LSKeys.map((e: string) => e.slice(0, 7));
+function DateList({ LSKeys }: { LSKeys: string[] }) {
+  const aa = LSKeys.map((v: string) => v.slice(0, 7));
   const set = new Set(aa);
-  const monthList = [...set] as string[];
-
-  return (
-    <>
-      {monthList.map((e: string) => {
-        return <option key={e}>{e}</option>;
-      })}
-    </>
-  );
+  const monthLists = [...set];
+  const monthList = monthLists.map((v: string) => {
+    return <option key={v}>{v}</option>;
+  });
+  return <> {monthList} </>;
 }
 
 export default MonthChart;

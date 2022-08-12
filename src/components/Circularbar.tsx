@@ -2,11 +2,12 @@ import { useEffect, useState } from 'react';
 
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
 import { useSelector } from 'react-redux';
+import { RootState } from 'store';
 
 import 'react-circular-progressbar/dist/styles.css';
 
 function Circularbar({ time, darkMode }: { time: number; darkMode: boolean }) {
-  const setTime = useSelector((state: any) => state.alarm);
+  const timeSet = useSelector((state: RootState) => state.alarm);
   const [trail, setTrail] = useState('');
 
   useEffect(() => {
@@ -19,8 +20,8 @@ function Circularbar({ time, darkMode }: { time: number; darkMode: boolean }) {
 
   return (
     <CircularProgressbar
-      value={setTime - time}
-      maxValue={setTime}
+      value={timeSet - time}
+      maxValue={timeSet - 1}
       // text={`${time}`}
       className='circularbar'
       strokeWidth={50}
@@ -42,7 +43,7 @@ function Circularbar({ time, darkMode }: { time: number; darkMode: boolean }) {
 
         // Colors
         pathColor: `rgba(220, 20, 60, 1)`,
-        // pathColor: `rgba(220, 20, 60, ${(setTime - time) / setTime})`,
+        // pathColor: `rgba(220, 20, 60, ${(timeSet - time) / timeSet})`,
         // textColor: 'black',
         trailColor: trail,
 

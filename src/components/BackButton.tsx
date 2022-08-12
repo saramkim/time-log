@@ -2,12 +2,12 @@ import { useNavigate } from 'react-router-dom';
 
 import { ImArrowLeft2 } from 'react-icons/im';
 import { useDispatch, useSelector } from 'react-redux';
-import { pStop } from 'store';
+import { pStop, RootState } from 'store';
 import styled from 'styled-components';
 
 function BackButton() {
   const navigate = useNavigate();
-  const process = useSelector((state: any) => state.process);
+  const process = useSelector((state: RootState) => state.process);
   const dispatch = useDispatch();
 
   const goBackPage = () => {

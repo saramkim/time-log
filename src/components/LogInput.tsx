@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 
 import Today from 'hooks/getToday';
 import { useDispatch } from 'react-redux';
@@ -10,7 +10,7 @@ function LogInput({ time }: { time: number }) {
   const date = Today();
   const [inputAnimation, setInputAnimation] = useState('');
 
-  const pushLogToLS = (e: { preventDefault: () => void }) => {
+  const pushLogToLS = (e: FormEvent) => {
     e.preventDefault();
     const LSItem = JSON.parse(localStorage.getItem(date) || '{}');
     if (LSItem[did] === undefined) {

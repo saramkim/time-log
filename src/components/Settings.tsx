@@ -1,17 +1,17 @@
-import { useEffect, useState } from 'react';
+import { Dispatch, FormEvent, SetStateAction, useEffect, useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { setAlarm, setFocus } from 'store';
+import { RootState, setAlarm, setFocus } from 'store';
 
 import 'css/Settings.css';
 import 'css/abstract.css';
 
-function Settings({ setSettings }: { setSettings: any }) {
-  const alarm: number = useSelector((state: any) => state.alarm);
+function Settings({ setSettings }: { setSettings: Dispatch<SetStateAction<boolean>> }) {
+  const alarm: number = useSelector((state: RootState) => state.alarm);
   const [timeset, setTimeset] = useState(alarm / 60);
   const dispatch = useDispatch();
   const [addAnimation, setAddAnimation] = useState('');
-  const focus = useSelector((state: any) => state.focus);
+  const focus = useSelector((state: RootState) => state.focus);
   const [myFocus, setMyFocus] = useState(focus);
   const [popupState, setPopupState] = useState(false);
 
@@ -24,7 +24,7 @@ function Settings({ setSettings }: { setSettings: any }) {
     };
   }, []);
 
-  const applySettings = (e: { preventDefault: () => void }) => {
+  const applySettings = (e: FormEvent) => {
     e.preventDefault();
     dispatch(setAlarm(timeset * 60));
     dispatch(setFocus(myFocus));

@@ -22,6 +22,7 @@ module.exports = {
     'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error',
     'react/react-in-jsx-scope': 0,
+    'no-alert': 0,
   },
   overrides: [
     {

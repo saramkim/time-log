@@ -1,6 +1,5 @@
-import styled from 'styled-components';
-
-import { ResponsiveBar } from '@nivo/bar';
+import { BarDatum, ResponsiveBar } from '@nivo/bar';
+import { BasicTooltip } from '@nivo/tooltip';
 
 const theme = {
   labels: {
@@ -31,23 +30,11 @@ const theme = {
   },
 };
 
-const Tooltip = styled.div`
-  background: #333;
-  color: #fff;
-  padding: 15px;
-  font-size: 18px;
-  border-radius: 3px;
-`;
+function BarTooltip({ indexValue, value }: { indexValue: number | string; value: number }) {
+  return <BasicTooltip id={`${indexValue}일`} value={(value / 60).toFixed(1)} />;
+}
 
-const BarTooltip: any = function ({ indexValue, value }: { indexValue: number; value: number }) {
-  return (
-    <Tooltip>
-      {indexValue}일: {(value / 60).toFixed(1)}
-    </Tooltip>
-  );
-};
-
-function MyResponsiveBar({ data, keys }: { data: any; keys: string }) {
+function MyResponsiveBar({ data, keys }: { data: BarDatum[]; keys: string }) {
   return (
     <ResponsiveBar
       data={data}
@@ -71,16 +58,13 @@ function MyResponsiveBar({ data, keys }: { data: any; keys: string }) {
         tickPadding: 5,
         tickRotation: 0,
       }}
-      axisLeft={{
-        tickSize: 0,
-        tickPadding: 15,
-        tickRotation: 0,
-        // legend: 'time',
-        // legendPosition: 'middle',
-        // legendOffset: -40,
-      }}
+      // axisLeft={{
+      //   tickSize: 0,
+      //   tickPadding: 15,
+      //   tickRotation: 0,
+      // }}
+      axisLeft={null}
       enableGridY
-      // gridYValues={4}
       enableLabel={false}
       legends={[]}
       animate={false}

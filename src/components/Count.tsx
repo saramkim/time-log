@@ -1,21 +1,29 @@
+import { Dispatch, SetStateAction } from 'react';
+
 import { useInterval } from 'hooks/useInterval';
 import { useSelector } from 'react-redux';
+import { RootState } from 'store';
 
-function Count({ time, setTime, upDown }: { time: number; setTime: any; upDown: string }) {
-  const process = useSelector((state: any) => state.process);
+function Count({
+  time,
+  setTime,
+  upDown,
+}: {
+  time: number;
+  setTime: Dispatch<SetStateAction<number>>;
+  upDown: string;
+}) {
+  const process = useSelector((state: RootState) => state.process);
   let min = Math.floor(time / 60);
   let sec = time % 60;
 
-  let countTime = (time: number): number => time;
-  if (upDown === 'up') {
-    countTime = (time: number): number => time + 1;
-  } else if (upDown === 'down') {
-    countTime = (time: number): number => time - 1;
-  }
-
   useInterval(
     () => {
-      setTime(countTime);
+      if (upDown === 'up') {
+        setTime((time) => time + 1);
+      } else if (upDown === 'down') {
+        setTime((time) => time - 1);
+      }
       sec = time % 60;
       min = Math.floor(time / 60);
     },

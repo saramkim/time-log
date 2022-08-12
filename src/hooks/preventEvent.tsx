@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
 
 import { useSelector } from 'react-redux';
+import { RootState } from 'store';
 
 export const preventEvent = () => {
-  const process = useSelector((state: any) => state.process);
+  const process = useSelector((state: RootState) => state.process);
 
   const preventClose = (e: BeforeUnloadEvent) => {
     e.preventDefault();

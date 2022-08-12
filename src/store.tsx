@@ -39,10 +39,13 @@ const focus = createSlice({
 });
 export const { setFocus } = focus.actions;
 
-export default configureStore({
+const store = configureStore({
   reducer: {
     alarm: alarm.reducer,
     process: process.reducer,
     focus: focus.reducer,
   },
 });
+export type RootState = ReturnType<typeof store.getState>;
+
+export default store;

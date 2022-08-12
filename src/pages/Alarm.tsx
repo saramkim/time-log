@@ -5,13 +5,13 @@ import Count from 'components/Count';
 import LogInput from 'components/LogInput';
 import { preventEvent } from 'hooks/preventEvent';
 import { useDispatch, useSelector } from 'react-redux';
-import { pLog, pStart } from 'store';
+import { pLog, pStart, RootState } from 'store';
 
 import 'css/Timer.css';
 
 function Alarm({ darkMode }: { darkMode: boolean }) {
-  const alarm = useSelector((state: any) => state.alarm);
-  const process = useSelector((state: any) => state.process);
+  const alarm = useSelector((state: RootState) => state.alarm);
+  const process = useSelector((state: RootState) => state.process);
   const [time, setTime] = useState(alarm);
   const dispatch = useDispatch();
 
@@ -38,7 +38,7 @@ function Alarm({ darkMode }: { darkMode: boolean }) {
     }
   }, [time]);
 
-  const enterEvent = (e: any) => {
+  const enterEvent = (e: WindowEventMap['keydown']) => {
     if (e.key === 'Enter') {
       dispatch(pStart());
     }
@@ -99,7 +99,8 @@ function spawnNotification(theBody: string, theIcon: string, theTitle: string) {
     body: theBody,
     icon: theIcon,
   };
-  const n = new Notification(theTitle, options);
+  const notification = new Notification(theTitle, options);
+  return notification;
 }
 
 export default Alarm;

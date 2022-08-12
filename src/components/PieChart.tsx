@@ -1,4 +1,4 @@
-import { ResponsivePie } from '@nivo/pie';
+import { DefaultRawDatum, ResponsivePie } from '@nivo/pie';
 import { BasicTooltip } from '@nivo/tooltip';
 
 const theme = {
@@ -18,7 +18,7 @@ const theme = {
   },
 };
 
-const PieTooltip: any = function ({ datum }: { datum: any }) {
+function PieTooltip({ datum }: { datum: { id: string | number; value: number; color: string } }) {
   return (
     <BasicTooltip
       id={datum.id}
@@ -27,9 +27,9 @@ const PieTooltip: any = function ({ datum }: { datum: any }) {
       enableChip
     />
   );
-};
+}
 
-function MyResponsivePie({ data }: { data: any }) {
+function MyResponsivePie({ data }: { data: DefaultRawDatum[] }) {
   return (
     <ResponsivePie
       data={data}

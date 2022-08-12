@@ -4,19 +4,19 @@ import Count from 'components/Count';
 import LogInput from 'components/LogInput';
 import { preventEvent } from 'hooks/preventEvent';
 import { useDispatch, useSelector } from 'react-redux';
-import { pLog, pStart } from 'store';
+import { pLog, pStart, RootState } from 'store';
 
 import 'css/Timer.css';
 
 function Timer() {
   const [time, setTime] = useState(0);
-  const process = useSelector((state: any) => state.process);
+  const process = useSelector((state: RootState) => state.process);
   const dispatch = useDispatch();
 
   let timerStop = '';
   preventEvent();
 
-  const enterEvent = (e: any) => {
+  const enterEvent = (e: WindowEventMap['keydown']) => {
     if (e.key === 'Enter') {
       dispatch(pStart());
     }

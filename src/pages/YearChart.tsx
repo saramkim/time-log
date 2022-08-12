@@ -2,9 +2,10 @@ import { useState } from 'react';
 
 import CalChart from 'components/CalChart';
 import { useSelector } from 'react-redux';
+import { RootState } from 'store';
 
 function YearChart() {
-  const focus = useSelector((state: any) => state.focus);
+  const focus = useSelector((state: RootState) => state.focus);
   const [thing, setThing] = useState(focus);
 
   const LSKeys: string[] = Object.keys(window.localStorage);

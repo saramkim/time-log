@@ -1,7 +1,7 @@
 function DidList(standard: number): string[] {
   const LSKeys: string[] = Object.keys(window.localStorage).sort().reverse();
   const dayWeek = LSKeys.slice(standard, standard + 7);
-  const LSDataKeys: any = dayWeek.map((LSDate: string) => {
+  const LSDataKeys = dayWeek.map((LSDate) => {
     const logData = JSON.parse(localStorage.getItem(LSDate) || '{}');
     // object를 value 기준으로 정렬
     // const sortedData = Object.keys(logData)
@@ -16,10 +16,13 @@ function DidList(standard: number): string[] {
     // return Object.keys(sortedData);
     return Object.keys(logData);
   });
-  const LSDataKeysWhole: string[] = LSDataKeys.reduce((pre: any, cur: any) => pre.concat(cur), []);
+  const LSDataKeysWhole: string[] = LSDataKeys.reduce(
+    (pre: string[], cur: string[]) => pre.concat(cur),
+    []
+  );
   const set = new Set(LSDataKeysWhole);
 
-  return [...set] as string[];
+  return [...set];
 }
 
 export default DidList;

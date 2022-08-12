@@ -3,11 +3,13 @@ import { useEffect, useState } from 'react';
 import PieChart from 'components/PieChart';
 import Today from 'hooks/getToday';
 
+import { DefaultRawDatum } from '@nivo/pie';
+
 import 'css/DayChart.css';
 
 function DayChart() {
   const [date, setDate] = useState(Today());
-  const [data, setData] = useState({ id: 'string', label: 'string', value: 1 });
+  const [data, setData] = useState<DefaultRawDatum[]>([]);
   const LSItem = JSON.parse(localStorage.getItem(date) || '{}');
 
   const timeArr: number[] = Object.values(LSItem);
@@ -18,7 +20,7 @@ function DayChart() {
       return LSItem[e] !== 0;
     });
 
-    const LSData: any = filterdData.map((e: string) => ({
+    const LSData: DefaultRawDatum[] = filterdData.map((e: string) => ({
       id: e,
       label: e,
       value: LSItem[e],
@@ -60,11 +62,9 @@ function DayChart() {
 }
 
 function DateList() {
-  const LSKeys: any = Object.keys(window.localStorage).sort().reverse();
-
-  return LSKeys.map((e: string) => {
-    return <option key={e}>{e}</option>;
-  });
+  const LSKeys = Object.keys(window.localStorage).sort().reverse();
+  const dateList = LSKeys.map((v) => <option key={v}>{v}</option>);
+  return <> {dateList} </>;
 }
 
 export default DayChart;
