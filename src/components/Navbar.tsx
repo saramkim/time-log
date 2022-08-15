@@ -9,6 +9,8 @@ import { pStop, RootState } from 'store';
 
 import 'css/Navbar.css';
 
+import logo from 'TimeLog-logo.png';
+
 function Navbar({
   darkMode,
   setDarkMode,
@@ -40,7 +42,7 @@ function Navbar({
           onKeyPress={goMainPage}
           onClick={goMainPage}
         >
-          <img src='TimeLog-logo.png' alt='@' />
+          <img src={logo} alt='@' />
           <h1>TimeLog</h1>
         </div>
 

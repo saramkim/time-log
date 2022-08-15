@@ -1,13 +1,13 @@
 import { FormEvent, useState } from 'react';
 
-import Today from 'hooks/getToday';
+import getToday from 'hooks/getToday';
 import { useDispatch } from 'react-redux';
 import { pStop } from 'store';
 
 function LogInput({ time }: { time: number }) {
   const [did, setDid] = useState('');
   const dispatch = useDispatch();
-  const date = Today();
+  const date = getToday();
   const [inputAnimation, setInputAnimation] = useState('');
 
   const pushLogToLS = (e: FormEvent) => {

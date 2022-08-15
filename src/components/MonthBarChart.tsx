@@ -31,7 +31,7 @@ const theme = {
 };
 
 function BarTooltip({ indexValue, value }: { indexValue: number | string; value: number }) {
-  return <BasicTooltip id={`${indexValue}일`} value={(value / 60).toFixed(1)} />;
+  return <BasicTooltip id={`${indexValue}일`} value={`${(value / 60).toFixed()}분`} />;
 }
 
 function MyResponsiveBar({ data, keys }: { data: BarDatum[]; keys: string }) {

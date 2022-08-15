@@ -22,7 +22,7 @@ function PieTooltip({ datum }: { datum: { id: string | number; value: number; co
   return (
     <BasicTooltip
       id={datum.id}
-      value={(datum.value / 60).toFixed(1)}
+      value={`${(datum.value / 60).toFixed()}분`}
       color={datum.color}
       enableChip
     />
@@ -35,7 +35,7 @@ function MyResponsivePie({ data }: { data: DefaultRawDatum[] }) {
       data={data}
       margin={{ top: 100, right: 200, bottom: 100, left: 200 }}
       theme={theme}
-      arcLabel={(v) => `${(v.value / 60).toFixed(1)}`}
+      arcLabel={(v) => `${(v.value / 60).toFixed()}`}
       tooltip={PieTooltip}
       padAngle={2}
       cornerRadius={10}

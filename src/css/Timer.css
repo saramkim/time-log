@@ -9,7 +9,7 @@
   align-items: center;
 }
 .timer-pg--stop {
-  color: #666666;
+  opacity: 0.3;
 }
 
 .timer {

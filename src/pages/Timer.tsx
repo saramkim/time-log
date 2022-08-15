@@ -14,6 +14,9 @@ function Timer() {
   const dispatch = useDispatch();
 
   let timerStop = '';
+  if (process === 'stop') {
+    timerStop = 'timer-pg--stop';
+  }
   preventEvent();
 
   const enterEvent = (e: WindowEventMap['keydown']) => {
@@ -24,7 +27,6 @@ function Timer() {
   useEffect(() => {
     if (process === 'stop') {
       window.addEventListener('keydown', enterEvent);
-      timerStop = 'timer-pg--stop';
       setTime(0);
     }
     return () => {

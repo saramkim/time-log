@@ -1,8 +1,11 @@
-function Today() {
+function getToday() {
   const date = new Date();
-  const today = date.toJSON().slice(0, 10);
+  const thisYear = date.getFullYear();
+  const thisMonth = date.getMonth() < 9 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
+  const thisDay = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
+  const getToday = `${thisYear}-${thisMonth}-${thisDay}`;
 
-  return today;
+  return getToday;
 }
 
-export default Today;
+export default getToday;

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
-import BarChart from 'components/BarChart';
+import BarChart from 'components/WeekBarChart';
+import getToday from 'hooks/getToday';
 import { FaAngleDoubleLeft, FaAngleDoubleRight, FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 
 import { BarDatum } from '@nivo/bar';
@@ -11,16 +12,18 @@ function WeekChart() {
   const [data, setData] = useState<BarDatum[]>([]);
   const [dayStart, setDayStart] = useState('');
   const [dayEnd, setDayEnd] = useState('');
-  const [standard, setStandard] = useState(0);
 
-  const LSKeys: string[] = Object.keys(window.localStorage).sort().reverse();
+  const LSKeyList = Object.keys(window.localStorage).sort().reverse();
+  const today = getToday();
+  const todayIndex = LSKeyList.findIndex((key) => key === today);
+  const [standard, setStandard] = useState(todayIndex);
 
   useEffect(() => {
-    const dayWeek = LSKeys.slice(standard, standard + 7);
+    const dayWeek = LSKeyList.slice(standard, standard + 7);
     setDayStart(dayWeek[0]);
     setDayEnd(dayWeek[6]);
 
-    const LSData: BarDatum[] = dayWeek.reverse().map(GetData);
+    const LSData: BarDatum[] = dayWeek.reverse().map(getData);
     setData(LSData);
   }, [standard]);
 
@@ -34,16 +37,24 @@ function WeekChart() {
           {dayEnd}
         </div>
         <div className='week-selector__btns'>
-          <FaAngleDoubleLeft onClick={() => setStandard(standard + 7)} />
-          <FaAngleLeft onClick={() => setStandard(standard + 1)} />
+          <FaAngleDoubleLeft
+            onClick={() => {
+              if (standard < LSKeyList.length - 13) setStandard(standard + 7);
+            }}
+          />
+          <FaAngleLeft
+            onClick={() => {
+              if (standard < LSKeyList.length - 7) setStandard(standard + 1);
+            }}
+          />
           <FaAngleRight
             onClick={() => {
-              if (standard > 0) setStandard(standard - 1);
+              if (standard > todayIndex) setStandard(standard - 1);
             }}
           />
           <FaAngleDoubleRight
             onClick={() => {
-              if (standard > 6) setStandard(standard - 7);
+              if (standard > todayIndex + 6) setStandard(standard - 7);
             }}
           />
         </div>
@@ -55,7 +66,7 @@ function WeekChart() {
   );
 }
 
-function GetData(LSDate: string) {
+function getData(LSDate: string) {
   const logData = JSON.parse(localStorage.getItem(LSDate) || '{}');
   const day = new Date(LSDate);
   const options: { weekday: 'long' } = { weekday: 'long' };

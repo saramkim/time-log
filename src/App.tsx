@@ -5,7 +5,8 @@ import BackButton from 'components/BackButton';
 import Navbar from 'components/Navbar';
 import GlobalStyles from 'global/GlobalStyles';
 import { darkTheme, lightTheme } from 'global/theme';
-import Today from 'hooks/getToday';
+import getMonthDateList from 'hooks/getMonthDateList';
+import getToday from 'hooks/getToday';
 import Alarm from 'pages/Alarm';
 import Chart from 'pages/Chart';
 import DayChart from 'pages/DayChart';
@@ -20,11 +21,17 @@ import 'App.css';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
-  const date = Today();
+  const date = getToday();
+  const monthDateList = getMonthDateList();
+
+  const setMonthDateList = () =>
+    monthDateList.forEach((date) => {
+      localStorage.setItem(date, '');
+    });
 
   useEffect(() => {
     if (localStorage.getItem(date) === null) {
-      localStorage.setItem(date, '{"코딩":0}');
+      setMonthDateList();
     }
   }, []);
 

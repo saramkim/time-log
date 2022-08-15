@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import BarChart from 'components/MonthBarChart';
-import Today from 'hooks/getToday';
+import getToday from 'hooks/getToday';
 import { useSelector } from 'react-redux';
 import { RootState } from 'store';
 
@@ -10,7 +10,7 @@ import { BarDatum } from '@nivo/bar';
 import 'css/MonthChart.css';
 
 function MonthChart() {
-  const thisMonth = Today().slice(0, 7);
+  const thisMonth = getToday().slice(0, 7);
   const [data, setData] = useState<BarDatum[]>([]);
   const [standard, setStandard] = useState(thisMonth);
   const focus = useSelector((state: RootState) => state.focus);

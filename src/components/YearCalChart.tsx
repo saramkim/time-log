@@ -55,8 +55,8 @@ const theme = {
 function CalTooltip({ day, value, color }: { day: string; value: string; color: string }) {
   return (
     <BasicTooltip
-      id={`${day.slice(5, 10)}일`}
-      value={(Number(value) / 60).toFixed(1)}
+      id={`${day.slice(5, 7)}월${day.slice(8, 10)}일`}
+      value={`${(Number(value) / 60).toFixed()}분`}
       color={color}
       enableChip
     />
@@ -84,7 +84,7 @@ function MyResponsiveCalendar({ data }: { data: CalendarDatum[] }) {
       daySpacing={2}
       dayBorderWidth={0}
       dayBorderColor='#ffffff'
-      legendFormat={(v) => `${(v / 60).toFixed(1)}`}
+      legendFormat={(v) => `${(v / 60).toFixed()}`}
       legends={[
         {
           anchor: 'bottom-right',

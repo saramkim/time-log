@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import CalChart from 'components/CalChart';
+import CalChart from 'components/YearCalChart';
 import { useSelector } from 'react-redux';
 import { RootState } from 'store';
 
