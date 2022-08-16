@@ -13,6 +13,35 @@ function Timer() {
   const process = useSelector((state: RootState) => state.process);
   const dispatch = useDispatch();
 
+  const worker = new Worker(new URL('worker/worker', import.meta.url));
+
+  // useEffect(() => {
+  //   return () => {
+  //     worker.postMessage(process);
+  //   };
+  // }, []);
+
+  // useEffect(() => {
+  //   worker.postMessage(process);
+  //   worker.onmessage = (e: MessageEvent<string>) => {
+  //     setTime(Number(e.data));
+  //   };
+  // }, [process]);
+
+  // useEffect(() => {
+  //   if (window.Worker) {
+  //     console.log(`timer:${process}`);
+  //     worker.postMessage(process);
+  //   }
+  //   if (process === 'start') {
+  //     worker.onmessage = (e: MessageEvent<string>) => {
+  //       setTime(Number(e.data));
+  //     };
+  //   } else if (process === 'stop') {
+  //     setTime(0);
+  //   }
+  // }, [process]);
+
   let timerStop = '';
   if (process === 'stop') {
     timerStop = 'timer-pg--stop';
@@ -27,7 +56,7 @@ function Timer() {
   useEffect(() => {
     if (process === 'stop') {
       window.addEventListener('keydown', enterEvent);
-      setTime(0);
+      // setTime(0);
     }
     return () => {
       window.removeEventListener('keydown', enterEvent);

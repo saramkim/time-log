@@ -8,18 +8,19 @@ import { DefaultRawDatum } from '@nivo/pie';
 import 'css/DayChart.css';
 
 function DayChart() {
-  const [date, setDate] = useState(getToday());
+  const today = getToday();
+  const [date, setDate] = useState(today);
   const [data, setData] = useState<DefaultRawDatum[]>([]);
   const LSItem = JSON.parse(localStorage.getItem(date) || '{}');
-  const timeArr: number[] = Object.values(LSItem);
-  const totalTime: number = timeArr.reduce((p, c) => p + c, 0);
+  const timeList: number[] = Object.values(LSItem);
+  const totalTime: number = timeList.reduce((p, c) => p + c, 0);
 
   useEffect(() => {
-    const filterdData = Object.keys(LSItem).filter((e) => {
-      return LSItem[e] !== 0;
+    const filterdData = Object.keys(LSItem).filter((LSDataKey) => {
+      return LSItem[LSDataKey] !== 0;
     });
 
-    const LSData: DefaultRawDatum[] = filterdData.map((e: string) => ({
+    const LSData: DefaultRawDatum[] = filterdData.map((e) => ({
       id: e,
       label: e,
       value: LSItem[e],
@@ -49,7 +50,7 @@ function DayChart() {
         className='date-selector'
         value={date}
       >
-        <DateList />
+        <DateList today={today} />
       </select>
 
       <div className='day-chart'>
@@ -60,11 +61,11 @@ function DayChart() {
   );
 }
 
-function DateList() {
+function DateList({ today }: { today: string }) {
   const LSDateList = Object.keys(window.localStorage).sort().reverse();
   const dateList = LSDateList.map((key) => {
     const LSdata = localStorage.getItem(key);
-    if (LSdata !== '') {
+    if (LSdata !== '' || key === today) {
       return <option key={key}>{key}</option>;
     }
     return false;

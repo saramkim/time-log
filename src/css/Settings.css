@@ -11,7 +11,7 @@
 }
 .settings--animation {
   transform: translateY(250px);
-  transition: all 0.6s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 .settings__btns {
   margin-top: 1em;
