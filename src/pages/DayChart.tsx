@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { useOutletContext } from 'react-router-dom';
 
 import PieChart from 'components/DayPieChart';
 import getToday from 'hooks/getToday';
@@ -14,6 +15,11 @@ function DayChart() {
   const LSItem = JSON.parse(localStorage.getItem(date) || '{}');
   const timeList: number[] = Object.values(LSItem);
   const totalTime: number = timeList.reduce((p, c) => p + c, 0);
+
+  const setCurChart: Dispatch<SetStateAction<string>> = useOutletContext();
+  useEffect(() => {
+    setCurChart('day');
+  });
 
   useEffect(() => {
     const filterdData = Object.keys(LSItem).filter((LSDataKey) => {

@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { useOutletContext } from 'react-router-dom';
 
 import BarChart from 'components/WeekBarChart';
 import getToday from 'hooks/getToday';
@@ -17,6 +18,11 @@ function WeekChart() {
   const today = getToday();
   const todayIndex = LSKeyList.findIndex((key) => key === today);
   const [standard, setStandard] = useState(todayIndex);
+
+  const setCurChart: Dispatch<SetStateAction<string>> = useOutletContext();
+  useEffect(() => {
+    setCurChart('week');
+  });
 
   useEffect(() => {
     const dayWeek = LSKeyList.slice(standard, standard + 7);

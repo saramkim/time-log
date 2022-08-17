@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { useOutletContext } from 'react-router-dom';
 
 import BarChart from 'components/MonthBarChart';
 import getToday from 'hooks/getToday';
@@ -15,6 +16,11 @@ function MonthChart() {
   const [standard, setStandard] = useState(thisMonth);
   const focus = useSelector((state: RootState) => state.focus);
   const [thing, setThing] = useState(focus);
+
+  const setCurChart: Dispatch<SetStateAction<string>> = useOutletContext();
+  useEffect(() => {
+    setCurChart('month');
+  });
 
   const LSKeys: string[] = Object.keys(window.localStorage).sort().reverse();
 

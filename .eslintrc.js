@@ -24,6 +24,8 @@ module.exports = {
     'react/react-in-jsx-scope': 0,
     'no-alert': 0,
     'no-plusplus': 0,
+    'react/button-has-type': 0,
+    'jsx-a11y/no-autofocus': 0,
   },
   overrides: [
     {

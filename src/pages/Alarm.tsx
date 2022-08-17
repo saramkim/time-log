@@ -9,22 +9,25 @@ import { pLog, pStart, RootState } from 'store';
 
 import 'css/Timer.css';
 
+import logo from 'TimeLog-logo.png';
+
 function Alarm({ darkMode }: { darkMode: boolean }) {
   const alarm = useSelector((state: RootState) => state.alarm);
   const process = useSelector((state: RootState) => state.process);
   const [time, setTime] = useState(alarm);
   const dispatch = useDispatch();
+  const notificationRequest = () =>
+    Notification.requestPermission((permission) => {
+      if (permission === 'denied') {
+        window.alert('Please allow notifications access to continue');
+      }
+    });
 
   let timerStop = '';
   if (process === 'stop') {
     timerStop = 'timer-pg--stop';
   }
 
-  Notification.requestPermission((permission) => {
-    if (permission === 'denied') {
-      window.alert('Please allow notifications access to continue');
-    }
-  });
   preventEvent();
 
   useEffect(() => {
@@ -33,7 +36,7 @@ function Alarm({ darkMode }: { darkMode: boolean }) {
 
   useEffect(() => {
     if (time === 0) {
-      spawnNotification('Log what you did.', 'TimeLog-logo.png', 'Time out!');
+      spawnNotification('Time out!', 'Log what you did.', logo);
       dispatch(pLog());
     }
   }, [time]);
@@ -57,8 +60,8 @@ function Alarm({ darkMode }: { darkMode: boolean }) {
     stop: (
       <button
         className='timer-btn timer-btn--start'
-        type='button'
         onClick={() => {
+          notificationRequest();
           dispatch(pStart());
         }}
       >
@@ -69,7 +72,6 @@ function Alarm({ darkMode }: { darkMode: boolean }) {
     start: (
       <button
         className='timer-btn timer-btn--log'
-        type='button'
         onClick={() => {
           dispatch(pLog());
         }}
@@ -94,7 +96,7 @@ function Alarm({ darkMode }: { darkMode: boolean }) {
   );
 }
 
-function spawnNotification(theBody: string, theIcon: string, theTitle: string) {
+function spawnNotification(theTitle: string, theBody: string, theIcon: string) {
   const options = {
     body: theBody,
     icon: theIcon,

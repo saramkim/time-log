@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { useOutletContext } from 'react-router-dom';
 
 import CalChart from 'components/YearCalChart';
 import { useSelector } from 'react-redux';
@@ -21,6 +22,11 @@ function YearChart() {
     const logValue = logData[thing];
 
     return { day: date, value: logValue };
+  });
+
+  const setCurChart: Dispatch<SetStateAction<string>> = useOutletContext();
+  useEffect(() => {
+    setCurChart('year');
   });
 
   return (

@@ -14,7 +14,6 @@ function Main() {
 
       <div className='main-pg__btns'>
         <button
-          type='submit'
           onClick={() => {
             navigate('/alarm');
           }}
@@ -23,7 +22,6 @@ function Main() {
         </button>
 
         <button
-          type='submit'
           onClick={() => {
             navigate('/timer');
           }}
@@ -32,7 +30,6 @@ function Main() {
         </button>
 
         <button
-          type='submit'
           onClick={() => {
             navigate('/chart/day');
           }}

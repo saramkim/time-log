@@ -5,7 +5,7 @@ import 'css/Chart.css';
 
 function Chart() {
   const navigate = useNavigate();
-  const [curChart, setCurChart] = useState('day');
+  const [curChart, setCurChart] = useState('');
 
   let dayClicked = '';
   let weekClicked = '';
@@ -29,50 +29,42 @@ function Chart() {
 
   return (
     <div className='chart-pg'>
-      <span className='unit'>unit: minute</span>
+      <div className='unit'>unit: minute</div>
       <div className='chart-btns'>
         <button
           className={`chart-btn ${dayClicked}`}
-          type='button'
           onClick={() => {
             navigate('day');
-            setCurChart('day');
           }}
         >
           Day
         </button>
         <button
           className={`chart-btn ${weekClicked}`}
-          type='button'
           onClick={() => {
             navigate('week');
-            setCurChart('week');
           }}
         >
           Week
         </button>
         <button
           className={`chart-btn ${monthClicked}`}
-          type='button'
           onClick={() => {
             navigate('month');
-            setCurChart('month');
           }}
         >
           Month
         </button>
         <button
           className={`chart-btn ${yearClicked} `}
-          type='button'
           onClick={() => {
             navigate('year');
-            setCurChart('year');
           }}
         >
           Year
         </button>
       </div>
-      <Outlet />
+      <Outlet context={setCurChart} />
     </div>
   );
 }

@@ -28,7 +28,6 @@ function LogInput({ time }: { time: number }) {
       <form onSubmit={pushLogToLS}>
         <input
           className={`log-input ${inputAnimation}`}
-          // eslint-disable-next-line jsx-a11y/no-autofocus
           autoFocus
           required
           onChange={(e) => {
@@ -36,9 +35,7 @@ function LogInput({ time }: { time: number }) {
           }}
           placeholder='Log what you did'
         />
-        <button className='timer-btn' type='submit'>
-          Submit
-        </button>
+        <button className='timer-btn'>Submit</button>
       </form>
     </div>
   );

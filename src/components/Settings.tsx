@@ -31,7 +31,7 @@ function Settings({ setSettings }: { setSettings: Dispatch<SetStateAction<boolea
   };
 
   const timesetPlusOne = () => {
-    if (timeset < 99) {
+    if (timeset < 90) {
       setTimeset((timeset) => timeset + 1);
     }
   };
@@ -50,7 +50,7 @@ function Settings({ setSettings }: { setSettings: Dispatch<SetStateAction<boolea
           <input
             type='range'
             min='1'
-            max='99'
+            max='90'
             value={timeset}
             onChange={(e) => {
               setTimeset(Number(e.target.value));
@@ -71,7 +71,7 @@ function Settings({ setSettings }: { setSettings: Dispatch<SetStateAction<boolea
         </label>
 
         <div className='settings__btns'>
-          <button className='settings__btn' type='submit' onClick={toastPopup}>
+          <button className='settings__btn' onClick={toastPopup}>
             Apply
           </button>
           <button
