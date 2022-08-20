@@ -26,7 +26,7 @@ import './index.css';
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
-      <BrowserRouter>
+      <BrowserRouter basename='/time-log'>
         <App />
       </BrowserRouter>
     </React.StrictMode>

@@ -1,7 +1,8 @@
 {
   "name": "time-log",
-  "version": "0.1.0",
+  "version": "0.8.0",
   "private": true,
+  "homepage": "https://saramkim.github.io/time-log",
   "dependencies": {
     "@nivo/bar": "^0.79.1",
     "@nivo/calendar": "^0.79.1",
@@ -31,8 +32,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "postbuild": "cp build/index.html build/404.html",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
