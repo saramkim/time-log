@@ -1,0 +1,2 @@
+!function(){"use strict";var a=globalThis;a.onmessage=function(t){var n=0;setInterval((function(){"up"===t.data?n++:"down"===t.data&&n--,a.postMessage(n)}),1e3)}}();
+//# sourceMappingURL=328.c992c086.chunk.js.map
