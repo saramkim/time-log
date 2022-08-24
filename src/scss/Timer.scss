@@ -57,7 +57,7 @@
     border-radius: 10%;
 
     &--start {
-        position: absolute;
+        position: fixed;
         transform: translate(-50%, -50%);
         top: calc(50% + 35px);
     }

@@ -30,18 +30,18 @@ function Alarm({ darkMode }: { darkMode: boolean }) {
 
   const notificationRequest = () =>
     Notification.requestPermission((permission) => {
-      if (permission === 'granted') {
-        window.location.reload();
-      }
       if (permission === 'denied') {
         window.alert('Please allow notifications access to continue');
       }
     });
+  const perfEntries = performance.getEntriesByType(
+    'navigation'
+  ) as unknown as PerformanceNavigationTiming;
 
   useEffect(() => {
-    navigator.serviceWorker.register(`${process.env.PUBLIC_URL}/service-worker.js`);
-    if (Notification.permission !== 'granted') {
-      notificationRequest();
+    notificationRequest();
+    if (perfEntries[0].type === 'navigate') {
+      window.location.reload();
     }
   }, []);
 

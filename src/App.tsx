@@ -30,6 +30,7 @@ function App() {
     });
 
   useEffect(() => {
+    navigator.serviceWorker.register(`${process.env.PUBLIC_URL}/service-worker.js`);
     if (localStorage.getItem(date) === null) {
       setMonthDateList();
     }
