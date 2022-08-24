@@ -73,7 +73,7 @@ function WeekChart() {
 }
 
 function getData(LSDate: string) {
-  const logData = JSON.parse(localStorage.getItem(LSDate) || '{}');
+  const logData: { [Key: string]: string } = JSON.parse(localStorage.getItem(LSDate) || '{}');
   const day = new Date(LSDate);
   const options: { weekday: 'long' } = { weekday: 'long' };
   const weekDay = new Intl.DateTimeFormat('ko-KR', options).format(day);

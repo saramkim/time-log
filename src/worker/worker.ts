@@ -1,4 +1,5 @@
-/* eslint-disable no-restricted-globals */
+const self = globalThis as unknown as DedicatedWorkerGlobalScope;
+
 self.onmessage = (e: MessageEvent<string>) => {
   let time = 0;
   setInterval(() => {
@@ -10,3 +11,5 @@ self.onmessage = (e: MessageEvent<string>) => {
     self.postMessage(time);
   }, 1000);
 };
+
+export {};

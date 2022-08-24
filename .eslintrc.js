@@ -1,6 +1,7 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint', 'prettier', 'simple-import-sort'],
+  ignorePatterns: ['build', 'public'],
   extends: [
     'airbnb',
     'plugin:import/errors',

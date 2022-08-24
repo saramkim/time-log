@@ -33,7 +33,7 @@ function MyResponsivePie({ data }: { data: DefaultRawDatum[] }) {
   return (
     <ResponsivePie
       data={data}
-      margin={{ top: 100, right: 200, bottom: 100, left: 200 }}
+      margin={{ top: 120, right: 200, bottom: 120, left: 200 }}
       theme={theme}
       arcLabel={(v) => `${(v.value / 60).toFixed()}`}
       tooltip={PieTooltip}

@@ -13,18 +13,12 @@ import logo from 'TimeLog-logo.png';
 
 function Alarm({ darkMode }: { darkMode: boolean }) {
   const alarm = useSelector((state: RootState) => state.alarm);
-  const process = useSelector((state: RootState) => state.process);
+  const curProcess = useSelector((state: RootState) => state.process);
   const [time, setTime] = useState(alarm);
   const dispatch = useDispatch();
-  const notificationRequest = () =>
-    Notification.requestPermission((permission) => {
-      if (permission === 'denied') {
-        window.alert('Please allow notifications access to continue');
-      }
-    });
 
   let timerStop = '';
-  if (process === 'stop') {
+  if (curProcess === 'stop') {
     timerStop = 'timer-pg--stop';
   }
 
@@ -34,9 +28,38 @@ function Alarm({ darkMode }: { darkMode: boolean }) {
     setTime(alarm);
   }, [alarm]);
 
+  const notificationRequest = () =>
+    Notification.requestPermission((permission) => {
+      if (permission === 'granted') {
+        window.location.reload();
+      }
+      if (permission === 'denied') {
+        window.alert('Please allow notifications access to continue');
+      }
+    });
+
+  useEffect(() => {
+    navigator.serviceWorker.register(`${process.env.PUBLIC_URL}/service-worker.js`);
+    if (Notification.permission !== 'granted') {
+      notificationRequest();
+    }
+  }, []);
+
+  const notificationOption = {
+    body: 'Log what you did.',
+    icon: logo,
+    actions: [{ title: 'Log', action: 'log' }],
+    tag: 'timelog-notification',
+    vibrate: [200, 100, 200, 100],
+    requireInteraction: true,
+    renotify: true,
+  };
+
   useEffect(() => {
     if (time === 0) {
-      spawnNotification('Time out!', 'Log what you did.', logo);
+      navigator.serviceWorker.ready.then((registration) => {
+        registration.showNotification('Time out!', notificationOption);
+      });
       dispatch(pLog());
     }
   }, [time]);
@@ -47,21 +70,20 @@ function Alarm({ darkMode }: { darkMode: boolean }) {
     }
   };
   useEffect(() => {
-    if (process === 'stop') {
+    if (curProcess === 'stop') {
       window.addEventListener('keydown', enterEvent);
       setTime(alarm);
     }
     return () => {
       window.removeEventListener('keydown', enterEvent);
     };
-  }, [process]);
+  }, [curProcess]);
 
   const processBtn = {
     stop: (
       <button
         className='timer-btn timer-btn--start'
         onClick={() => {
-          notificationRequest();
           dispatch(pStart());
         }}
       >
@@ -84,25 +106,16 @@ function Alarm({ darkMode }: { darkMode: boolean }) {
   return (
     <>
       <div className={`timer-pg ${timerStop}`}>
-        {process === 'log' ? (
+        {curProcess === 'log' ? (
           <LogInput time={alarm - time} />
         ) : (
           <Count time={time} setTime={setTime} upDown='down' />
         )}
-        {process === 'start' && <Circularbar time={time} darkMode={darkMode} />}
+        {curProcess === 'start' && <Circularbar time={time} darkMode={darkMode} />}
       </div>
-      {processBtn[process]}
+      {processBtn[curProcess]}
     </>
   );
-}
-
-function spawnNotification(theTitle: string, theBody: string, theIcon: string) {
-  const options = {
-    body: theBody,
-    icon: theIcon,
-  };
-  const notification = new Notification(theTitle, options);
-  return notification;
 }
 
 export default Alarm;
