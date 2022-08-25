@@ -7,7 +7,7 @@ import { BasicTooltip } from '@nivo/tooltip';
 const theme: Theme = {
   labels: {
     text: {
-      fontSize: '1em',
+      fontSize: window.innerWidth <= 768 ? '1.3rem' : '1em',
     },
   },
   legends: {
@@ -41,11 +41,62 @@ const theme: Theme = {
 };
 
 function BarTooltip({ id, value, color }: { id: string | number; value: number; color: string }) {
-  return <BasicTooltip id={id} value={`${(value / 60).toFixed()}분`} color={color} enableChip />;
+  const hour = Math.floor(value / 3600);
+  const minute = Math.round((value % 3600) / 60);
+  return <BasicTooltip id={id} value={`${hour}시간${minute}분`} color={color} enableChip />;
 }
 
 function MyResponsiveBar({ data, standard }: { data: BarDatum[]; standard: number }) {
   const keyList: string[] = DidList(standard);
+
+  if (window.innerWidth <= 768) {
+    return (
+      <ResponsiveBar
+        data={data}
+        theme={theme}
+        keys={keyList}
+        indexBy='date'
+        tooltip={BarTooltip}
+        label={(v) => `${((v.value as number) / 60).toFixed()}`}
+        margin={{ top: 120, right: 20, bottom: 20, left: 60 }}
+        padding={0.2}
+        layout='horizontal'
+        valueScale={{ type: 'linear' }}
+        indexScale={{ type: 'band', round: true }}
+        colors={{ scheme: 'set3' }}
+        borderColor={{
+          from: 'color',
+          modifiers: [['darker', 1.6]],
+        }}
+        axisTop={null}
+        axisRight={null}
+        axisBottom={null}
+        axisLeft={{
+          tickSize: 0,
+          tickPadding: 10,
+          tickRotation: 0,
+          legend: '',
+          legendPosition: 'middle',
+          legendOffset: -40,
+        }}
+        enableGridX
+        enableGridY={false}
+        labelSkipWidth={20}
+        labelSkipHeight={0}
+        labelTextColor={{
+          from: 'color',
+          modifiers: [['darker', 5]],
+        }}
+        animate={false}
+        motionConfig='slow'
+        role='application'
+        ariaLabel='time bar chart'
+        barAriaLabel={(e) => {
+          return `${e.id}: ${e.formattedValue} in date: ${e.indexValue}`;
+        }}
+      />
+    );
+  }
 
   return (
     <ResponsiveBar

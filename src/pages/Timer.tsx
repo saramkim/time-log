@@ -4,17 +4,17 @@ import Count from 'components/Count';
 import LogInput from 'components/LogInput';
 import { preventEvent } from 'hooks/preventEvent';
 import { useDispatch, useSelector } from 'react-redux';
-import { pLog, pStart, RootState } from 'store';
+import { pLog, pStart, pStop, RootState } from 'store';
 
 import 'css/Timer.css';
 
 function Timer() {
   const [time, setTime] = useState(0);
-  const process = useSelector((state: RootState) => state.process);
+  const curProcess = useSelector((state: RootState) => state.process);
   const dispatch = useDispatch();
 
   let timerStop = '';
-  if (process === 'stop') {
+  if (curProcess === 'stop') {
     timerStop = 'timer-pg--stop';
   }
   preventEvent();
@@ -24,15 +24,27 @@ function Timer() {
       dispatch(pStart());
     }
   };
+  const waringGoBack = () => {
+    window.alert(`Not logged yet.`);
+  };
   useEffect(() => {
-    if (process === 'stop') {
+    if (curProcess === 'stop') {
       window.addEventListener('keydown', enterEvent);
       setTime(0);
+    } else {
+      window.addEventListener('popstate', waringGoBack);
     }
     return () => {
       window.removeEventListener('keydown', enterEvent);
+      window.removeEventListener('popstate', waringGoBack);
     };
-  }, [process]);
+  }, [curProcess]);
+
+  useEffect(() => {
+    return () => {
+      dispatch(pStop());
+    };
+  }, []);
 
   const processBtn = {
     stop: (
@@ -61,13 +73,13 @@ function Timer() {
   return (
     <>
       <div className={`timer-pg ${timerStop}`}>
-        {process === 'log' ? (
+        {curProcess === 'log' ? (
           <LogInput time={time} />
         ) : (
           <Count time={time} setTime={setTime} upDown='up' />
         )}
       </div>
-      {processBtn[process]}
+      {processBtn[curProcess]}
     </>
   );
 }

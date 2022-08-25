@@ -40,7 +40,7 @@ const BackBtn = styled.button`
   border: none;
   padding-top: 0.2em;
 
-  @media screen and (max-width: 552px) {
-    display: none;
+  @media (max-width: 768px) {
+    top: 190px;
   }
 `;

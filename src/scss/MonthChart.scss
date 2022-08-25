@@ -23,6 +23,10 @@
     font-size: 1.5rem;
     cursor: pointer;
 
+    @media (max-width: 768px) {
+        top: calc(190px + 2.2em);
+    }
+
     &:focus {
         outline: none;
         font-weight: 600;

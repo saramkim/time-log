@@ -4,7 +4,7 @@ import { BasicTooltip } from '@nivo/tooltip';
 const theme = {
   labels: {
     text: {
-      fontSize: '1.5em',
+      fontSize: window.innerWidth <= 768 ? '2rem' : '1.5em',
     },
   },
   tooltip: {
@@ -19,21 +19,48 @@ const theme = {
 };
 
 function PieTooltip({ datum }: { datum: { id: string | number; value: number; color: string } }) {
+  const hour = Math.floor(datum.value / 3600);
+  const minute = Math.round((datum.value % 3600) / 60);
   return (
-    <BasicTooltip
-      id={datum.id}
-      value={`${(datum.value / 60).toFixed()}분`}
-      color={datum.color}
-      enableChip
-    />
+    <BasicTooltip id={datum.id} value={`${hour}시간${minute}분`} color={datum.color} enableChip />
   );
 }
 
 function MyResponsivePie({ data }: { data: DefaultRawDatum[] }) {
+  if (window.innerWidth <= 768) {
+    return (
+      <ResponsivePie
+        data={data}
+        margin={{ top: 100, right: 20, bottom: 100, left: 20 }}
+        theme={theme}
+        arcLabel={(v) => `${(v.value / 60).toFixed()}`}
+        tooltip={PieTooltip}
+        padAngle={2}
+        cornerRadius={5}
+        innerRadius={0.4}
+        sortByValue
+        colors={{ scheme: 'set3' }}
+        borderWidth={1}
+        borderColor={{
+          from: 'color',
+          modifiers: [['darker', 0.2]],
+        }}
+        enableArcLinkLabels={false}
+        arcLinkLabelsColor={{ from: 'color', modifiers: [['darker', 1]] }}
+        arcLabelsSkipAngle={20}
+        arcLabelsTextColor={{
+          from: 'color',
+          modifiers: [['darker', 5]],
+        }}
+        animate={false}
+      />
+    );
+  }
+
   return (
     <ResponsivePie
       data={data}
-      margin={{ top: 120, right: 200, bottom: 120, left: 200 }}
+      margin={{ top: 100, right: 20, bottom: 100, left: 20 }}
       theme={theme}
       arcLabel={(v) => `${(v.value / 60).toFixed()}`}
       tooltip={PieTooltip}

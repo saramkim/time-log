@@ -39,6 +39,11 @@
   font-size: 1.5rem;
   width: 6.2em;
 }
+@media (max-width: 768px) {
+  .standard-thing {
+    top: 190px;
+  }
+}
 .standard-thing::-moz-placeholder {
   color: black;
 }

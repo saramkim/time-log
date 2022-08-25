@@ -3,7 +3,7 @@ import { BasicTooltip } from '@nivo/tooltip';
 
 const theme = {
   textColor: '#666666',
-  fontSize: 20,
+  fontSize: window.innerWidth <= 768 ? 12 : 20,
   axis: {
     domain: {
       line: {
@@ -30,7 +30,6 @@ const theme = {
   },
   legends: {
     text: {
-      fontSize: 20,
       fill: '#666666',
     },
     ticks: {
@@ -53,10 +52,12 @@ const theme = {
 };
 
 function CalTooltip({ day, value, color }: { day: string; value: string; color: string }) {
+  const hour = Math.floor(Number(value) / 3600);
+  const minute = Math.round((Number(value) % 3600) / 60);
   return (
     <BasicTooltip
       id={`${day.slice(5, 7)}월${day.slice(8, 10)}일`}
-      value={`${(Number(value) / 60).toFixed()}분`}
+      value={`${hour}시간${minute}분`}
       color={color}
       enableChip
     />
@@ -64,6 +65,47 @@ function CalTooltip({ day, value, color }: { day: string; value: string; color: 
 }
 
 function MyResponsiveCalendar({ data }: { data: CalendarDatum[] }) {
+  if (window.innerWidth <= 768) {
+    return (
+      <ResponsiveCalendar
+        data={data}
+        from='2022-01-01'
+        to='2022-12-31'
+        theme={theme}
+        direction='vertical'
+        tooltip={CalTooltip}
+        emptyColor='#eeeeee'
+        colors={['#B8E6D1', '#7ACCBA', '#47B3A2', '#1F998B', '#008074']}
+        margin={{ top: 40, right: 20, bottom: 50, left: 20 }}
+        minValue='auto'
+        yearSpacing={0}
+        yearLegendOffset={0}
+        monthSpacing={0}
+        monthBorderWidth={0}
+        monthBorderColor='#ffffff'
+        monthLegendOffset={10}
+        daySpacing={2}
+        dayBorderWidth={0}
+        dayBorderColor='#ffffff'
+        legendFormat={(v) => `${(v / 60).toFixed()}`}
+        legends={[
+          {
+            anchor: 'bottom-right',
+            direction: 'row',
+            justify: false,
+            itemCount: 5,
+            itemWidth: 42,
+            itemHeight: 36,
+            itemsSpacing: 10,
+            itemDirection: 'right-to-left',
+            translateX: -50,
+            translateY: -40,
+            symbolSize: 12,
+          },
+        ]}
+      />
+    );
+  }
   return (
     <ResponsiveCalendar
       data={data}

@@ -19,6 +19,11 @@
   font-size: 1.5rem;
   cursor: pointer;
 }
+@media (max-width: 768px) {
+  .month-selector {
+    top: calc(190px + 2.2em);
+  }
+}
 .month-selector:focus {
   outline: none;
   font-weight: 600;

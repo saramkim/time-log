@@ -5,7 +5,7 @@ import Count from 'components/Count';
 import LogInput from 'components/LogInput';
 import { preventEvent } from 'hooks/preventEvent';
 import { useDispatch, useSelector } from 'react-redux';
-import { pLog, pStart, RootState } from 'store';
+import { pLog, pStart, pStop, RootState } from 'store';
 
 import 'css/Timer.css';
 
@@ -43,6 +43,10 @@ function Alarm({ darkMode }: { darkMode: boolean }) {
     if (perfEntries[0].type === 'navigate') {
       window.location.reload();
     }
+
+    return () => {
+      dispatch(pStop());
+    };
   }, []);
 
   const notificationOption = {
@@ -69,13 +73,19 @@ function Alarm({ darkMode }: { darkMode: boolean }) {
       dispatch(pStart());
     }
   };
+  const waringGoBack = () => {
+    window.alert(`Not logged yet.`);
+  };
   useEffect(() => {
     if (curProcess === 'stop') {
       window.addEventListener('keydown', enterEvent);
       setTime(alarm);
+    } else {
+      window.addEventListener('popstate', waringGoBack);
     }
     return () => {
       window.removeEventListener('keydown', enterEvent);
+      window.removeEventListener('popstate', waringGoBack);
     };
   }, [curProcess]);
 

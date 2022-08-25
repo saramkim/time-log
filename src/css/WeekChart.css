@@ -8,12 +8,27 @@
   right: 30px;
   z-index: 1;
 }
+@media (max-width: 768px) {
+  .week-selector {
+    top: 190px;
+  }
+}
 .week-selector__date {
+  display: flex;
+  flex-direction: column;
   background-color: #f0f0f0;
   padding: 0.4em 0.5em;
   border-radius: 0.3em;
   font-size: 1.5rem;
   color: black;
+}
+.week-selector__date > * {
+  margin: 3px 0;
+}
+@media (max-width: 768px) {
+  .week-selector__date {
+    flex-direction: row;
+  }
 }
 .week-selector__btns {
   display: flex;
@@ -22,6 +37,11 @@
   font-size: 2rem;
   background-color: #f0f0f0;
   border-radius: 0.3em;
+}
+@media (max-width: 768px) {
+  .week-selector__btns {
+    font-size: 2.5rem;
+  }
 }
 .week-selector__btns > * {
   cursor: pointer;

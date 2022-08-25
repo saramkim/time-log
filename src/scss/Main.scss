@@ -30,12 +30,6 @@
             width: 3.5em;
             margin: 0 1em;
             border-radius: 10%;
-
-            &:last-child {
-                @media screen and (max-width: 700px) {
-                    display: none;
-                }
-            }
         }
     }
 }

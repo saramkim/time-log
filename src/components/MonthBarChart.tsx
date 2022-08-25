@@ -31,10 +31,46 @@ const theme = {
 };
 
 function BarTooltip({ indexValue, value }: { indexValue: number | string; value: number }) {
-  return <BasicTooltip id={`${indexValue}일`} value={`${(value / 60).toFixed()}분`} />;
+  const hour = Math.floor(value / 3600);
+  const minute = Math.round((value % 3600) / 60);
+  return <BasicTooltip id={`${indexValue}일`} value={`${hour}시간${minute}분`} />;
 }
 
 function MyResponsiveBar({ data, keys }: { data: BarDatum[]; keys: string }) {
+  if (window.innerWidth <= 768) {
+    return (
+      <ResponsiveBar
+        data={data}
+        theme={theme}
+        keys={[keys]}
+        indexBy='date'
+        tooltip={BarTooltip}
+        margin={{ top: 140, right: 20, bottom: 40, left: 20 }}
+        padding={0.1}
+        valueScale={{ type: 'linear' }}
+        indexScale={{ type: 'band', round: true }}
+        colors={{ scheme: 'set3' }}
+        borderColor={{
+          from: 'color',
+          modifiers: [['darker', 1.6]],
+        }}
+        axisTop={null}
+        axisRight={null}
+        axisBottom={null}
+        axisLeft={null}
+        enableGridY
+        enableLabel={false}
+        legends={[]}
+        animate={false}
+        role='application'
+        ariaLabel='Month bar chart'
+        barAriaLabel={(e) => {
+          return `${e.id}: ${e.formattedValue} in country: ${e.indexValue}`;
+        }}
+      />
+    );
+  }
+
   return (
     <ResponsiveBar
       data={data}

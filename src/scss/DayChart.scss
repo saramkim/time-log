@@ -46,6 +46,10 @@ select::-ms-expand {
         display: none;
     }
 
+    @media (max-width: 768px) {
+        top: 190px;
+    }
+
     option {
         margin-bottom: 0.15em;
 

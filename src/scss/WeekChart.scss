@@ -9,13 +9,26 @@
     top: 120px;
     right: 30px;
     z-index: 1;
+    @media (max-width: 768px) {
+        top: 190px;
+    }
 
     &__date {
+        display: flex;
+        flex-direction: column;
         background-color: $button-color;
         padding: 0.4em 0.5em;
         border-radius: 0.3em;
         font-size: 1.5rem;
         color: black;
+
+        & > * {
+            margin: 3px 0;
+        }
+
+        @media (max-width: 768px) {
+            flex-direction: row;
+        }
     }
 
     &__btns {
@@ -25,6 +38,10 @@
         font-size: 2rem;
         background-color: $button-color;
         border-radius: 0.3em;
+
+        @media (max-width: 768px) {
+            font-size: 2.5rem;
+        }
 
         & > * {
             cursor: pointer;

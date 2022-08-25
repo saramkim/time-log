@@ -37,10 +37,8 @@ function WeekChart() {
     <div className='chart-wrapper'>
       <div className='week-selector'>
         <div className='week-selector__date'>
-          {dayStart}
-          <br />
-          ~<br />
-          {dayEnd}
+          <div>{dayStart}</div>
+          <div>~{dayEnd}</div>
         </div>
         <div className='week-selector__btns'>
           <FaAngleDoubleLeft
@@ -78,6 +76,12 @@ function getData(LSDate: string) {
   const options: { weekday: 'long' } = { weekday: 'long' };
   const weekDay = new Intl.DateTimeFormat('ko-KR', options).format(day);
 
+  if (window.innerWidth <= 768) {
+    return Object.defineProperty(logData, 'date', {
+      value: `${LSDate.slice(8, 10)}(${weekDay.slice(0, 1)})`,
+      enumerable: true,
+    });
+  }
   return Object.defineProperty(logData, 'date', {
     value: `${LSDate.slice(5, 10)}(${weekDay.slice(0, 1)})`,
     enumerable: true,
