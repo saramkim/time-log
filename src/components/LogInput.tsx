@@ -35,7 +35,7 @@ function LogInput({ time }: { time: number }) {
           }}
           placeholder='Log what you did'
         />
-        <button className='timer-btn'>Submit</button>
+        <button className='timer-btn timer-btn--submit'>Submit</button>
       </form>
     </div>
   );

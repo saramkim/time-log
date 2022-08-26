@@ -17,10 +17,10 @@
 .timer {
     font-size: 9rem;
 }
-
 .log-input {
     height: 2.5em;
-    width: 100%;
+    max-width: 90vw;
+    width: 10em;
     background-color: #dc143c;
     font-size: 3rem;
     color: black;
@@ -64,6 +64,13 @@
         position: absolute;
         transform: translateX(-50%);
         top: 120px;
+    }
+
+    &--submit {
+        position: absolute;
+        top: 7.5em;
+        left: 50%;
+        transform: translateX(-50%);
     }
 }
 

@@ -42,7 +42,7 @@ const theme: Theme = {
 
 function BarTooltip({ id, value, color }: { id: string | number; value: number; color: string }) {
   const hour = Math.floor(value / 3600);
-  const minute = Math.round((value % 3600) / 60);
+  const minute = Math.floor((value % 3600) / 60);
   return <BasicTooltip id={id} value={`${hour}시간${minute}분`} color={color} enableChip />;
 }
 

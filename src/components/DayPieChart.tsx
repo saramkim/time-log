@@ -20,7 +20,7 @@ const theme = {
 
 function PieTooltip({ datum }: { datum: { id: string | number; value: number; color: string } }) {
   const hour = Math.floor(datum.value / 3600);
-  const minute = Math.round((datum.value % 3600) / 60);
+  const minute = Math.floor((datum.value % 3600) / 60);
   return (
     <BasicTooltip id={datum.id} value={`${hour}시간${minute}분`} color={datum.color} enableChip />
   );

@@ -34,21 +34,9 @@ function Alarm({ darkMode }: { darkMode: boolean }) {
         window.alert('Please allow notifications access to continue');
       }
     });
-  const perfEntries = performance.getEntriesByType(
+  const navigationTiming = performance.getEntriesByType(
     'navigation'
-  ) as unknown as PerformanceNavigationTiming;
-
-  useEffect(() => {
-    notificationRequest();
-    if (perfEntries[0].type === 'navigate') {
-      window.location.reload();
-    }
-
-    return () => {
-      dispatch(pStop());
-    };
-  }, []);
-
+  )[0] as unknown as PerformanceNavigationTiming;
   const notificationOption = {
     body: 'Log what you did.',
     icon: logo,
@@ -58,6 +46,17 @@ function Alarm({ darkMode }: { darkMode: boolean }) {
     requireInteraction: true,
     renotify: true,
   };
+
+  useEffect(() => {
+    notificationRequest();
+    if (navigationTiming.type === 'navigate') {
+      window.location.reload();
+    }
+
+    return () => {
+      dispatch(pStop());
+    };
+  }, []);
 
   useEffect(() => {
     if (time === 0) {

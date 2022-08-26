@@ -53,7 +53,7 @@ const theme = {
 
 function CalTooltip({ day, value, color }: { day: string; value: string; color: string }) {
   const hour = Math.floor(Number(value) / 3600);
-  const minute = Math.round((Number(value) % 3600) / 60);
+  const minute = Math.floor((Number(value) % 3600) / 60);
   return (
     <BasicTooltip
       id={`${day.slice(5, 7)}월${day.slice(8, 10)}일`}
