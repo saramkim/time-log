@@ -4,12 +4,11 @@ import Circularbar from 'components/Circularbar';
 import Count from 'components/Count';
 import LogInput from 'components/LogInput';
 import { preventEvent } from 'hooks/preventEvent';
+import logo from 'images/TimeLog-logo.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { pLog, pStart, pStop, RootState } from 'store';
 
 import 'css/Timer.css';
-
-import logo from 'TimeLog-logo.png';
 
 function Alarm({ darkMode }: { darkMode: boolean }) {
   const alarm = useSelector((state: RootState) => state.alarm);

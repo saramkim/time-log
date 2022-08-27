@@ -37,6 +37,8 @@ function Main() {
           Chart
         </button>
       </div>
+
+      <span className='version'>v0.8</span>
     </div>
   );
 }

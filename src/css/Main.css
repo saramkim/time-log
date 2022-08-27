@@ -24,4 +24,10 @@
   width: 3.5em;
   margin: 0 1em;
   border-radius: 10%;
+}
+
+.version {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
 }/*# sourceMappingURL=Main.css.map */

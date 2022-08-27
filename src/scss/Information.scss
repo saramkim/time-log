@@ -1,0 +1,66 @@
+@import "abstract.scss";
+
+.information-wrapper {
+    position: fixed;
+    top: calc(50% + 35px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    color: black;
+    width: 1200px;
+    height: calc(90% - 70px);
+    z-index: 100;
+    opacity: 0;
+    border: 1px solid black;
+    cursor: pointer;
+
+    & > span {
+        position: absolute;
+        bottom: 0.5em;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    @media (max-width: 1200px) {
+        width: 90%;
+    }
+
+    &--animation {
+        opacity: 1;
+        transition: all 0.4s ease-in-out;
+    }
+}
+.info-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+
+    & > h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 0.3em;
+
+        &:not(:first-child) {
+            margin-top: 1.8rem;
+        }
+    }
+    & > p {
+        margin: auto 0;
+    }
+    & > img {
+        width: 100%;
+        max-height: 82%;
+        border-bottom: 1px solid black;
+        margin-top: 1.8rem;
+    }
+    & > span {
+        text-align: right;
+    }
+}
+
+.info-page-1 {
+    padding: 1.8rem;
+    text-align: left;
+    font-size: 1.2rem;
+}

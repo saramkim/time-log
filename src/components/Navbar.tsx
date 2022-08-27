@@ -1,15 +1,15 @@
 import { Dispatch, SetStateAction, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import Information from 'components/Information';
 import Settings from 'components/Settings';
-import { BsMoon, BsSun } from 'react-icons/bs';
+import logo from 'images/TimeLog-logo.png';
+import { BsInfoCircle, BsMoon, BsSun } from 'react-icons/bs';
 import { IoSettingsOutline } from 'react-icons/io5';
 import { useDispatch, useSelector } from 'react-redux';
 import { pStop, RootState } from 'store';
 
 import 'css/Navbar.css';
-
-import logo from 'TimeLog-logo.png';
 
 function Navbar({
   darkMode,
@@ -21,6 +21,7 @@ function Navbar({
   const navigate = useNavigate();
   const process = useSelector((state: RootState) => state.process);
   const [settings, setSettings] = useState(false);
+  const [information, setInformation] = useState(false);
   const dispatch = useDispatch();
 
   const goMainPage = () => {
@@ -51,6 +52,19 @@ function Navbar({
             className='navbar__right__btn'
             role='button'
             tabIndex={-1}
+            onClick={() => {
+              setInformation(!information);
+            }}
+            onKeyPress={() => {
+              setInformation(!information);
+            }}
+          >
+            <BsInfoCircle />
+          </div>
+          <div
+            className='navbar__right__btn'
+            role='button'
+            tabIndex={-2}
             onKeyPress={() => {
               setDarkMode(!darkMode);
             }}
@@ -64,7 +78,7 @@ function Navbar({
           <div
             className='navbar__right__btn'
             role='button'
-            tabIndex={-2}
+            tabIndex={-3}
             onKeyPress={() => {
               setSettings(!settings);
             }}
@@ -77,6 +91,7 @@ function Navbar({
         </div>
       </div>
       <div>{settings && <Settings setSettings={setSettings} />}</div>
+      <div>{information && <Information setInformation={setInformation} />}</div>
     </>
   );
 }
