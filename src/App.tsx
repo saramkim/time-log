@@ -1,8 +1,8 @@
 import { Suspense, useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import BackButton from 'components/BackButton';
-import Navbar from 'components/Navbar';
+import BackButton from 'common/BackButton';
+import Navbar from 'common/Navbar';
 import GlobalStyles from 'global/GlobalStyles';
 import { darkTheme, lightTheme } from 'global/theme';
 import getMonthDateList from 'hooks/getMonthDateList';

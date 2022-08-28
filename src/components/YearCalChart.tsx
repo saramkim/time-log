@@ -54,14 +54,9 @@ const theme = {
 function CalTooltip({ day, value, color }: { day: string; value: string; color: string }) {
   const hour = Math.floor(Number(value) / 3600);
   const minute = Math.floor((Number(value) % 3600) / 60);
-  return (
-    <BasicTooltip
-      id={`${day.slice(5, 7)}월${day.slice(8, 10)}일`}
-      value={`${hour}시간${minute}분`}
-      color={color}
-      enableChip
-    />
-  );
+  const theTime = hour === 0 ? `${minute}분` : `${hour}시간${minute}분`;
+  const theDate = `${day.slice(5, 7)}월${day.slice(8, 10)}일`;
+  return <BasicTooltip id={theDate} value={theTime} color={color} enableChip />;
 }
 
 function MyResponsiveCalendar({ data }: { data: CalendarDatum[] }) {

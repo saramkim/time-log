@@ -7,7 +7,7 @@
   background-color: #f0f0f0;
   width: 15em;
   border-radius: 0 0 0 10%;
-  box-shadow: 0 3px 8px 0 black;
+  box-shadow: 1px 3px 6px 0px black;
 }
 .settings--animation {
   transform: translateY(250px);
@@ -21,6 +21,7 @@
 .settings__btn {
   font-size: 1rem;
   width: 4em;
+  border-radius: 4px;
 }
 
 .timeset {

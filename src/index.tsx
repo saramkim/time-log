@@ -14,7 +14,7 @@ const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <Provider store={store}>
     <React.StrictMode>
-      <BrowserRouter basename='/time-log'>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <App />
       </BrowserRouter>
     </React.StrictMode>

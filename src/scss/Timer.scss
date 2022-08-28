@@ -27,7 +27,7 @@
     border: none;
     padding: 0 0.6em;
     margin-bottom: 0.6em;
-    box-shadow: 0 8px 16px 1px black;
+    box-shadow: $box-shadow;
 
     &::placeholder {
         color: $button-color;
@@ -35,11 +35,11 @@
     &:focus {
         background-color: $button-color;
         outline: none;
-        box-shadow: inset 0 3px 8px 0 black;
+        box-shadow: inset $box-shadow;
     }
     &:hover {
         background-color: $button-color;
-        box-shadow: inset 0 3px 8px 0 black;
+        box-shadow: inset $box-shadow;
     }
 
     &--animation {

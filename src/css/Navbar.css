@@ -39,4 +39,12 @@
 }
 .navbar__right__btn {
   cursor: pointer;
+  opacity: 0.9;
+}
+.navbar__right__btn:hover {
+  opacity: 1;
+}
+.navbar__right__btn--clicked {
+  opacity: 1;
+  font-size: 50px;
 }/*# sourceMappingURL=Navbar.css.map */

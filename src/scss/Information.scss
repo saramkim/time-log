@@ -11,14 +11,20 @@
     height: calc(90% - 70px);
     z-index: 100;
     opacity: 0;
-    border: 1px solid black;
     cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 7px 16px 0px rgba(0, 0, 0, 0.7);
+
+    &:hover {
+        box-shadow: 0 7px 16px 2px rgba(0, 0, 0, 0.8);
+    }
 
     & > span {
         position: absolute;
         bottom: 0.5em;
         left: 50%;
         transform: translateX(-50%);
+        opacity: 0.5;
     }
 
     @media (max-width: 1200px) {
@@ -52,7 +58,7 @@
         width: 100%;
         max-height: 82%;
         border-bottom: 1px solid black;
-        margin-top: 1.8rem;
+        margin-top: 1rem;
     }
     & > span {
         text-align: right;

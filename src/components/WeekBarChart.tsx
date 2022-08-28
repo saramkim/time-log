@@ -43,7 +43,8 @@ const theme: Theme = {
 function BarTooltip({ id, value, color }: { id: string | number; value: number; color: string }) {
   const hour = Math.floor(value / 3600);
   const minute = Math.floor((value % 3600) / 60);
-  return <BasicTooltip id={id} value={`${hour}시간${minute}분`} color={color} enableChip />;
+  const theTime = hour === 0 ? `${minute}분` : `${hour}시간${minute}분`;
+  return <BasicTooltip id={id} value={theTime} color={color} enableChip />;
 }
 
 function MyResponsiveBar({ data, standard }: { data: BarDatum[]; standard: number }) {
