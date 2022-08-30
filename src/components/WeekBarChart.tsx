@@ -135,7 +135,7 @@ function MyResponsiveBar({ data, standard }: { data: BarDatum[]; standard: numbe
       }}
       enableGridX
       enableGridY={false}
-      labelSkipWidth={20}
+      labelSkipWidth={25}
       labelSkipHeight={0}
       labelTextColor={{
         from: 'color',

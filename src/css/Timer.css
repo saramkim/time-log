@@ -72,6 +72,12 @@
   left: 50%;
   transform: translateX(-50%);
 }
+.timer-btn--focus {
+  position: absolute;
+  top: -5em;
+  left: 50%;
+  transform: translateX(-50%);
+}
 
 .circularbar {
   position: fixed;

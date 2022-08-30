@@ -30,12 +30,6 @@ function Settings({ setSettings }: { setSettings: Dispatch<SetStateAction<boolea
     dispatch(setFocus(myFocus));
   };
 
-  const timesetPlusOne = () => {
-    if (timeset < 90) {
-      setTimeset((timeset) => timeset + 1);
-    }
-  };
-
   const toastPopup = () => {
     setPopupState(true);
     setTimeout(() => {
@@ -48,6 +42,7 @@ function Settings({ setSettings }: { setSettings: Dispatch<SetStateAction<boolea
       <form onSubmit={applySettings}>
         <div className='timeset'>
           <input
+            className='timeset__range'
             type='range'
             min='1'
             max='90'
@@ -56,8 +51,20 @@ function Settings({ setSettings }: { setSettings: Dispatch<SetStateAction<boolea
               setTimeset(Number(e.target.value));
             }}
           />
-          <div role='button' tabIndex={0} onKeyPress={timesetPlusOne} onClick={timesetPlusOne}>
-            Alarm time: {timeset}m
+          <div className='timeset__text'>
+            <label htmlFor='timeset-text'>Alarm time:</label>
+            &nbsp;
+            <input
+              type='text'
+              id='timeset-text'
+              min='1'
+              max='90'
+              value={timeset}
+              onChange={(e) => {
+                setTimeset(Number(e.target.value));
+              }}
+            />
+            m
           </div>
         </div>
 

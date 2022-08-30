@@ -27,6 +27,7 @@ module.exports = {
     'no-plusplus': 0,
     'react/button-has-type': 0,
     'jsx-a11y/no-autofocus': 0,
+    'jsx-a11y/label-has-associated-control': 0,
   },
   overrides: [
     {

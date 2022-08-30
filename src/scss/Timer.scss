@@ -72,6 +72,13 @@
         left: 50%;
         transform: translateX(-50%);
     }
+
+    &--focus {
+        position: absolute;
+        top: -5em;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 }
 
 .circularbar {
