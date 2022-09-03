@@ -10,12 +10,12 @@ import 'css/Information.css';
 function Information({ setInformation }: { setInformation: Dispatch<SetStateAction<boolean>> }) {
   const [addAnimation, setAddAnimation] = useState('');
   const [pageIndex, setPageIndex] = useState(1);
-
-  const displayIndex = ['○', '○', '○', '○', '○'];
-  displayIndex[pageIndex - 1] = '●';
+  const totalPage = 5;
+  const indexIcon: (undefined | string)[] = new Array(totalPage).fill('○', 0, totalPage);
+  indexIcon[pageIndex - 1] = '●';
 
   const onClickEvent = () => {
-    if (pageIndex >= 5) {
+    if (pageIndex >= totalPage) {
       setInformation(false);
     }
     setPageIndex((index) => index + 1);
@@ -90,7 +90,7 @@ function Information({ setInformation }: { setInformation: Dispatch<SetStateActi
       onKeyPress={onClickEvent}
     >
       {informationUI[pageIndex]}
-      <span>{displayIndex}</span>
+      <span>{indexIcon}</span>
     </div>
   );
 }

@@ -7,6 +7,7 @@ import GlobalStyles from 'global/GlobalStyles';
 import { darkTheme, lightTheme } from 'global/theme';
 import getMonthDateList from 'hooks/getMonthDateList';
 import getToday from 'hooks/getToday';
+import Page404 from 'pages/404';
 import Alarm from 'pages/Alarm';
 import Chart from 'pages/Chart';
 import DayChart from 'pages/DayChart';
@@ -54,7 +55,7 @@ function App() {
               <Route path='month' element={<MonthChart />} />
               <Route path='year' element={<YearChart />} />
             </Route>
-            <Route path='*' element={<div>존재하지 않는 페이지입니다.</div>} />
+            <Route path='*' element={<Page404 />} />
           </Routes>
         </Suspense>
       </ThemeProvider>
