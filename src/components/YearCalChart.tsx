@@ -82,7 +82,7 @@ function MyResponsiveCalendar({ data }: { data: CalendarDatum[] }) {
         daySpacing={2}
         dayBorderWidth={0}
         dayBorderColor='#ffffff'
-        legendFormat={(v) => `${(v / 60).toFixed()}`}
+        legendFormat={(v) => `${Math.floor(v / 60)}`}
         legends={[
           {
             anchor: 'bottom-right',
@@ -121,7 +121,7 @@ function MyResponsiveCalendar({ data }: { data: CalendarDatum[] }) {
       daySpacing={2}
       dayBorderWidth={0}
       dayBorderColor='#ffffff'
-      legendFormat={(v) => `${(v / 60).toFixed()}`}
+      legendFormat={(v) => `${Math.floor(v / 60)}`}
       legends={[
         {
           anchor: 'bottom-right',

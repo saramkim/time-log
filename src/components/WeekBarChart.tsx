@@ -58,7 +58,7 @@ function MyResponsiveBar({ data, standard }: { data: BarDatum[]; standard: numbe
         keys={keyList}
         indexBy='date'
         tooltip={BarTooltip}
-        label={(v) => `${((v.value as number) / 60).toFixed()}`}
+        label={(v) => `${Math.floor((v.value as number) / 60)}`}
         margin={{ top: 120, right: 20, bottom: 20, left: 60 }}
         padding={0.2}
         layout='horizontal'
@@ -106,7 +106,7 @@ function MyResponsiveBar({ data, standard }: { data: BarDatum[]; standard: numbe
       keys={keyList}
       indexBy='date'
       tooltip={BarTooltip}
-      label={(v) => `${((v.value as number) / 60).toFixed()}`}
+      label={(v) => `${Math.floor((v.value as number) / 60)}`}
       margin={{ top: 60, right: 260, bottom: 20, left: 130 }}
       padding={0.2}
       layout='horizontal'

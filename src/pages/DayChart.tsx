@@ -61,7 +61,7 @@ function DayChart() {
 
       <div className='day-chart'>
         <PieChart data={data} />
-        <div className='day-chart__center'>{(totalTime / 60).toFixed()}</div>
+        <div className='day-chart__center'>{Math.floor(totalTime / 60)}</div>
       </div>
     </div>
   );

@@ -32,7 +32,7 @@ function MyResponsivePie({ data }: { data: DefaultRawDatum[] }) {
         data={data}
         margin={{ top: 100, right: 20, bottom: 100, left: 20 }}
         theme={theme}
-        arcLabel={(v) => `${(v.value / 60).toFixed()}`}
+        arcLabel={(v) => `${Math.floor(v.value / 60)}`}
         tooltip={PieTooltip}
         padAngle={2}
         cornerRadius={5}
@@ -61,7 +61,7 @@ function MyResponsivePie({ data }: { data: DefaultRawDatum[] }) {
       data={data}
       margin={{ top: 100, right: 20, bottom: 100, left: 20 }}
       theme={theme}
-      arcLabel={(v) => `${(v.value / 60).toFixed()}`}
+      arcLabel={(v) => `${Math.floor(v.value / 60)}`}
       tooltip={PieTooltip}
       padAngle={2}
       cornerRadius={10}
