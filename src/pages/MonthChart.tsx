@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { useOutletContext } from 'react-router-dom';
 
 import BarChart from 'components/MonthBarChart';
+import debounce from 'hooks/debounce';
 import getToday from 'hooks/getToday';
 import { useSelector } from 'react-redux';
 import { RootState } from 'store';
@@ -42,9 +43,7 @@ function MonthChart() {
       <input
         className='standard-thing'
         placeholder={thing}
-        onChange={(e) => {
-          setThing(e.target.value);
-        }}
+        onChange={debounce((event) => setThing(event.target.value), 300)}
       />
 
       <select

@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { useOutletContext } from 'react-router-dom';
 
 import CalChart from 'components/YearCalChart';
+import debounce from 'hooks/debounce';
 import { useSelector } from 'react-redux';
 import { RootState } from 'store';
 
@@ -34,9 +35,7 @@ function YearChart() {
       <input
         className='standard-thing'
         placeholder={thing}
-        onChange={(e) => {
-          setThing(e.target.value);
-        }}
+        onChange={debounce((e) => setThing(e.target.value), 300)}
       />
 
       <CalChart data={data} />
