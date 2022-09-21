@@ -27,6 +27,7 @@ const theme: Theme = {
   grid: {
     line: {
       stroke: '#666666',
+      strokeDasharray: '5 5',
     },
   },
   tooltip: {
@@ -117,12 +118,12 @@ function MyResponsiveBar({ data, standard }: { data: BarDatum[]; standard: numbe
         from: 'color',
         modifiers: [['darker', 1.6]],
       }}
-      // axisTop={{
-      //   tickSize: 0,
-      //   tickPadding: 10,
-      //   tickRotation: 0,
-      // }}
-      axisTop={null}
+      axisTop={{
+        tickSize: 0,
+        tickPadding: 10,
+        tickRotation: 0,
+        format: (v) => Math.floor((v as number) / 60),
+      }}
       axisRight={null}
       axisBottom={null}
       axisLeft={{

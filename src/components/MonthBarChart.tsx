@@ -18,6 +18,7 @@ const theme = {
   grid: {
     line: {
       stroke: '#666666',
+      strokeDasharray: '5 5',
     },
   },
   tooltip: {
@@ -95,12 +96,12 @@ function MyResponsiveBar({ data, keys }: { data: BarDatum[]; keys: string }) {
         tickPadding: 5,
         tickRotation: 0,
       }}
-      // axisLeft={{
-      //   tickSize: 0,
-      //   tickPadding: 15,
-      //   tickRotation: 0,
-      // }}
-      axisLeft={null}
+      axisLeft={{
+        tickSize: 0,
+        tickPadding: 15,
+        tickRotation: 0,
+        format: (v) => Math.floor((v as number) / 60),
+      }}
       enableGridY
       enableLabel={false}
       legends={[]}
