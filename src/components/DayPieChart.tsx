@@ -38,6 +38,7 @@ function MyResponsivePie({ data }: { data: DefaultRawDatum[] }) {
         cornerRadius={5}
         innerRadius={0.4}
         sortByValue
+        activeOuterRadiusOffset={4}
         colors={{ scheme: 'set3' }}
         borderWidth={1}
         borderColor={{
@@ -51,7 +52,7 @@ function MyResponsivePie({ data }: { data: DefaultRawDatum[] }) {
           from: 'color',
           modifiers: [['darker', 5]],
         }}
-        animate={false}
+        animate
       />
     );
   }
@@ -67,6 +68,7 @@ function MyResponsivePie({ data }: { data: DefaultRawDatum[] }) {
       cornerRadius={10}
       innerRadius={0.4}
       sortByValue
+      activeOuterRadiusOffset={6}
       colors={{ scheme: 'set3' }}
       borderWidth={1}
       borderColor={{
@@ -88,7 +90,7 @@ function MyResponsivePie({ data }: { data: DefaultRawDatum[] }) {
         from: 'color',
         modifiers: [['darker', 5]],
       }}
-      animate={false}
+      animate
     />
   );
 }

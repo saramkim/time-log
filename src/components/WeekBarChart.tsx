@@ -50,7 +50,6 @@ function BarTooltip({ id, value, color }: { id: string | number; value: number; 
 
 function MyResponsiveBar({ data, standard }: { data: BarDatum[]; standard: number }) {
   const keyList: string[] = DidList(standard);
-
   if (window.innerWidth <= 768) {
     return (
       <ResponsiveBar
@@ -89,7 +88,7 @@ function MyResponsiveBar({ data, standard }: { data: BarDatum[]; standard: numbe
           from: 'color',
           modifiers: [['darker', 5]],
         }}
-        animate={false}
+        animate
         motionConfig='slow'
         role='application'
         ariaLabel='time bar chart'
@@ -166,7 +165,7 @@ function MyResponsiveBar({ data, standard }: { data: BarDatum[]; standard: numbe
           ],
         },
       ]}
-      animate={false}
+      animate
       motionConfig='slow'
       role='application'
       ariaLabel='time bar chart'

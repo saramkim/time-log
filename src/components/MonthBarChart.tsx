@@ -63,7 +63,7 @@ function MyResponsiveBar({ data, keys }: { data: BarDatum[]; keys: string }) {
         enableGridY
         enableLabel={false}
         legends={[]}
-        animate={false}
+        animate
         role='application'
         ariaLabel='Month bar chart'
         barAriaLabel={(e) => {
@@ -105,7 +105,7 @@ function MyResponsiveBar({ data, keys }: { data: BarDatum[]; keys: string }) {
       enableGridY
       enableLabel={false}
       legends={[]}
-      animate={false}
+      animate
       role='application'
       ariaLabel='Month bar chart'
       barAriaLabel={(e) => {
