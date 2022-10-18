@@ -2,13 +2,13 @@
 
 Skills : **React, Typescript, Redux, Sass** <br></br>
 
-시간 관리 웹사이트입니다. 기록을 통해 중요한 자산인 시간을 낭비하지 않을 수 있습니다.
+시간 관리 웹앱입니다. 기록을 통해 중요한 자산인 시간을 낭비하지 않을 수 있습니다.
 
-![main](src/images/timelog-main.png)
-![day](src/images/day-chart.png)
-![week](src/images/week-chart.png)
-![month](src/images/month-chart.png)
-![year](src/images/year-chart.png)
+![main](client/src/images/timelog-main.png)
+![day](client/src/images/day-chart.png)
+![week](client/src/images/week-chart.png)
+![month](client/src/images/month-chart.png)
+![year](client/src/images/year-chart.png)
 
 - ### v0.8
   - PC 브라우저에서만 타이머 정상 작동 (모바일 백그라운드에서 타이머 지연)
