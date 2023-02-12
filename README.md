@@ -2,7 +2,10 @@
 
 Skills : **React, Typescript, Redux, Sass** <br></br>
 
-시간 관리 웹앱입니다. 기록을 통해 중요한 자산인 시간을 낭비하지 않을 수 있습니다.
+시간 관리 웹 사이트입니다.
+
+
+시간의 기록을 여러 차트를 활용해 확인할 수 있습니다.
 
 ![main](client/src/images/timelog-main.png)
 ![day](client/src/images/day-chart.png)
